@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://zhenhuizhang.tk</id>
+    <title>渣渣晖の博客</title>
+    <updated>2021-06-19T04:50:40.404Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://zhenhuizhang.tk"/>
+    <link rel="self" href="https://zhenhuizhang.tk/atom.xml"/>
+    <subtitle>热爱可抵岁月漫长</subtitle>
+    <logo>https://zhenhuizhang.tk/images/avatar.png</logo>
+    <icon>https://zhenhuizhang.tk/favicon.ico</icon>
+    <rights>All rights reserved 2021, 渣渣晖の博客</rights>
+    <entry>
+        <title type="html"><![CDATA[[电路]Alitium_Designer导出Gerber文件]]></title>
+        <id>https://zhenhuizhang.tk/post/dian-lu-alitium_designer-dao-chu-gerber-wen-jian/</id>
+        <link href="https://zhenhuizhang.tk/post/dian-lu-alitium_designer-dao-chu-gerber-wen-jian/">
+        </link>
+        <updated>2021-04-30T01:11:15.000Z</updated>
+        <summary type="html"><![CDATA[<p>使用Alitium Designer导出Gerber光绘文件</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>使用Alitium Designer导出Gerber光绘文件</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[电路]电阻的类型与指标]]></title>
+        <id>https://zhenhuizhang.tk/post/dian-lu-dian-zu-de-lei-xing-yu-zhi-biao/</id>
+        <link href="https://zhenhuizhang.tk/post/dian-lu-dian-zu-de-lei-xing-yu-zhi-biao/">
+        </link>
+        <updated>2021-04-12T05:30:09.000Z</updated>
+        <summary type="html"><![CDATA[<p>电阻的类型，电路模型，性能指标，高频应用</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>电阻的类型，电路模型，性能指标，高频应用</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[FPGA]Vivado压缩bit文件]]></title>
+        <id>https://zhenhuizhang.tk/post/fpgavivado-ya-suo-bit-wen-jian/</id>
+        <link href="https://zhenhuizhang.tk/post/fpgavivado-ya-suo-bit-wen-jian/">
+        </link>
+        <updated>2021-04-09T10:46:55.000Z</updated>
+        <summary type="html"><![CDATA[<p>Vivado压缩BIT文件的两种方法</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Vivado压缩BIT文件的两种方法</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[电路]锂离子电池特性与充电电路]]></title>
+        <id>https://zhenhuizhang.tk/post/dian-lu-li-chi-zi-dian-chi-te-xing-yu-chong-dian-dian-lu/</id>
+        <link href="https://zhenhuizhang.tk/post/dian-lu-li-chi-zi-dian-chi-te-xing-yu-chong-dian-dian-lu/">
+        </link>
+        <updated>2021-03-11T01:49:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>锂离子电池特性，充电电路设计</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>锂离子电池特性，充电电路设计</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[电路]AD快捷键]]></title>
+        <id>https://zhenhuizhang.tk/post/dian-lu-ad-kuai-jie-jian/</id>
+        <link href="https://zhenhuizhang.tk/post/dian-lu-ad-kuai-jie-jian/">
+        </link>
+        <updated>2021-02-13T08:38:54.000Z</updated>
+        <summary type="html"><![CDATA[<p>Altium Designer 快捷键</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Altium Designer 快捷键</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[Git]版本退回]]></title>
+        <id>https://zhenhuizhang.tk/post/git/</id>
+        <link href="https://zhenhuizhang.tk/post/git/">
+        </link>
+        <updated>2021-02-09T06:40:57.000Z</updated>
+        <summary type="html"><![CDATA[<p>Git版本退回</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Git版本退回</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[电路]以太网PHY物理层]]></title>
+        <id>https://zhenhuizhang.tk/post/dian-lu-yi-tai-wang-phy-wu-li-ceng/</id>
+        <link href="https://zhenhuizhang.tk/post/dian-lu-yi-tai-wang-phy-wu-li-ceng/">
+        </link>
+        <updated>2021-01-15T11:46:05.000Z</updated>
+        <summary type="html"><![CDATA[<p>以太网构成，MAC，PHY，MII，网络变压器，RJ45</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>以太网构成，MAC，PHY，MII，网络变压器，RJ45</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[Solidworks]钣金折弯系数设置]]></title>
+        <id>https://zhenhuizhang.tk/post/solidworksban-jin-zhe-wan-xi-shu-she-zhi/</id>
+        <link href="https://zhenhuizhang.tk/post/solidworksban-jin-zhe-wan-xi-shu-she-zhi/">
+        </link>
+        <updated>2020-12-29T07:04:31.000Z</updated>
+        <summary type="html"><![CDATA[<p>中性层，K因子，钣金折弯系数</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>中性层，K因子，钣金折弯系数</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[电路]电荷泵]]></title>
+        <id>https://zhenhuizhang.tk/post/dian-lu-dian-he-beng/</id>
+        <link href="https://zhenhuizhang.tk/post/dian-lu-dian-he-beng/">
+        </link>
+        <updated>2020-12-12T02:24:16.000Z</updated>
+        <summary type="html"><![CDATA[<p>电荷泵(Switch CAP)，降压器，倍压器，反压器，等压器</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>电荷泵(Switch CAP)，降压器，倍压器，反压器，等压器</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[电路]SPI协议]]></title>
+        <id>https://zhenhuizhang.tk/post/dian-lu-spi-xie-yi/</id>
+        <link href="https://zhenhuizhang.tk/post/dian-lu-spi-xie-yi/">
+        </link>
+        <updated>2020-12-10T02:35:37.000Z</updated>
+        <summary type="html"><![CDATA[<p>SPI协议层，物理层，时钟配置，多主机模式，优缺点</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>SPI协议层，物理层，时钟配置，多主机模式，优缺点</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[电路]UART异步串口协议]]></title>
+        <id>https://zhenhuizhang.tk/post/dian-lu-uart-yi-bu-chuan-kou-xie-yi/</id>
+        <link href="https://zhenhuizhang.tk/post/dian-lu-uart-yi-bu-chuan-kou-xie-yi/">
+        </link>
+        <updated>2020-12-09T11:57:08.000Z</updated>
+        <summary type="html"><![CDATA[<p>UART异步串口协议，传输过程，物理层，优缺点</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>UART异步串口协议，传输过程，物理层，优缺点</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[电路]开关电源拓扑结构_Buck_Boost_Buck-Boost]]></title>
+        <id>https://zhenhuizhang.tk/post/dian-lu-kai-guan-dian-yuan-tuo-bu-jie-gou-_buck_boost_buck-boost/</id>
+        <link href="https://zhenhuizhang.tk/post/dian-lu-kai-guan-dian-yuan-tuo-bu-jie-gou-_buck_boost_buck-boost/">
+        </link>
+        <updated>2020-12-07T02:37:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>开关电源拓扑结构，Buck电路，Boost电路，Buck-Boost电路，同步VS.非同步</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>开关电源拓扑结构，Buck电路，Boost电路，Buck-Boost电路，同步VS.非同步</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[电路]线性稳压器LDO_损耗功率与热问题]]></title>
+        <id>https://zhenhuizhang.tk/post/dian-lu-xian-xing-wen-ya-qi-ldo_-sun-hao-gong-lu-yu-re-wen-ti/</id>
+        <link href="https://zhenhuizhang.tk/post/dian-lu-xian-xing-wen-ya-qi-ldo_-sun-hao-gong-lu-yu-re-wen-ti/">
+        </link>
+        <updated>2020-12-06T13:49:46.000Z</updated>
+        <summary type="html"><![CDATA[<p>线性稳压器LDO(效率问题_电压降_输入输出电容) __ 损耗功率与热问题</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>线性稳压器LDO(效率问题_电压降_输入输出电容) __ 损耗功率与热问题</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[电路]MOS管的种类_参数]]></title>
+        <id>https://zhenhuizhang.tk/post/dian-lu-mos-guan-de-chong-lei-_-can-shu/</id>
+        <link href="https://zhenhuizhang.tk/post/dian-lu-mos-guan-de-chong-lei-_-can-shu/">
+        </link>
+        <updated>2020-11-28T08:25:32.000Z</updated>
+        <summary type="html"><![CDATA[<p>浅谈MOS管的种类与参数</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>浅谈MOS管的种类与参数</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[Git]简介_安装_创建版本库]]></title>
+        <id>https://zhenhuizhang.tk/post/gitjian-jie-_-an-zhuang-_-chuang-jian-ban-ben-ku/</id>
+        <link href="https://zhenhuizhang.tk/post/gitjian-jie-_-an-zhuang-_-chuang-jian-ban-ben-ku/">
+        </link>
+        <updated>2020-10-30T11:34:54.000Z</updated>
+        <summary type="html"><![CDATA[<p>Git的简介，安装Git，创建版本库</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Git的简介，安装Git，创建版本库</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[电路]电感的参数_种类_应用]]></title>
+        <id>https://zhenhuizhang.tk/post/dian-lu-dian-gan-de-can-shu-_-chong-lei-_-ying-yong/</id>
+        <link href="https://zhenhuizhang.tk/post/dian-lu-dian-gan-de-can-shu-_-chong-lei-_-ying-yong/">
+        </link>
+        <updated>2020-10-27T02:19:12.000Z</updated>
+        <summary type="html"><![CDATA[<p>电感的参数_种类_应用</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>电感的参数_种类_应用</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[FPGA24]UltraScale+_功耗域_互联接口]]></title>
+        <id>https://zhenhuizhang.tk/post/fpga24ps-yu-pl-zhi-jian-de-hu-lian-jie-kou/</id>
+        <link href="https://zhenhuizhang.tk/post/fpga24ps-yu-pl-zhi-jian-de-hu-lian-jie-kou/">
+        </link>
+        <updated>2020-10-26T06:17:21.000Z</updated>
+        <summary type="html"><![CDATA[<p>UltraScale+的四大功耗域，PS与PL之间的互联接口</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>UltraScale+的四大功耗域，PS与PL之间的互联接口</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[电路]电容的参数_种类_应用]]></title>
+        <id>https://zhenhuizhang.tk/post/dian-lu-dian-rong-de-can-shu-_-chong-lei-_-ying-yong/</id>
+        <link href="https://zhenhuizhang.tk/post/dian-lu-dian-rong-de-can-shu-_-chong-lei-_-ying-yong/">
+        </link>
+        <updated>2020-10-25T09:34:47.000Z</updated>
+        <summary type="html"><![CDATA[<p>浅谈电源设计中电容的电性能参数，常见电容器类型与实际应用</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>浅谈电源设计中电容的电性能参数，常见电容器类型与实际应用</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[Verilog11]TimeGEN波形绘制软件]]></title>
+        <id>https://zhenhuizhang.tk/post/verilog11timegen-bo-xing-hui-zhi-ruan-jian/</id>
+        <link href="https://zhenhuizhang.tk/post/verilog11timegen-bo-xing-hui-zhi-ruan-jian/">
+        </link>
+        <updated>2020-08-21T03:35:04.000Z</updated>
+        <summary type="html"><![CDATA[<p>TimeGEN波形绘制软件的使用教程</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>TimeGEN波形绘制软件的使用教程</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[FPGA23]安装Petalinux]]></title>
+        <id>https://zhenhuizhang.tk/post/fpga23an-zhuang-petalinux/</id>
+        <link href="https://zhenhuizhang.tk/post/fpga23an-zhuang-petalinux/">
+        </link>
+        <updated>2020-08-18T16:54:39.000Z</updated>
+        <summary type="html"><![CDATA[<p>安装虚拟机，安装Vivado，安装Petalinux工具</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>安装虚拟机，安装Vivado，安装Petalinux工具</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[电路]I2C总线协议]]></title>
+        <id>https://zhenhuizhang.tk/post/dian-lu-i2c-zong-xian-xie-yi/</id>
+        <link href="https://zhenhuizhang.tk/post/dian-lu-i2c-zong-xian-xie-yi/">
+        </link>
+        <updated>2020-08-16T05:06:32.000Z</updated>
+        <summary type="html"><![CDATA[<p>I2C总线协议，物理层，协议层，M24C08读写实例</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>I2C总线协议，物理层，协议层，M24C08读写实例</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[电路]DDR3_引脚定义_容量_特殊功能]]></title>
+        <id>https://zhenhuizhang.tk/post/dian-lu-ddr3_-yin-jiao-ding-yi-_-rong-liang-_-te-shu-gong-neng/</id>
+        <link href="https://zhenhuizhang.tk/post/dian-lu-ddr3_-yin-jiao-ding-yi-_-rong-liang-_-te-shu-gong-neng/">
+        </link>
+        <updated>2020-08-06T18:57:23.000Z</updated>
+        <summary type="html"><![CDATA[<p>DDR3随机存储器，引脚介绍，寻址与容量计算，ODT片内终结_ZQ校准_WriteLeveling</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>DDR3随机存储器，引脚介绍，寻址与容量计算，ODT片内终结_ZQ校准_WriteLeveling</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[电路]AD汉化_加速_禁止联网_DSN/brd文件导入]]></title>
+        <id>https://zhenhuizhang.tk/post/dian-lu-ad-han-hua-_-qi-dong-jia-su-_-jin-zhi-lian-wang-_dsnbrd-wen-jian-dao-ru/</id>
+        <link href="https://zhenhuizhang.tk/post/dian-lu-ad-han-hua-_-qi-dong-jia-su-_-jin-zhi-lian-wang-_dsnbrd-wen-jian-dao-ru/">
+        </link>
+        <updated>2020-08-06T18:23:13.000Z</updated>
+        <summary type="html"><![CDATA[<p>AD汉化，启动加速，AD禁止连接互联网，将Cadence文件(.DSN)或Allegro文件(.brd)导入到Altium Designer中</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>AD汉化，启动加速，AD禁止连接互联网，将Cadence文件(.DSN)或Allegro文件(.brd)导入到Altium Designer中</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[电路]电路中各类“GND”的处理]]></title>
+        <id>https://zhenhuizhang.tk/post/dian-lu-dian-lu-zhong-ge-lei-gndde-chu-li/</id>
+        <link href="https://zhenhuizhang.tk/post/dian-lu-dian-lu-zhong-ge-lei-gndde-chu-li/">
+        </link>
+        <updated>2020-07-28T15:37:55.000Z</updated>
+        <summary type="html"><![CDATA[<p>对于电路中各类&quot;GND&quot;的处理方式</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>对于电路中各类&quot;GND&quot;的处理方式</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[Verilog9]仿真语法_循环_存储载入_随机数]]></title>
+        <id>https://zhenhuizhang.tk/post/verilog9fang-zhen-yu-fa-_-xun-huan-_-cun-chu-zai-ru-_-sui-ji-shu/</id>
+        <link href="https://zhenhuizhang.tk/post/verilog9fang-zhen-yu-fa-_-xun-huan-_-cun-chu-zai-ru-_-sui-ji-shu/">
+        </link>
+        <updated>2020-07-25T17:46:10.000Z</updated>
+        <summary type="html"><![CDATA[<p>Verilog仿真语法，循环仿真语法，存储载入函数 ，随机数生成函数</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Verilog仿真语法，循环仿真语法，存储载入函数 ，随机数生成函数</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[电路]差分晶振_LVDS/LVPECL/HCSL/CML模式]]></title>
+        <id>https://zhenhuizhang.tk/post/chai-fen-jing-zhen-_lvdslvpeclhcslcml-xin-hao-mo-shi/</id>
+        <link href="https://zhenhuizhang.tk/post/chai-fen-jing-zhen-_lvdslvpeclhcslcml-xin-hao-mo-shi/">
+        </link>
+        <updated>2020-07-25T16:50:51.000Z</updated>
+        <summary type="html"><![CDATA[<p>差分信号，差分晶振，LVDS/LVPECL/HCSL/CML信号模式</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>差分信号，差分晶振，LVDS/LVPECL/HCSL/CML信号模式</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[Verilog8]仿真语法_时间_程序块_延时_时钟]]></title>
+        <id>https://zhenhuizhang.tk/post/verilog8fang-zhen-yu-fa-_-shi-jian-_-cheng-xu-kuai-_-yan-shi-_-shi-zhong/</id>
+        <link href="https://zhenhuizhang.tk/post/verilog8fang-zhen-yu-fa-_-shi-jian-_-cheng-xu-kuai-_-yan-shi-_-shi-zhong/">
+        </link>
+        <updated>2020-07-22T01:34:44.000Z</updated>
+        <summary type="html"><![CDATA[<p>Verilog仿真语法，仿真时间设定，程序块语句体，延时等待语法，时钟激励生成</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Verilog仿真语法，仿真时间设定，程序块语句体，延时等待语法，时钟激励生成</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[Verilog7]功能仿真原理]]></title>
+        <id>https://zhenhuizhang.tk/post/verilog7gong-neng-fang-zhen-yuan-li/</id>
+        <link href="https://zhenhuizhang.tk/post/verilog7gong-neng-fang-zhen-yuan-li/">
+        </link>
+        <updated>2020-07-20T00:31:38.000Z</updated>
+        <summary type="html"><![CDATA[<p>功能仿真，仿真原理</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>功能仿真，仿真原理</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[Verilog6]阻塞与非阻塞赋值]]></title>
+        <id>https://zhenhuizhang.tk/post/verilog6zu-sai-yu-fei-zu-sai-fu-zhi/</id>
+        <link href="https://zhenhuizhang.tk/post/verilog6zu-sai-yu-fei-zu-sai-fu-zhi/">
+        </link>
+        <updated>2020-07-19T05:43:39.000Z</updated>
+        <summary type="html"><![CDATA[<p>阻塞赋值，非阻塞赋值</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>阻塞赋值，非阻塞赋值</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[FPGA22]IP核_Aurora 8B/10B]]></title>
+        <id>https://zhenhuizhang.tk/post/fpga22ip-he-_aurora-8b10b/</id>
+        <link href="https://zhenhuizhang.tk/post/fpga22ip-he-_aurora-8b10b/">
+        </link>
+        <updated>2020-07-15T02:12:08.000Z</updated>
+        <summary type="html"><![CDATA[<p>Aurora 8B/10B IP core</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Aurora 8B/10B IP core</p>
+]]></content>
+    </entry>
+</feed>
