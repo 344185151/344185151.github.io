@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhenhuizhang.tk</id>
     <title>渣渣晖の博客</title>
-    <updated>2021-06-19T09:26:03.865Z</updated>
+    <updated>2021-06-23T07:29:03.535Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhenhuizhang.tk"/>
     <link rel="self" href="https://zhenhuizhang.tk/atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://zhenhuizhang.tk/images/avatar.png</logo>
     <icon>https://zhenhuizhang.tk/favicon.ico</icon>
     <rights>All rights reserved 2021, 渣渣晖の博客</rights>
+    <entry>
+        <title type="html"><![CDATA[[Linux]基础Shell指令_APT下载工具]]></title>
+        <id>https://zhenhuizhang.tk/post/linuxji-chu-shell-zhi-ling-_apt-xia-zai-gong-ju/</id>
+        <link href="https://zhenhuizhang.tk/post/linuxji-chu-shell-zhi-ling-_apt-xia-zai-gong-ju/">
+        </link>
+        <updated>2021-06-18T03:44:51.000Z</updated>
+        <summary type="html"><![CDATA[<p>基础Shell指令，APT下载工具</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>基础Shell指令，APT下载工具</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[电路]Alitium_Designer导出Gerber文件]]></title>
         <id>https://zhenhuizhang.tk/post/dian-lu-alitium_designer-dao-chu-gerber-wen-jian/</id>
@@ -327,17 +338,6 @@
         <summary type="html"><![CDATA[<p>阻塞赋值，非阻塞赋值</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>阻塞赋值，非阻塞赋值</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[FPGA22]IP核_Aurora 8B/10B]]></title>
-        <id>https://zhenhuizhang.tk/post/fpga22ip-he-_aurora-8b10b/</id>
-        <link href="https://zhenhuizhang.tk/post/fpga22ip-he-_aurora-8b10b/">
-        </link>
-        <updated>2020-07-15T02:12:08.000Z</updated>
-        <summary type="html"><![CDATA[<p>Aurora 8B/10B IP core</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Aurora 8B/10B IP core</p>
 ]]></content>
     </entry>
 </feed>

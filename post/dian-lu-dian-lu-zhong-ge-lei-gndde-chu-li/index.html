@@ -9,7 +9,7 @@
 <meta name="description" content="热爱可抵岁月漫长">
 <meta name="theme-color" content="#000">
 <title>[电路]电路中各类“GND”的处理 | 渣渣晖の博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1624090308267">
+<link rel="shortcut icon" href="/favicon.ico?v=1624433336164">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1154,6 +1154,398 @@ Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea<
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://zhenhuizhang.tk/post/linuxji-chu-shell-zhi-ling-_apt-xia-zai-gong-ju/"" data-c="
+          &lt;p&gt;基础Shell指令，APT下载工具&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;h1 id=&#34;shell简介&#34;&gt;Shell简介&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;所谓Shell，严格意义上来讲，是一个应用程序，它负责接收用户输入的命令，然后根据命令做出相应的动作， Shell 负责将应用层或者用户输入的命令传递给系统内核，由操作系统内核来完成相应的工作，然后将结果反馈给应用层或者用户。&lt;/li&gt;
+&lt;li&gt;换人话来说，其实就是在Linux 的终端(Terminal )下，输入具体指令，控制系统操作。其具体格式如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;command -options [argument]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;名词&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;解释&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;command&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Shell命令的名称&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;options&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;命令选项，同一种命令可能有不同的选项，以实现不同的功能&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;argument&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;命令参数，Shell命令可以带参数运行，也可以不带参数运行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;以命令“ls”为例，下面“ls”命令的三种不同格式其结果也不同：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;ls     #打印出当前目录下的所有文件和文件夹
+ls –l    #打印出当前目录下的所有文件和文件夹并显示详细信息
+ls /usr    #打印出目录&amp;quot;/usr&amp;quot;下的所有文件和文件夹
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Shell 命令支持自动补全功能，我们只需要输入命令的前面一部分字母，然后按下 TAB 键，如果只有一个命令匹配的话就会自动补全这个命令剩下的字母；如果有多个命令匹配的话系统就会发出报警声音，此时在按下一次 TAB 键就会列出所有匹配的命令。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;基础shell命令&#34;&gt;基础Shell命令&lt;/h1&gt;
+&lt;h2 id=&#34;目录信息查看ls&#34;&gt;目录信息查看(ls)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Shell 下文件浏览命令为&lt;code&gt;ls&lt;/code&gt;，格式如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;ls  [选项]  [路径]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;ls 命令主要用于显示指定目录下的内容，列出指定目录下包含的所有的文件以及子目录，它的主要选项有：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;选项&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;功能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-a&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;显示所有的文件以及子目录，包括以“.”开头的隐藏文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-l&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;显示文件的详细信息，比如文件的形态、权限、所有者、大小等信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-t&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;将文件按照创建时间排序列出&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-A&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;和-a 一样，但是不列出“.” (当前目录)和“..” (父目录)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-R&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;递归列出所有文件，包括子目录中的文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;目录切换cd&#34;&gt;目录切换(cd)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Shell 中切换到其它的目录，使用的命令是&lt;code&gt;cd&lt;/code&gt;，命令格式如下，：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;cd  [路径]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;其中，路径就是我们要进入的目录路径，比如下面的操作：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd /   #进入到根目录“/”下， Linux 系统的根目录为“/” ,
+cd /usr   #进入到目录“/usr”里面。
+cd ..   #进入到上一级目录。
+cd ~   #切换到当前用户主目录
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;切换root用户执行身份sudo&#34;&gt;切换root用户执行身份(sudo)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Ubuntu(Linux)是一个允许多用户的操作系统，其中权限最大的就是超级用户 root，有时候我们执行一些操作的时候是需要用 root 用户身份才能执行，如安装软件。命令格式如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;sudo [选项] [命令]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;主要选项如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;选项&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;功能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-h&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;显示帮助信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-l&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;列出当前用户可执行与不可执行的命令&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-p&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;改变询问密码的提示符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;添加用户adduser&#34;&gt;添加用户(adduser)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;添加用户需要使用root身份执行&lt;code&gt;adduser&lt;/code&gt;命令。命令格式如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;adduser [参数] [用户名]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;主要参数如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;参数&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;功能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-system&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;添加一个系统用户&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-home DIR&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;DIR 表示用户的主目录路径&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-uid ID&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;ID 表示用户的 uid&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-ingroup GRP&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;表示用户所属的组名&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;删除用户deluser&#34;&gt;删除用户(deluser)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;添删除用户需要使用root身份执行&lt;code&gt;deluser&lt;/code&gt;命令。命令格式如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;deluser [参数] [用户名]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;主要参数如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;参数&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;功能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-system&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;当用户是一个系统用户的时候才能删除&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-remove-home&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;删除用户的主目录&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-remove-all-files&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;删除与用户有关的所有文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-backup&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;备份用户信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;##切换root用户(su)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo&lt;/code&gt;命令是以 root 用户身份执行一个命令，并没有更改当前的用户身份，所有需要 root 身份执行的命令都必须在前面加上“sudo”。&lt;code&gt;su&lt;/code&gt;命令可以直接将当前用户直接切换为 root 用户获得了系统最高权限。在 root 用户下，所有的命令都可以无障碍执行，不需要在前面加上&lt;code&gt;sudo&lt;/code&gt;。命令格式如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;su [选项] [用户名]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;常用选项如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;选项&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;功能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-c -command&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;执行指定的命令，执行完毕以后恢复原用户身份&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-login&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;改变用户身份，同时改变工作目录和 PATH 环境变量&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-m&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;改变用户身份的时候不改变环境变量&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-h&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;显示帮助信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;显示和配置网络属性ifconfig&#34;&gt;显示和配置网络属性(ifconfig)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;ifconfig 是一个跟网络属性配置和显示密切相关的命令，通过此命令我们可以查看当前网络属性，也可以通过此命令配置网络属性，比如设置网络 IP 地址等。命令格式如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;ifconfig [网络接口名] [选项] | [地址]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;常用选项如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;选项&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;功能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;up&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;开启网络设备&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;down&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;关闭网络设备&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;add&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;IP 地址，设置网络 IP 地址&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;netmask add&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;子网掩码&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;当前路径显示pwd&#34;&gt;当前路径显示(pwd)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;pwd&lt;/code&gt;命令用来显示当前工作目录的绝对路径，不需要任何的参数：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;pwd    #显示当前目录的绝对路径
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;显示文件内容cat&#34;&gt;显示文件内容(cat)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;在Shell下，可还是用&lt;code&gt;cat&lt;/code&gt;命令查看文件内容。命令格式如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;cat [选项] [文件]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;常用选项如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;选项&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;功能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-n&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;由 1 开始对所有输出的行进行编号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-b&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;和-n 类似，但是不对空白行编号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-s&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;当遇到连续两个行以上空白行的话就合并为一个行空白行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;清屏clear&#34;&gt;清屏(clear)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;clear&lt;/code&gt;  命令用于清除终端上的所有内容，只留下一行提示符。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;clear
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;系统帮助man&#34;&gt;系统帮助(man)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;当我们需要了解一个命令的详细信息的时，可通过&lt;code&gt;man&lt;/code&gt;命令，查看其它命令的语法格式、主要功能、主要参数说明等。命令格式如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;man [命令名]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;系统信息查看uname&#34;&gt;系统信息查看(uname)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;要查看当前系统信息，可以使用命令 &lt;code&gt;uname&lt;/code&gt;，命令格式如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;uname [选项]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;主要选项如下：&lt;br&gt;
+| 选项 | 功能 |&lt;br&gt;
+|  :--:  | :--:   |&lt;br&gt;
+| -r | 列出当前系统的具体内核版本号 |&lt;br&gt;
+| -s | 列出系统内核名称 |&lt;br&gt;
+| -o | 列出系统信息 |&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;系统重启reboot&#34;&gt;系统重启(reboot)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;reboot&lt;/code&gt;命令用于重启系统，在终端中输入命令并回车即可。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;reboot  #重启系统
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;系统关闭poweroff&#34;&gt;系统关闭(poweroff)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;poweroff&lt;/code&gt;命令用于关闭系统，在终端中输入命令并回车即可。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;poweroff  #关闭系统
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;#APT下载工具&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;APT下载工具是我们在 Ubuntu 下使用最多的下载工具。它解决了 Linux 平台下安装软件的一个缺陷，即软件之间相互依赖。&lt;/li&gt;
+&lt;li&gt;APT 采用的 C/S 模式，也就是客户端/服务器模式，我们的 PC 机作为客户端，当需要下载软件的时候就向服务器请求，因此我们需要知道服务器的地址，也叫做安装源或者更新源。&lt;/li&gt;
+&lt;li&gt;在我们使用 APT 工具下载安装或者更新软件的时候，首先会在下载列表中与本机软件对比，看一下需要下载哪些软件，或者升级哪些软件，默认情况下 APT 会下载最新的软件包，被安装的软件包所依赖的其它软件也会被下载安装。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;常用apt指令&#34;&gt;常用APT指令&lt;/h1&gt;
+&lt;h2 id=&#34;更新本地数据库&#34;&gt;更新本地数据库&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;如果想查看本地哪些软件可以更新的话可以使用如下命令：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt-get update
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;这个命令会访问软件源的地址，并且获取软件列表并保存在本电脑上。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;检查依赖关系&#34;&gt;检查依赖关系&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;有时候本地某些软件可能存在依赖关系，所谓依赖关系就是 A 软件依赖于 B 软件。通过如下命令可以查看依赖关系，如果存在依赖关系的话 APT 会提出解决方案：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt-get check
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;软件安装&#34;&gt;软件安装&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;使用如下命令，进行软件的安装操作：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt-get install package-name  #package-name为软件名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;可以看出上述命令是由&lt;code&gt;apt-get&lt;/code&gt;和&lt;code&gt;install&lt;/code&gt;组合在一起的，“package-name”就是要安装的软件名字，“apt-get”负责下载软件，“install”负责安装软件。执行上述命令以后就会自动下载和安装对应的软件。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;软件更新&#34;&gt;软件更新&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;有时候我们需要更新软件，使用命令：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt-get upgrade package-name  #package-name为软件名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;卸载软件&#34;&gt;卸载软件&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;如果要卸载某个软件的话，使用如下命令：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt-get remove package-name  #package-name为软件名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;参考：&lt;br&gt;
+《正点原子-嵌入式Linux驱动开发指南》- 第二章 Ubuntu系统入门 - 2.3 Shell操作 ; 2.4 APT下载工具&lt;/p&gt;
+&lt;/blockquote&gt;
+">[Linux]基础Shell指令_APT下载工具</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://zhenhuizhang.tk/post/dian-lu-alitium_designer-dao-chu-gerber-wen-jian/"" data-c="
