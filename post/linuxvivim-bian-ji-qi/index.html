@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="热爱可抵岁月漫长">
 <meta name="theme-color" content="#000">
-<title>[电路]线性稳压器LDO_损耗功率与热问题 | 渣渣晖の博客</title>
+<title>[Linux]Vi/Vim编辑器 | 渣渣晖の博客</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1624610184203">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -48,8 +48,8 @@
 
 
 
-  <meta name="description" content="[电路]线性稳压器LDO_损耗功率与热问题" />
-  <meta name="keywords" content="电路" />
+  <meta name="description" content="[Linux]Vi/Vim编辑器" />
+  <meta name="keywords" content="Linux" />
 </head>
 
 <body>
@@ -198,30 +198,29 @@
   <div class="toc-wrapper auto-number no_compress"
     id="toc_wrapper">
     <ul class="markdownIt-TOC">
-<li><a href="#%E7%BA%BF%E6%80%A7%E7%A8%B3%E5%8E%8B%E5%99%A8ldo">线性稳压器LDO</a>
+<li><a href="#%E5%AE%89%E8%A3%85vim%E7%BC%96%E8%BE%91%E5%99%A8">安装VIm编辑器</a></li>
+<li><a href="#vivim%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F">Vi/Vim工作模式</a>
 <ul>
-<li><a href="#%E7%BA%BF%E6%80%A7%E7%A8%B3%E5%8E%8B%E5%99%A8ldo%E4%BC%98%E7%BC%BA%E7%82%B9">线性稳压器(LDO)优缺点</a>
+<li><a href="#%E8%BE%93%E5%85%A5%E6%A8%A1%E5%BC%8F">输入模式</a>
 <ul>
-<li><a href="#ldo%E4%BC%98%E7%82%B9">LDO优点</a></li>
-<li><a href="#ldo%E7%BC%BA%E7%82%B9">LDO缺点</a></li>
+<li><a href="#%E5%88%87%E6%8D%A2%E8%BE%93%E5%85%A5%E6%A8%A1%E5%BC%8F">切换输入模式</a></li>
 </ul>
 </li>
-<li><a href="#ldo%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%9E%B6%E6%9E%84">LDO的两种架构</a>
+<li><a href="#%E6%8C%87%E4%BB%A4%E6%A8%A1%E5%BC%8F">指令模式</a>
 <ul>
-<li><a href="#%E4%BC%A0%E7%BB%9Fldo%E6%9E%B6%E6%9E%84">传统LDO架构</a></li>
-<li><a href="#%E6%96%B0ldo%E6%9E%B6%E6%9E%84">新LDO架构</a></li>
+<li><a href="#%E7%A7%BB%E5%8A%A8%E5%85%89%E6%A0%87">移动光标</a></li>
+<li><a href="#%E5%B1%8F%E5%B9%95%E7%BF%BB%E6%BB%9A">屏幕翻滚</a></li>
+<li><a href="#%E5%A4%8D%E5%88%B6-%E5%88%A0%E9%99%A4%E5%92%8C%E7%B2%98%E8%B4%B4">复制、删除和粘贴</a></li>
 </ul>
 </li>
-<li><a href="#ldo%E7%9A%84%E6%95%88%E7%8E%87%E9%97%AE%E9%A2%98">LDO的效率问题</a></li>
-<li><a href="#ldo%E7%94%B5%E5%8E%8B%E9%99%8D">LDO电压降</a></li>
+<li><a href="#%E5%BA%95%E8%A1%8C%E6%A8%A1%E5%BC%8F">底行模式</a>
+<ul>
+<li><a href="#%E8%A1%8C%E5%8F%B7%E6%98%BE%E7%A4%BA">行号显示</a></li>
+<li><a href="#%E6%9F%A5%E6%89%BE%E4%B8%8E%E5%AE%9A%E4%BD%8D">查找与定位</a></li>
+<li><a href="#%E5%A4%8D%E5%88%B6%E4%B8%8E%E5%89%AA%E5%88%87">复制与剪切</a></li>
+<li><a href="#%E4%BF%9D%E5%AD%98%E4%B8%8E%E9%80%80%E5%87%BA">保存与退出</a></li>
 </ul>
 </li>
-<li><a href="#ldo%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%94%B5%E5%AE%B9">LDO的输入输出电容</a></li>
-<li><a href="#%E6%8D%9F%E8%80%97%E5%8A%9F%E7%8E%87%E4%B8%8E%E7%83%AD%E9%97%AE%E9%A2%98">损耗功率与热问题</a>
-<ul>
-<li><a href="#%E6%9C%80%E5%A4%A7%E5%8A%9F%E7%8E%87%E6%8D%9F%E8%80%97p_d">最大功率损耗(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>P</mi><mi>D</mi></msub></mrow><annotation encoding="application/x-tex">P_D</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">D</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>)</a></li>
-<li><a href="#%E7%BB%93%E6%B8%A9">结温</a></li>
-<li><a href="#%E5%B8%B8%E7%94%A8ldo%E5%B0%81%E8%A3%85%E5%8A%9F%E8%80%97%E9%99%90%E5%88%B6">常用LDO封装功耗限制</a></li>
 </ul>
 </li>
 </ul>
@@ -489,8 +488,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://zhenhuizhang.tk/post/dian-lu-xian-xing-wen-ya-qi-ldo_-sun-hao-gong-lu-yu-re-wen-ti/">
-      [电路]线性稳压器LDO_损耗功率与热问题
+    <a class="post-title-link" href="https://zhenhuizhang.tk/post/linuxvivim-bian-ji-qi/">
+      [Linux]Vi/Vim编辑器
     </a>
   </h1>
   <div class="post-meta">
@@ -498,7 +497,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-12-06 21:49:46">2020-12-06</span>
+      <span class="publish-time" data-t="2021-06-23 16:40:41">2021-06-23</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -507,8 +506,8 @@
       <span class="pc-show language" data-lan="category-in">分类于</span>
       
       
-      <a href="https://zhenhuizhang.tk/tag/xsdpfFeKB/">
-        <span>电路</span>
+      <a href="https://zhenhuizhang.tk/tag/Qk7inlF1c/">
+        <span>Linux</span>
       </a>
       
       
@@ -517,17 +516,17 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>6<span class="language" data-lan="minute">分钟</span></span>
+      <span>4<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>1367<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>1035<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/dian-lu-xian-xing-wen-ya-qi-ldo_-sun-hao-gong-lu-yu-re-wen-ti/" data-flag-title="[电路]线性稳压器LDO_损耗功率与热问题" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/linuxvivim-bian-ji-qi/" data-flag-title="[Linux]Vi/Vim编辑器" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -536,178 +535,285 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <p>线性稳压器LDO(效率问题_电压降_输入输出电容) __ 损耗功率与热问题</p>
+              <p>Vi/Vim编辑器</p>
 <!-- more -->
-<h1 id="线性稳压器ldo">线性稳压器LDO</h1>
-<figure data-type="image" tabindex="1"><img src="https://zhenhuizhang.tk/post-images/1607264263705.png" alt="" loading="lazy"></figure>
-<h2 id="线性稳压器ldo优缺点">线性稳压器(LDO)优缺点</h2>
-<h3 id="ldo优点">LDO优点</h3>
-<ol>
-<li>简单易用，外围器件少</li>
-<li>具有较低的噪声</li>
-<li>具有快速的瞬态响应</li>
-</ol>
-<h3 id="ldo缺点">LDO缺点</h3>
-<ol>
-<li>线性稳压器不能够升压，输出电压必须低于输入电压，即<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mi>o</mi></msub><mo>&lt;</mo><msub><mi>V</mi><mi>I</mi></msub></mrow><annotation encoding="application/x-tex">V_o&lt;V_I</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">o</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.07847em;">I</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></li>
-<li>当输入电压与输出电压压差较大时，LDO的效率较低，热耗较大，发热是个大问题。</li>
-</ol>
-<h2 id="ldo的两种架构">LDO的两种架构</h2>
-<h3 id="传统ldo架构">传统LDO架构</h3>
+<h1 id="安装vim编辑器">安装VIm编辑器</h1>
 <ul>
-<li>在1976年，LTC创始人Robert Dobkin 和Bob Widlar设计了第一个推向市场的线性变换器LM317</li>
-<li>通过稳压管在内部稳压出一个参考电压输出到内部集成运算放大器的负反馈端作为电压基准；将LDO的输出电压通过电阻R1和R2分压出一个参考电压接到放大器的正反馈端，再将放大器的输出端接在三极管的基极调节三极管的导通状况。</li>
-<li>回路中的晶体管运行于线性区，这就像在输入级与输出级之间放置了一个可调电阻，勉强承受两个节点之间的电压降。<br>
-<img src="https://zhenhuizhang.tk/post-images/1607264638434.png" alt="" loading="lazy"></li>
+<li>若要在终端模式下进行文本编辑或者修改文件就可以使用 VI/VIM 编辑器。Ubuntu自带了 VI 编辑器，但是 VI 编辑器对于习惯了 Windows 下进行开发的人来说不方便；VIM 编辑器是 VI 编辑器升级版本， VI/VIM 编辑器都是一种基于指令式的编辑器，不需要鼠标，也没有菜单，仅仅使用键盘来完成所有的编辑工作</li>
+<li>安装VIM 编辑器，命令如下：</li>
 </ul>
-<h3 id="新ldo架构">新LDO架构</h3>
+<pre><code>sudo apt-get install vim
+</code></pre>
+<h1 id="vivim工作模式">Vi/Vim工作模式</h1>
 <ul>
-<li>新一代架构的LDO在内部设计了一个精确的电流源基准，将通过电阻R1产生的电压接至内部集成运算放大器的负反馈端作为电压基准，将LDO的输出电压直接接至放大器的正反馈端，再将放大器的输出端接在三极管的基极调节三极管的导通状况。</li>
+<li>Vi/Vim编辑器有 3 种工作模式：输入模式、指令模式和底行模式，通过切换不同的模式可以完成不同的功能，以编辑一个文本文档为例讲解Vin编辑器的使用。</li>
+<li>输入指令<code>vi test.txt</code>，就会创建一个 test.txt 文档，并且用 VIM 打开。</li>
 </ul>
-<ol>
-<li>相比旧的架构，极大改善了电压调节能力和瞬态响应。</li>
-<li>将输出电压降低至零成为可能</li>
-<li>可以通过非常简单的并联获得更大的输出电流和用户自定义的电流限制。<br>
-<img src="https://zhenhuizhang.tk/post-images/1607264642044.png" alt="" loading="lazy"></li>
-</ol>
-<h2 id="ldo的效率问题">LDO的效率问题</h2>
-<figure data-type="image" tabindex="2"><img src="https://zhenhuizhang.tk/post-images/1607266674971.png" alt="" loading="lazy"></figure>
+<pre><code>vi test.txt
+</code></pre>
+<h2 id="输入模式">输入模式</h2>
 <ul>
-<li>对于LDO芯片而言，输出电流近乎等于输入电流，输出电压与输入电压之间的压差全部损耗在内部三极管上转化为了热能。</li>
-<li>所以当输入电压与输出电压压降较大时，LDO的效率则较低；而当输入电压与输出电压压降较为接近时，LDO则可以获得一个较高的效率。</li>
+<li>在进入Vim编辑器时，默认是以只读模式打开的文档，若要进行编辑操作，则需要切换到输入模式下，进行相应的输入操作。</li>
 </ul>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>η</mi><mrow><mi>L</mi><mi>R</mi></mrow></msub><mo>=</mo><mfrac><msub><mi>P</mi><mi>O</mi></msub><msub><mi>P</mi><mrow><mi>I</mi><mi>N</mi></mrow></msub></mfrac><mo>=</mo><mfrac><msub><mi>V</mi><mi>O</mi></msub><msub><mi>V</mi><mrow><mi>I</mi><mi>N</mi></mrow></msub></mfrac></mrow><annotation encoding="application/x-tex">\eta _{LR} =\frac{P_O}{P_{IN}} =\frac{V_O}{V_{IN}} 
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">η</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">L</span><span class="mord mathdefault mtight" style="margin-right:0.00773em;">R</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.19633em;vertical-align:-0.8360000000000001em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.3139999999999996em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.07847em;">I</span><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">O</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8360000000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.19633em;vertical-align:-0.8360000000000001em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.3139999999999996em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.07847em;">I</span><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">O</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8360000000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
-<figure data-type="image" tabindex="3"><img src="https://zhenhuizhang.tk/post-images/1607267314795.png" alt="" loading="lazy"></figure>
-<h2 id="ldo电压降">LDO电压降</h2>
-<figure data-type="image" tabindex="4"><img src="https://zhenhuizhang.tk/post-images/1607268256398.png" alt="" loading="lazy"></figure>
+<h3 id="切换输入模式">切换输入模式</h3>
 <ul>
-<li>压降(VDD)：输入与输出之间能够维持正常工作的最小压差。</li>
-<li>对于LDO稳压输出,要求输入电压必须比输出电压高，即<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>I</mi><mi>N</mi></mrow></msub><mo>=</mo><msub><mi>V</mi><mrow><mi>O</mi><mi>U</mi><mi>T</mi></mrow></msub><mo>+</mo><msub><mi>V</mi><mrow><mi>D</mi><mi>O</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{IN}=V_{OUT}+V_{DO}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.07847em;">I</span><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">O</span><span class="mord mathdefault mtight" style="margin-right:0.10903em;">U</span><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">D</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">O</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></li>
-<li>对于普通的LDO器件，如LM7805芯片，至少需要2V以上的压差；对于低压差LDO器件，通常压差小于1V(300mV较为常见)；而对于极低压差LDO，则可以做到小于100mV的压差，如LT3701在5A输出时只有85mV的压差。</li>
-<li>还需注意，压差的大小与能够输出的最大电流之间有直接关系。如下图所示的关系表，在输出1A电流时，只需要约175mV左右的压差；而当输出2.5A电流时，则需要300mA的压差。<br>
-<img src="https://zhenhuizhang.tk/post-images/1607268443280.png" alt="" loading="lazy"></li>
-</ul>
-<h1 id="ldo的输入输出电容">LDO的输入输出电容</h1>
-<figure data-type="image" tabindex="5"><img src="https://zhenhuizhang.tk/post-images/1607269138091.png" alt="" loading="lazy"></figure>
-<ul>
-<li>对于输入电容(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>C</mi><mrow><mi>I</mi><mi>N</mi></mrow></msub></mrow><annotation encoding="application/x-tex">C_{IN}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.07847em;">I</span><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>)，需要选择合适的大小输入电容，以防止LDO在瞬态突变负载时进入跌落状态。</li>
-<li>对于输出电容(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>C</mi><mrow><mi>O</mi><mi>U</mi><mi>T</mi></mrow></msub></mrow><annotation encoding="application/x-tex">C_{OUT}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">O</span><span class="mord mathdefault mtight" style="margin-right:0.10903em;">U</span><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>)，电容的大小与类型若没有合理选择，会影响LDO的输出稳定性与瞬态响应。</li>
-<li>一般来说，较大输出电容值(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>C</mi><mrow><mi>O</mi><mi>U</mi><mi>T</mi></mrow></msub></mrow><annotation encoding="application/x-tex">C_{OUT}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">O</span><span class="mord mathdefault mtight" style="margin-right:0.10903em;">U</span><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>)会减少峰值偏移，改善瞬态响应；且常用不同类型的电容器并联组合使用，以获得更好的瞬态响应。</li>
-<li>具体的输入输出电容值大小及类型，一般在LDO器件的数据手册中都会有明确说明，在进行电路设计时需加以注意。</li>
-</ul>
-<h1 id="损耗功率与热问题">损耗功率与热问题</h1>
-<figure data-type="image" tabindex="6"><img src="https://zhenhuizhang.tk/post-images/1607305584873.png" alt="" loading="lazy"></figure>
-<h2 id="最大功率损耗p_d">最大功率损耗(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>P</mi><mi>D</mi></msub></mrow><annotation encoding="application/x-tex">P_D</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">D</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>)</h2>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>P</mi><mi>D</mi></msub><mo>=</mo><mo>[</mo><msub><mi>V</mi><mrow><mi>I</mi><mi>N</mi></mrow></msub><mo>(</mo><mi>m</mi><mi>a</mi><mi>x</mi><mo>)</mo><mo>−</mo><msub><mi>V</mi><mrow><mi>O</mi><mi>U</mi><mi>T</mi></mrow></msub><mo>]</mo><mo>×</mo><msub><mi>I</mi><mrow><mi>O</mi><mi>U</mi><mi>T</mi></mrow></msub><mo>+</mo><msub><mi>I</mi><mi>Q</mi></msub><mo>×</mo><msub><mi>V</mi><mrow><mi>I</mi><mi>N</mi></mrow></msub><mo>(</mo><mi>m</mi><mi>a</mi><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">P_D=[V_{IN}(max)-V_{OUT}] \times I_{OUT}+I_Q \times V_{IN}(max) 
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">D</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.07847em;">I</span><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">O</span><span class="mord mathdefault mtight" style="margin-right:0.10903em;">U</span><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">O</span><span class="mord mathdefault mtight" style="margin-right:0.10903em;">U</span><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.328331em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">Q</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.07847em;">I</span><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span></span></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">参数</th>
-<th style="text-align:center">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>P</mi><mi>D</mi></msub></mrow><annotation encoding="application/x-tex">P_D</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">D</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td>
-<td style="text-align:center">最大功率损耗</td>
-</tr>
-<tr>
-<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>I</mi><mi>N</mi></mrow></msub><mo>(</mo><mi>m</mi><mi>a</mi><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">V_{IN}(max)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.07847em;">I</span><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span></td>
-<td style="text-align:center">LDO的最大输入电压</td>
-</tr>
-<tr>
-<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>O</mi><mi>U</mi><mi>T</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{OUT}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">O</span><span class="mord mathdefault mtight" style="margin-right:0.10903em;">U</span><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td>
-<td style="text-align:center">LDO的输出电压</td>
-</tr>
-<tr>
-<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>I</mi><mrow><mi>O</mi><mi>U</mi><mi>T</mi></mrow></msub></mrow><annotation encoding="application/x-tex">I_{OUT}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">O</span><span class="mord mathdefault mtight" style="margin-right:0.10903em;">U</span><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td>
-<td style="text-align:center">LDO的输出电流</td>
-</tr>
-<tr>
-<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>I</mi><mi>Q</mi></msub></mrow><annotation encoding="application/x-tex">I_Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.328331em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">Q</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span></td>
-<td style="text-align:center">LDO的静态工作电压</td>
-</tr>
-</tbody>
-</table>
-<h2 id="结温">结温</h2>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>T</mi><mi>J</mi></msub><mo>=</mo><msub><mi>T</mi><mi>A</mi></msub><mo>+</mo><msub><mi>P</mi><mi>D</mi></msub><mo>×</mo><mo>(</mo><msub><mi>θ</mi><mrow><mi>H</mi><mi>E</mi><mi>A</mi><mi>T</mi><mi>S</mi><mi>I</mi><mi>N</mi><mi>K</mi></mrow></msub><mo>+</mo><msub><mi>θ</mi><mrow><mi>C</mi><mi>A</mi><mi>S</mi><mi>E</mi><mo>−</mo><mi>H</mi><mi>E</mi><mi>A</mi><mi>T</mi><mi>S</mi><mi>I</mi><mi>N</mi><mi>K</mi></mrow></msub><mo>)</mo><mo>+</mo><msub><mi>θ</mi><mrow><mi>J</mi><mi>C</mi></mrow></msub></mrow><annotation encoding="application/x-tex">T_J = T_A+P_D \times ( {\theta}_{HEATSINK} + {\theta}_{CASE-HEATSINK}) + {\theta}_{JC}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.09618em;">J</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">A</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">D</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.08125em;">H</span><span class="mord mathdefault mtight" style="margin-right:0.05764em;">E</span><span class="mord mathdefault mtight">A</span><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span><span class="mord mathdefault mtight" style="margin-right:0.05764em;">S</span><span class="mord mathdefault mtight" style="margin-right:0.07847em;">I</span><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span><span class="mord mathdefault mtight" style="margin-right:0.07153em;">K</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.328331em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.07153em;">C</span><span class="mord mathdefault mtight">A</span><span class="mord mathdefault mtight" style="margin-right:0.05764em;">S</span><span class="mord mathdefault mtight" style="margin-right:0.05764em;">E</span><span class="mbin mtight">−</span><span class="mord mathdefault mtight" style="margin-right:0.08125em;">H</span><span class="mord mathdefault mtight" style="margin-right:0.05764em;">E</span><span class="mord mathdefault mtight">A</span><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span><span class="mord mathdefault mtight" style="margin-right:0.05764em;">S</span><span class="mord mathdefault mtight" style="margin-right:0.07847em;">I</span><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span><span class="mord mathdefault mtight" style="margin-right:0.07153em;">K</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.09618em;">J</span><span class="mord mathdefault mtight" style="margin-right:0.07153em;">C</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">参数</th>
-<th style="text-align:center">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>T</mi><mi>J</mi></msub></mrow><annotation encoding="application/x-tex">T_J</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.09618em;">J</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td>
-<td style="text-align:center">结温</td>
-</tr>
-<tr>
-<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>T</mi><mi>A</mi></msub></mrow><annotation encoding="application/x-tex">T_A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">A</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td>
-<td style="text-align:center">环境温度</td>
-</tr>
-<tr>
-<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>θ</mi><mrow><mi>H</mi><mi>E</mi><mi>A</mi><mi>T</mi><mi>S</mi><mi>I</mi><mi>N</mi><mi>K</mi></mrow></msub></mrow><annotation encoding="application/x-tex">{\theta}_{HEATSINK}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.08125em;">H</span><span class="mord mathdefault mtight" style="margin-right:0.05764em;">E</span><span class="mord mathdefault mtight">A</span><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span><span class="mord mathdefault mtight" style="margin-right:0.05764em;">S</span><span class="mord mathdefault mtight" style="margin-right:0.07847em;">I</span><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span><span class="mord mathdefault mtight" style="margin-right:0.07153em;">K</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td>
-<td style="text-align:center">散热器到空间热阻</td>
-</tr>
-<tr>
-<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>θ</mi><mrow><mi>C</mi><mi>A</mi><mi>S</mi><mi>E</mi><mo>−</mo><mi>H</mi><mi>E</mi><mi>A</mi><mi>T</mi><mi>S</mi><mi>I</mi><mi>N</mi><mi>K</mi></mrow></msub></mrow><annotation encoding="application/x-tex">{\theta}_{CASE-HEATSINK}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.902771em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.328331em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.07153em;">C</span><span class="mord mathdefault mtight">A</span><span class="mord mathdefault mtight" style="margin-right:0.05764em;">S</span><span class="mord mathdefault mtight" style="margin-right:0.05764em;">E</span><span class="mbin mtight">−</span><span class="mord mathdefault mtight" style="margin-right:0.08125em;">H</span><span class="mord mathdefault mtight" style="margin-right:0.05764em;">E</span><span class="mord mathdefault mtight">A</span><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span><span class="mord mathdefault mtight" style="margin-right:0.05764em;">S</span><span class="mord mathdefault mtight" style="margin-right:0.07847em;">I</span><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span><span class="mord mathdefault mtight" style="margin-right:0.07153em;">K</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span></td>
-<td style="text-align:center">壳体到散热器热阻</td>
-</tr>
-<tr>
-<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>θ</mi><mrow><mi>J</mi><mi>C</mi></mrow></msub></mrow><annotation encoding="application/x-tex">{\theta}_{JC}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.09618em;">J</span><span class="mord mathdefault mtight" style="margin-right:0.07153em;">C</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td>
-<td style="text-align:center">内核到外壳热阻</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>为芯片添加散热器的目的：确保内核温度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>T</mi><mi>J</mi></msub></mrow><annotation encoding="application/x-tex">T_J</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.09618em;">J</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>不会超过最大的规格书标定的可以正常运行的结温<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>T</mi><mi>J</mi></msub></mrow><annotation encoding="application/x-tex">T_J</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.09618em;">J</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。</li>
-<li>对于不同的封装形式，有着不同大小的热阻，我们应依照实际工况的最大功率损耗<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>P</mi><mi>D</mi></msub></mrow><annotation encoding="application/x-tex">P_D</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">D</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，选择合适的封装形式。<br>
-<img src="https://zhenhuizhang.tk/post-images/1607305975230.png" alt="" loading="lazy"></li>
-</ul>
-<h2 id="常用ldo封装功耗限制">常用LDO封装功耗限制</h2>
-<ul>
-<li>以下功耗封装限制基于PCB最高环境温度为60℃，和最大硅晶体温度为125℃为前提条件而得到。</li>
+<li>切换到输入模式的指令如下：</li>
 </ul>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">封装</th>
-<th style="text-align:center">最大功耗</th>
+<th style="text-align:center">指令</th>
+<th style="text-align:center">功能</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">SOT-23-5</td>
-<td style="text-align:center">0.3W</td>
+<td style="text-align:center">i</td>
+<td style="text-align:center">在当前光标所在字符的前面，转为输入模式</td>
 </tr>
 <tr>
-<td style="text-align:center">SOT-89-3</td>
-<td style="text-align:center">0.5W</td>
+<td style="text-align:center">I</td>
+<td style="text-align:center">在当前光标所在行的行首转换为输入模式</td>
 </tr>
 <tr>
-<td style="text-align:center">SOT-223</td>
-<td style="text-align:center">0.6W</td>
+<td style="text-align:center">a</td>
+<td style="text-align:center">在当前光标所在字符的后面，转为输入模式</td>
 </tr>
 <tr>
-<td style="text-align:center">PSOP-8</td>
-<td style="text-align:center">0.9W</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">在光标所在行的行尾，转换为输入模式</td>
 </tr>
 <tr>
-<td style="text-align:center">TO-252-3</td>
-<td style="text-align:center">1.2W</td>
+<td style="text-align:center">o</td>
+<td style="text-align:center">在当前光标所在行的下方，新建一行，并转为输入模式</td>
+</tr>
+<tr>
+<td style="text-align:center">O</td>
+<td style="text-align:center">在当前光标所在行的上方，新建一行，并转为输入模式</td>
+</tr>
+<tr>
+<td style="text-align:center">s</td>
+<td style="text-align:center">删除光标所在字符</td>
+</tr>
+<tr>
+<td style="text-align:center">r</td>
+<td style="text-align:center">替换光标处字符</td>
 </tr>
 </tbody>
 </table>
-<figure data-type="image" tabindex="7"><img src="https://zhenhuizhang.tk/post-images/1619937883545.png" alt="" loading="lazy"></figure>
+<ul>
+<li>在实际使用中，切换至输入模式最常用的指令是<code>a</code>，即在当前光标后，插入字符。当完成文本输入后，按下<code>Esc</code>按键，即可退出输入模式回到指令模式。</li>
+</ul>
+<h2 id="指令模式">指令模式</h2>
+<ul>
+<li>指令模式顾名思义就是输入指令的模式，这些指令主要用于文本的编辑。</li>
+</ul>
+<h3 id="移动光标">移动光标</h3>
+<ul>
+<li>移动光标的指令如下：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">h(或左方向键)</td>
+<td style="text-align:center">光标左移一个字符</td>
+</tr>
+<tr>
+<td style="text-align:center">l(或右方向键)</td>
+<td style="text-align:center">光标右移一个字符</td>
+</tr>
+<tr>
+<td style="text-align:center">j(或下方向键)</td>
+<td style="text-align:center">光标下移一行</td>
+</tr>
+<tr>
+<td style="text-align:center">k(或上方向键)</td>
+<td style="text-align:center">光标上移一行</td>
+</tr>
+<tr>
+<td style="text-align:center">nG</td>
+<td style="text-align:center">光标移动到第 n 行首</td>
+</tr>
+<tr>
+<td style="text-align:center">n+</td>
+<td style="text-align:center">光标下移 n 行</td>
+</tr>
+<tr>
+<td style="text-align:center">n-</td>
+<td style="text-align:center">光标上移 n 行</td>
+</tr>
+</tbody>
+</table>
+<h3 id="屏幕翻滚">屏幕翻滚</h3>
+<ul>
+<li>屏幕翻滚的指令如下：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Ctrl+f</td>
+<td style="text-align:center">屏幕向下翻一页，相当于下一页</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+b</td>
+<td style="text-align:center">屏幕向上翻一页，相当于上一页</td>
+</tr>
+</tbody>
+</table>
+<h3 id="复制-删除和粘贴">复制、删除和粘贴</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">cc</td>
+<td style="text-align:center">删除整行，并且修改整行内容</td>
+</tr>
+<tr>
+<td style="text-align:center">dd</td>
+<td style="text-align:center">删除该行，不提供修改功能</td>
+</tr>
+<tr>
+<td style="text-align:center">ndd</td>
+<td style="text-align:center">删除当前行向下 n 行</td>
+</tr>
+<tr>
+<td style="text-align:center">x</td>
+<td style="text-align:center">删除光标所在的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">X</td>
+<td style="text-align:center">删除光标前面的一个字符</td>
+</tr>
+<tr>
+<td style="text-align:center">nyy</td>
+<td style="text-align:center">复制当前行及其下面 n 行</td>
+</tr>
+<tr>
+<td style="text-align:center">p</td>
+<td style="text-align:center">粘贴最近复制的内容</td>
+</tr>
+</tbody>
+</table>
+<h2 id="底行模式">底行模式</h2>
+<ul>
+<li>在指令模式下，输入<code>:</code>或<code>/</code>，即可进入底行模式。</li>
+</ul>
+<h3 id="行号显示">行号显示</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">:set number</td>
+<td style="text-align:center">显示行号</td>
+</tr>
+<tr>
+<td style="text-align:center">:set nonu</td>
+<td style="text-align:center">取消行号显示</td>
+</tr>
+</tbody>
+</table>
+<h3 id="查找与定位">查找与定位</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/char</td>
+<td style="text-align:center">查找char字符，按n查找下一个</td>
+</tr>
+<tr>
+<td style="text-align:center">:noh</td>
+<td style="text-align:center">取消文字高亮</td>
+</tr>
+<tr>
+<td style="text-align:center">:num</td>
+<td style="text-align:center">定位到num行</td>
+</tr>
+</tbody>
+</table>
+<h3 id="复制与剪切">复制与剪切</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">:m,ny</td>
+<td style="text-align:center">复制m到n行，按p粘贴</td>
+</tr>
+<tr>
+<td style="text-align:center">:m,nd</td>
+<td style="text-align:center">剪切m到n行，按p粘贴</td>
+</tr>
+</tbody>
+</table>
+<h3 id="保存与退出">保存与退出</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">x</td>
+<td style="text-align:center">保存文档并退出</td>
+</tr>
+<tr>
+<td style="text-align:center">q</td>
+<td style="text-align:center">退出</td>
+</tr>
+<tr>
+<td style="text-align:center">w</td>
+<td style="text-align:center">保存文档</td>
+</tr>
+<tr>
+<td style="text-align:center">wq</td>
+<td style="text-align:center">强制写入并退出</td>
+</tr>
+<tr>
+<td style="text-align:center">q!</td>
+<td style="text-align:center">退出 VI/VIM，不保存文档</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>[注]：<code>x</code>的保存文档并退出，仅当文件被修改时才写入，并更新文件修改时间，否则不会更新文件修改时间。而<code>wq</code>的强制写入并退出，即使文件没有被修改也强制写入，并更新文件的修改时间。</p>
+</blockquote>
 <hr>
 <blockquote>
 <p>参考：<br>
-<a href="https://adi2020.oss-cn-shanghai.aliyuncs.com/2020/2/24/2020032410350001.pdf">和电源大咖一起夯基础（第二部分）</a></p>
+《正点原子-嵌入式Linux驱动开发指南》- 第二章 Ubuntu系统入门 - 2.5 Ubuntu下文本编辑</p>
 </blockquote>
 
             </div>
@@ -721,7 +827,7 @@
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://zhenhuizhang.tk/post/dian-lu-xian-xing-wen-ya-qi-ldo_-sun-hao-gong-lu-yu-re-wen-ti/" title="[电路]线性稳压器LDO_损耗功率与热问题">https://zhenhuizhang.tk/post/dian-lu-xian-xing-wen-ya-qi-ldo_-sun-hao-gong-lu-yu-re-wen-ti/</a>
+      <a href="https://zhenhuizhang.tk/post/linuxvivim-bian-ji-qi/" title="[Linux]Vi/Vim编辑器">https://zhenhuizhang.tk/post/linuxvivim-bian-ji-qi/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -730,21 +836,17 @@
   </ul>
   <div class="tags">
     
-      <a href="https://zhenhuizhang.tk/tag/xsdpfFeKB/"># 电路</a>
+      <a href="https://zhenhuizhang.tk/tag/Qk7inlF1c/"># Linux</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="[电路]开关电源拓扑结构_Buck_Boost_Buck-Boost" href="https://zhenhuizhang.tk/post/dian-lu-kai-guan-dian-yuan-tuo-bu-jie-gou-_buck_boost_buck-boost/">[电路]开关电源拓扑结构_Buck_Boost_Buck-Boost</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="[电路]开关电源拓扑结构_Buck_Boost_Buck-Boost" href="https://zhenhuizhang.tk/post/dian-lu-kai-guan-dian-yuan-tuo-bu-jie-gou-_buck_boost_buck-boost/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="[电路]MOS管的种类_参数" href="https://zhenhuizhang.tk/post/dian-lu-mos-guan-de-chong-lei-_-can-shu/">[电路]MOS管的种类_参数</a>
-        <a class="nav-mobile-next" title="[电路]MOS管的种类_参数" href="https://zhenhuizhang.tk/post/dian-lu-mos-guan-de-chong-lei-_-can-shu/">下一篇</a>
+        <a class="nav-pc-next" title="[Linux]基础Shell指令_APT下载工具" href="https://zhenhuizhang.tk/post/linuxji-chu-shell-zhi-ling-_apt-xia-zai-gong-ju/">[Linux]基础Shell指令_APT下载工具</a>
+        <a class="nav-mobile-next" title="[Linux]基础Shell指令_APT下载工具" href="https://zhenhuizhang.tk/post/linuxji-chu-shell-zhi-ling-_apt-xia-zai-gong-ju/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

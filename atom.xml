@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhenhuizhang.tk</id>
     <title>渣渣晖の博客</title>
-    <updated>2021-06-23T08:00:32.763Z</updated>
+    <updated>2021-06-25T08:36:30.116Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhenhuizhang.tk"/>
     <link rel="self" href="https://zhenhuizhang.tk/atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://zhenhuizhang.tk/images/avatar.png</logo>
     <icon>https://zhenhuizhang.tk/favicon.ico</icon>
     <rights>All rights reserved 2021, 渣渣晖の博客</rights>
+    <entry>
+        <title type="html"><![CDATA[[Linux]Vi/Vim编辑器]]></title>
+        <id>https://zhenhuizhang.tk/post/linuxvivim-bian-ji-qi/</id>
+        <link href="https://zhenhuizhang.tk/post/linuxvivim-bian-ji-qi/">
+        </link>
+        <updated>2021-06-23T08:40:41.000Z</updated>
+        <summary type="html"><![CDATA[<p>Vi/Vim编辑器</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Vi/Vim编辑器</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[Linux]基础Shell指令_APT下载工具]]></title>
         <id>https://zhenhuizhang.tk/post/linuxji-chu-shell-zhi-ling-_apt-xia-zai-gong-ju/</id>
@@ -327,17 +338,6 @@
         <summary type="html"><![CDATA[<p>功能仿真，仿真原理</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>功能仿真，仿真原理</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[Verilog6]阻塞与非阻塞赋值]]></title>
-        <id>https://zhenhuizhang.tk/post/verilog6zu-sai-yu-fei-zu-sai-fu-zhi/</id>
-        <link href="https://zhenhuizhang.tk/post/verilog6zu-sai-yu-fei-zu-sai-fu-zhi/">
-        </link>
-        <updated>2020-07-19T05:43:39.000Z</updated>
-        <summary type="html"><![CDATA[<p>阻塞赋值，非阻塞赋值</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>阻塞赋值，非阻塞赋值</p>
 ]]></content>
     </entry>
 </feed>
