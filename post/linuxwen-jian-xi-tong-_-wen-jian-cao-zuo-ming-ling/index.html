@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="热爱可抵岁月漫长">
 <meta name="theme-color" content="#000">
-<title>[Python2]文件操作_数据序列化_函数编程 | 渣渣晖の博客</title>
+<title>[Linux]文件系统_类型_操作命令 | 渣渣晖の博客</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1624698908250">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -48,8 +48,8 @@
 
 
 
-  <meta name="description" content="[Python2]文件操作_数据序列化_函数编程" />
-  <meta name="keywords" content="Python" />
+  <meta name="description" content="[Linux]文件系统_类型_操作命令" />
+  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -198,12 +198,37 @@
   <div class="toc-wrapper auto-number no_compress"
     id="toc_wrapper">
     <ul class="markdownIt-TOC">
-<li><a href="#%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C">文件操作</a></li>
-<li><a href="#%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96">序列化与反序列化</a>
+<li><a href="#linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F">Linux文件系统</a></li>
+<li><a href="#%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B">文件类型</a></li>
+<li><a href="#%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4">文件操作指令</a>
 <ul>
-<li><a href="#json%E6%95%B0%E6%8D%AE%E5%BA%8F%E5%88%97%E5%8C%96">json数据序列化</a></li>
-<li><a href="#pickle%E6%95%B0%E6%8D%AE%E5%BA%8F%E5%88%97%E5%8C%96">pickle数据序列化</a></li>
-<li><a href="#3%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B">3.函数式编程</a></li>
+<li><a href="#%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA%E4%B8%8E%E5%88%A0%E9%99%A4">文件的创建与删除</a>
+<ul>
+<li><a href="#%E5%88%9B%E5%BB%BA%E6%96%B0%E6%96%87%E4%BB%B6touch">创建新文件(touch)</a></li>
+<li><a href="#%E6%96%87%E4%BB%B6%E5%A4%B9%E5%88%9B%E5%BB%BAmkdir">文件夹创建(mkdir)</a></li>
+<li><a href="#%E6%96%87%E4%BB%B6%E5%8F%8A%E7%9B%AE%E5%BD%95%E5%88%A0%E9%99%A4rm">文件及目录删除(rm)</a></li>
+<li><a href="#%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9B%AE%E5%BD%95%E5%88%A0%E9%99%A4rmdir">文件夹目录删除(rmdir)</a></li>
+</ul>
+</li>
+<li><a href="#%E6%96%87%E4%BB%B6%E7%9A%84%E5%A4%8D%E5%88%B6%E4%B8%8E%E7%A7%BB%E5%8A%A8">文件的复制与移动</a>
+<ul>
+<li><a href="#%E6%96%87%E4%BB%B6%E5%A4%8D%E5%88%B6cp">文件复制(cp)</a></li>
+<li><a href="#%E6%96%87%E4%BB%B6%E7%A7%BB%E5%8A%A8mv">文件移动(mv)</a></li>
+</ul>
+</li>
+<li><a href="#%E6%96%87%E4%BB%B6%E7%9A%84%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B%E7%BC%A9">文件的压缩与解压缩</a>
+<ul>
+<li><a href="#zip%E5%8E%8B%E7%BC%A9zip">zip压缩(zip)</a></li>
+<li><a href="#zip%E8%A7%A3%E5%8E%8B%E7%BC%A9unzip">zip解压缩(unzip)</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96%E6%A0%BC%E5%BC%8F%E7%9A%84%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B%E7%BC%A9tar">其他格式的压缩与解压缩(tar)</a></li>
+</ul>
+</li>
+<li><a href="#%E6%96%87%E4%BB%B6%E7%9A%84%E6%9F%A5%E6%89%BE">文件的查找</a>
+<ul>
+<li><a href="#%E6%96%87%E4%BB%B6%E6%9F%A5%E6%89%BEfind">文件查找(find)</a></li>
+<li><a href="#%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E6%9F%A5%E6%89%BEgrep">文件内容查找(grep)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -471,8 +496,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://zhenhuizhang.tk/post/python2wen-jian-cao-zuo-_-shu-ju-xu-lie-hua-_-han-shu-bian-cheng/">
-      [Python2]文件操作_数据序列化_函数编程
+    <a class="post-title-link" href="https://zhenhuizhang.tk/post/linuxwen-jian-xi-tong-_-wen-jian-cao-zuo-ming-ling/">
+      [Linux]文件系统_类型_操作命令
     </a>
   </h1>
   <div class="post-meta">
@@ -480,36 +505,23 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-01-05 11:49:33">2020-01-05</span>
+      <span class="publish-time" data-t="2021-06-25 16:59:03">2021-06-25</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show language" data-lan="category-in">分类于</span>
-      
-      
-      <a href="https://zhenhuizhang.tk/tag/DlqLaABxL/">
-        <span>Python</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>8<span class="language" data-lan="minute">分钟</span></span>
+      <span>11<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>1838<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>2924<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/python2wen-jian-cao-zuo-_-shu-ju-xu-lie-hua-_-han-shu-bian-cheng/" data-flag-title="[Python2]文件操作_数据序列化_函数编程" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/linuxwen-jian-xi-tong-_-wen-jian-cao-zuo-ming-ling/" data-flag-title="[Linux]文件系统_类型_操作命令" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -518,141 +530,654 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <p>文件操作，json与pickle序列化，函数编程</p>
+              <p>Linux文件系统，文件类型与文件操作命令</p>
 <!-- more -->
-<h1 id="文件操作">文件操作</h1>
+<h1 id="linux文件系统">Linux文件系统</h1>
 <ul>
-<li>文件操作模式：r，只读模式（默认）；w，只写模式（不可读；不存在则创建；存在则删除内容）；a，追加模式（可读，不存在则创建，存在则只追加内容。）r+，读写模式（可读；可写；可追加）；w+，写读模式（先创建文件，写入文件开始读）</li>
-<li>二进制读写模式：rb；wb；ab（二进制文件的读，写，追加模式）</li>
-<li>在打开读取文件时，文件内有个指向读取位置的指针，会随之移动到已经读到的位置处</li>
-<li>打开文件：<code>f = open(&quot;yesterday&quot;,'r',encoding=&quot;utf-8&quot;)</code>#r为指定模式为读取模式</li>
-<li>创建文件：<code>f = open(&quot;yesterday&quot;,'w',encoding=&quot;utf-8&quot;)</code>#在写模式下open为创建新文件</li>
-<li>文件追加：<code>f= open(&quot;yesterday&quot;,'a',encoding=&quot;utf-8&quot;)</code>#在追加模式打开文件</li>
-<li>可读可写可追加模式：<code>f = open(&quot;yesterday&quot;,'r+',encoding=&quot;utf-8&quot;)</code>#打开文件读写</li>
-<li>可读可写可追加模式：<code>f = open(&quot;yesterday&quot;,'w+',encoding=&quot;utf-8&quot;)</code>#创建文件写入读取</li>
-<li>为防止忘了关闭文件，可使用with语句：<code>with open(&quot;yesterday&quot;,'r',encoding=&quot;utf-8&quot;) as f:</code>#所有操作指令都在with下执行，当执行结束跳出with则自动关闭文件</li>
-<li>文件读取<code>data = f.read()</code>#在只写和追加模式下可用，read可填写读取的字符数</li>
-<li>文件读取一行：<code>print(f.readlines())</code>#读取文件的一行内容</li>
-<li>循环读取整个文件：</li>
+<li>在Linux系统下，系统根目录为<code>/</code>，可在终端中输入指令查看根目录下的具体文件。</li>
 </ul>
-<pre><code class="language-python">###这种方法将文件一次性读取成列表，放到内存中，不适合大文件
-f = open(&quot;ZhenhuiZhang&quot;,'r', encoding=&quot;utf-8&quot;)
-for line in f.readlines(): #一次性读取整个列表
-    print(line)
-f.close()
+<pre><code>cd /   #进入到根目录
+ls   #查看根目录下的文件以及文件夹
 </code></pre>
-<pre><code class="language-python">###这种方法将文件一行一行的读取，适合大文件，占用内存小
-f = open(&quot;ZhenhuiZhang&quot;,'r', encoding=&quot;utf-8&quot;)
-for line in f:#一行一行读取，迭代器方法
-    print(line)
-f.close()
+<figure data-type="image" tabindex="1"><img src="https://zhenhuizhang.tk/post-images/1624612191393.png" alt="" loading="lazy"></figure>
+<ul>
+<li>根目录<code>/</code>下有如下重要的文件夹</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">文件夹</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/bin</td>
+<td style="text-align:center">存储一些二进制可执行命令文件， /usr/bin 也存放了一些基于用户的命令文件</td>
+</tr>
+<tr>
+<td style="text-align:center">/sbin</td>
+<td style="text-align:center">存储了很多系统命令， /usr/sbin 也存储了许多系统命令</td>
+</tr>
+<tr>
+<td style="text-align:center">/root</td>
+<td style="text-align:center">超级用户 root 的根目录文件</td>
+</tr>
+<tr>
+<td style="text-align:center">/home</td>
+<td style="text-align:center">普通用户默认目录，在该目录下，每个用户都有一个以本用户名命名的文件夹</td>
+</tr>
+<tr>
+<td style="text-align:center">/boot</td>
+<td style="text-align:center">存放 Ubuntu 系统内核和系统启动文件</td>
+</tr>
+<tr>
+<td style="text-align:center">/mnt</td>
+<td style="text-align:center">通常包括系统引导后被挂载的文件系统的挂载点</td>
+</tr>
+<tr>
+<td style="text-align:center">/dev</td>
+<td style="text-align:center">存放设备文件</td>
+</tr>
+<tr>
+<td style="text-align:center">/etc</td>
+<td style="text-align:center">保存系统管理所需的配置文件和目录</td>
+</tr>
+<tr>
+<td style="text-align:center">/lib</td>
+<td style="text-align:center">保存系统程序运行所需的库文件， /usr/lib 下存放了一些用于普通用户的库文件</td>
+</tr>
+<tr>
+<td style="text-align:center">/lost+found</td>
+<td style="text-align:center">一般为空，当系统非正常关机以后，此文件夹会保存一些零散文件</td>
+</tr>
+<tr>
+<td style="text-align:center">/var</td>
+<td style="text-align:center">存储一些不断变化的文件，比如日志文件</td>
+</tr>
+<tr>
+<td style="text-align:center">/usr</td>
+<td style="text-align:center">包括与系统用户直接有关的文件和目录，比如应用程序和所需的库文件</td>
+</tr>
+<tr>
+<td style="text-align:center">/media</td>
+<td style="text-align:center">存放 Ubuntu 系统自动挂载的设备文件</td>
+</tr>
+<tr>
+<td style="text-align:center">/proc</td>
+<td style="text-align:center">虚拟目录，不实际存储在磁盘上，通常用来保存系统信息和进程信息</td>
+</tr>
+<tr>
+<td style="text-align:center">/tmp</td>
+<td style="text-align:center">存储系统和用户的临时文件，该文件夹对所有的用户都提供读写权限</td>
+</tr>
+<tr>
+<td style="text-align:center">/opt</td>
+<td style="text-align:center">可选文件和程序的存放目录</td>
+</tr>
+<tr>
+<td style="text-align:center">/sys</td>
+<td style="text-align:center">系统设备和文件层次结构，并向用户程序提供详细的内核数据信息</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Linux是一个支持多用户的操作系统，系统还会为每一个用户创建一个用户根目录。每创建一个新用户，系统就会在<code>/home</code>文件夹下，创建一个以用户名命名的文件夹，这个文件夹就是用户的根目录，如<code>/home/zzh</code></li>
+</ul>
+<h1 id="文件类型">文件类型</h1>
+<ul>
+<li>在用户的根目录下，使用命令<code>ls -l</code>，可以查看到所有文件的详细信息。<br>
+<img src="https://zhenhuizhang.tk/post-images/1624698737174.png" alt="" loading="lazy"></li>
+<li>在图中，每个文件详细信息的第一个字符，标记了当前文件的文件类型，不同字符所表示的文件类型如下：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">标识符</th>
+<th style="text-align:center">文件类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-</td>
+<td style="text-align:center">普通文件，一些应用程序创建的，比如文档、图片、音乐等</td>
+</tr>
+<tr>
+<td style="text-align:center">d</td>
+<td style="text-align:center">目录文件</td>
+</tr>
+<tr>
+<td style="text-align:center">c</td>
+<td style="text-align:center">字符设备文件， Linux 驱动里面的字符设备驱动，比如串口设备等</td>
+</tr>
+<tr>
+<td style="text-align:center">b</td>
+<td style="text-align:center">块设备文件，存储设备驱动，比如硬盘， U 盘等</td>
+</tr>
+<tr>
+<td style="text-align:center">l</td>
+<td style="text-align:center">符号连接文件，相当于 Windwos 下的快捷方式</td>
+</tr>
+<tr>
+<td style="text-align:center">s</td>
+<td style="text-align:center">套接字文件</td>
+</tr>
+<tr>
+<td style="text-align:center">p</td>
+<td style="text-align:center">管道文件，主要指 FIFO 文件</td>
+</tr>
+</tbody>
+</table>
+<h1 id="文件操作指令">文件操作指令</h1>
+<h2 id="文件的创建与删除">文件的创建与删除</h2>
+<h3 id="创建新文件touch">创建新文件(touch)</h3>
+<ul>
+<li>使用<code>touch</code>命令，可以创建各种类型的文件。命令格式如下：</li>
+</ul>
+<pre><code>touch  [选项参数]]  [文件名]
 </code></pre>
 <ul>
-<li>文件写入：<code>f.write(&quot;write by zzh&quot;)</code>#在写模式活追加模式下才可用</li>
-<li>文件关闭：<code>f.close()</code>#在文件操作完成后，务必记得关闭文件</li>
-<li>读取文件指针位置：<code>print(f.tell())</code>#文件指针位置，位置根据字符个数计数</li>
-<li>移动文件指针位置：<code>f.seek(0)</code>#移动到文件开头</li>
-<li>文件编码格式：<code>print(f.encoding)</code>#获取文件的编码格式</li>
-<li>将内存中的缓存写入硬盘文件<code>f.flush()</code>#强制刷新</li>
-<li>文件截断<code>f.truncate(25)</code>#从文件指针位置往后截断到25个字符处</li>
+<li>使用 touch 创建文件的时候，如果[文件名]的文件不存在，那就直接创建一个以[文件名]命<br>
+名的文件，如果[文件名]文件存在的话就仅仅修改一下此文件的最后修改日期。</li>
+<li>命令的主要选项如下：</li>
 </ul>
-<h1 id="序列化与反序列化">序列化与反序列化</h1>
-<h2 id="json数据序列化">json数据序列化</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-a</td>
+<td style="text-align:center">只更改存取时间</td>
+</tr>
+<tr>
+<td style="text-align:center">-c</td>
+<td style="text-align:center">不建立任何文件</td>
+</tr>
+<tr>
+<td style="text-align:center">-d&lt;日期&gt;</td>
+<td style="text-align:center">使用指定的日期，而并非现在日期</td>
+</tr>
+<tr>
+<td style="text-align:center">-t&lt;时间&gt;</td>
+<td style="text-align:center">使用指定的时间，而并非现在时间</td>
+</tr>
+</tbody>
+</table>
+<h3 id="文件夹创建mkdir">文件夹创建(mkdir)</h3>
 <ul>
-<li>在编写程序过程中，当我想要对一个数据进行临时的存储，并且在未来的一个时刻将数据进行恢复，即将目标数据以文件形式进行存储，可使用json序列化</li>
-<li>json序列化也可用于不同语言之间的数据交互，将数据用A语言json序列化，再用B语言json反序列化。目前json已经取代xml成为主流的程序间交互数据的方式。</li>
-<li>json只能够处理简单的数据类型，而无法处理复杂的数据（如函数）</li>
-<li>json序列化：</li>
+<li>建文件夹使用命令<code>mkdir</code>，命令格式如下：</li>
 </ul>
-<pre><code class="language-python">import json
-info = {&quot;name&quot;: 'zzh' , &quot;age&quot;: 23}
-f = open(&quot;test.test&quot;, &quot;w&quot;)
-f.write(json.dumps(info))
-f.close()
+<pre><code>mkdir [选项参数]] [文件夹名目录名]
 </code></pre>
 <ul>
-<li>json反序列化：</li>
+<li>命令的主要选项如下：</li>
 </ul>
-<pre><code class="language-python">f =open(&quot;test.test&quot;,&quot;r&quot;)
-info = json.loads(f.read())
-print(info)
-f.close()
-</code></pre>
-<h2 id="pickle数据序列化">pickle数据序列化</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-p</td>
+<td style="text-align:center">如所要创建的目录其上层目录目前还未创建，那么会一起创建上层目录</td>
+</tr>
+</tbody>
+</table>
+<h3 id="文件及目录删除rm">文件及目录删除(rm)</h3>
 <ul>
-<li>若要以文件存储复杂的内容，则可以采用pickle，其用法与json较为类似</li>
-<li>但是pickle只能在python中可以使用</li>
-<li>pickle序列化：</li>
+<li><code>rm</code>命令可以完成一个文件的删除或者多个文件及文件夹的删除，它可以实现递归删除。命令格式如下：</li>
 </ul>
-<pre><code class="language-python">import pickle
-def sayhi(name):
-    print('hello',name)
-info = {&quot;name&quot;: 'zzh',&quot;age&quot;: 23,&quot;func&quot;:sayhi}
-f = open(&quot;test.test&quot;, &quot;wb&quot;)##注意这里是二进制的写
-f.write(pickle.dumps(info))
-f.close()
-###或者也可以等效成下面###
-f = open(&quot;test.test&quot;, &quot;wb&quot;)##注意这里是二进制的写
-pickle.dump(info,f)
-f.close()
+<pre><code>rm [选项参数]] [目的文件或文件夹目录名]
 </code></pre>
 <ul>
-<li>pickle反序列化：</li>
+<li>命令的主要选项如下：</li>
 </ul>
-<pre><code class="language-python">f =open(&quot;test.test&quot;,&quot;rb&quot;)##注意这里是二进制的读
-info = pickle.loads(f.read())
-print(info)
-f.close()
-###或者也可以等效成下面###
-f =open(&quot;test.test&quot;,&quot;rb&quot;)##注意这里是二进制的读
-info = pickle.load(f)
-print(info)
-f.close()
-</code></pre>
-<h2 id="3函数式编程">3.函数式编程</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-d</td>
+<td style="text-align:center">直接把要删除的目录的硬连接数据删成 0，删除该目录</td>
+</tr>
+<tr>
+<td style="text-align:center">-f</td>
+<td style="text-align:center">强制删除文件和文件夹(目录)</td>
+</tr>
+<tr>
+<td style="text-align:center">-i</td>
+<td style="text-align:center">删除文件或者文件夹(目录)之前先询问用户</td>
+</tr>
+<tr>
+<td style="text-align:center">-r</td>
+<td style="text-align:center">递归删除，指定文件夹(目录)下的所有文件和子文件夹全部删除掉</td>
+</tr>
+<tr>
+<td style="text-align:center">-v</td>
+<td style="text-align:center">显示删除过程</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li>常见的编程方式有：面向对象（class），面向过程（def），函数式编程（def）</li>
-<li>函数是指将一组语句的集合通过一个名字(函数名)封装起来，要想执行这个函数，只需调用其函数名即可</li>
-<li>形参与实参：形参变量只有在被调用时才分配内存单元，在调用结束时，即刻释放所分配的内存单元。因此，形参只在函数内部有效。函数调用结束返回主调用函数后则不能再使用该形参变量。实参可以是常量、变量、表达式、函数等，无论实参是何种类型的量，在进行函数调用时，它们都必须有确定的值，以便把这些值传送给形参。因此应预先用赋值，输入等办法使参数获得确定值。</li>
-<li>在函数内部若想修改全局变量，则需要声明<code>global zzh #zzh为全局变量名</code>，但是强烈不推荐使用</li>
-<li>当全局变量与局部变量同名时：在定义局部变量的子程序内，局部变量起作用；在其它地方全局变量起作用。</li>
-<li>函数的参数与返回值：</li>
+<li>当我们需要使用<code>rm</code>命令删除一个文件夹下的所以文件和子文件夹时，需要加入选项参数<code>-rf</code>，具体指令如下：</li>
 </ul>
-<pre><code class="language-python">def calc(x,y):
-    res = x**y
-    return res #返回函数执行结果
-c = calc(a,b) ＃结果赋值给c变量
-print(c)
+<pre><code>rm -rf dir
+</code></pre>
+<h3 id="文件夹目录删除rmdir">文件夹目录删除(rmdir)</h3>
+<ul>
+<li>Linux还提供了直接删除文件夹目录的命令：<code>rmdir</code>，它可以不加任何参数的删除掉指定的文件夹(目录)，命令格式如下：</li>
+</ul>
+<pre><code>rmdir [选项参数]] [文件夹(目录)]
 </code></pre>
 <ul>
-<li>函数的默认参数：可以在定义函数时，给予默认参数；调用时若用户未指定则使用默认参数。如：<code>def calc(x=1,y=2):</code></li>
-<li>非固定参数：若函数传入的参数数量不固定，可使用非固定参数。<br>
-*args方法：接收N个位置参数，将其转化为元组，如：<code>def stu_info(name,age,*args):</code># *args 会把多传入的参数变成一个元组形式。<br>
-**kwargs方法：接收N个关键字参数，将其转化为字典，如：</li>
+<li>命令的主要选项如下：</li>
 </ul>
-<pre><code class="language-python">def stu_register(name,age,*args,**kwargs): # **kwargs 会把多传入的参数变成一个字典
-    print(name,age,args,kwargs)
-stu_register(&quot;ZZH&quot;,23,&quot;CN&quot;,&quot;Python&quot;,sex=&quot;Male&quot;,province=&quot;FuJian&quot;)
-#输出  :  ZZH 23 ('CN', 'Python') {'province': 'FuJian', 'sex': 'Male'}
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-p</td>
+<td style="text-align:center">如所要创建的目录其上层目录目前还未创建，那么会一起创建上层目录</td>
+</tr>
+</tbody>
+</table>
+<h2 id="文件的复制与移动">文件的复制与移动</h2>
+<h3 id="文件复制cp">文件复制(cp)</h3>
+<ul>
+<li>Linux 下的复制命令为<code>cp</code>，具体指令如下：</li>
+</ul>
+<pre><code>cp [选项参数]] [源地址] [目的地址]
 </code></pre>
 <ul>
-<li>参数放置顺序：位置参数， 关键字参数，默认值参数，参数组*args，参数组**kwargs</li>
-<li>函数递归：如果一个函数在内部调用自身本身，这个函数就是递归函数。</li>
-<li>递归特性:1. 必须有一个明确的结束条件；2. 每次进入更深一层递归时，问题规模相比上次递归都应有所减少；3. 递归效率不高，递归层次过多会导致栈溢出</li>
-<li>匿名函数：<code>calc = lambda x:x*3</code>#lambda为匿名函数关键字</li>
-<li>高阶函数：一个函数就可以接收一个函数作为参数，或者一个函数的返回结果是一个函数，则称这种函数就称之为高阶函数。</li>
+<li>命令的主要选项如下：</li>
 </ul>
-<pre><code class="language-python">def add(a,b,func):
-    return func(a)+func(b)
-res = add(3,-6,abs)
-print(res)
-#输出：9
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-a</td>
+<td style="text-align:center">此参数和同时指定“-dpr”参数相同</td>
+</tr>
+<tr>
+<td style="text-align:center">-d</td>
+<td style="text-align:center">在复制有符号连接的文件时，保留原始的连接</td>
+</tr>
+<tr>
+<td style="text-align:center">-f</td>
+<td style="text-align:center">强行复制文件，不管要复制的文件是否已经存在于目标目录</td>
+</tr>
+<tr>
+<td style="text-align:center">-I</td>
+<td style="text-align:center">覆盖现有文件之前询问用户</td>
+</tr>
+<tr>
+<td style="text-align:center">-p</td>
+<td style="text-align:center">保留源文件或者目录的属性</td>
+</tr>
+<tr>
+<td style="text-align:center">-r 或-R</td>
+<td style="text-align:center">递归处理，将指定目录下的文件及子目录一并处理</td>
+</tr>
+</tbody>
+</table>
+<h3 id="文件移动mv">文件移动(mv)</h3>
+<ul>
+<li>有时候我们需要将一个文件或者文件夹移动到另外一个地方去，或者给一个文件或者文件<br>
+夹进行重命名，这个时候我们就可以使用<code>mv</code>命令。命令格式如下：</li>
+</ul>
+<pre><code>mv [选项参数]] [源地址] [目的地址]
 </code></pre>
+<ul>
+<li>命令的主要选项如下：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-b</td>
+<td style="text-align:center">如果要覆盖文件的话覆盖前先进行备份</td>
+</tr>
+<tr>
+<td style="text-align:center">-f</td>
+<td style="text-align:center">若目标文件或目录与现在的文件重复，直接覆盖目的文件或目录</td>
+</tr>
+<tr>
+<td style="text-align:center">-I</td>
+<td style="text-align:center">在覆盖之前询问用户</td>
+</tr>
+</tbody>
+</table>
+<h2 id="文件的压缩与解压缩">文件的压缩与解压缩</h2>
+<h3 id="zip压缩zip">zip压缩(zip)</h3>
+<ul>
+<li>zip 命令用于将一个或者多个文件压缩成一个.zip 结尾的文件。命令格式如下：</li>
+</ul>
+<pre><code>zip [选项参数]] [压缩文件名.zip] [被压缩的文件]
+</code></pre>
+<ul>
+<li>命令的主要选项如下：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-b&lt;工作目录&gt;</td>
+<td style="text-align:center">指定暂时存放文件的目录</td>
+</tr>
+<tr>
+<td style="text-align:center">-d</td>
+<td style="text-align:center">从 zip 文件中删除一个文件</td>
+</tr>
+<tr>
+<td style="text-align:center">-F</td>
+<td style="text-align:center">尝试修复已经损毁的压缩文件</td>
+</tr>
+<tr>
+<td style="text-align:center">-g</td>
+<td style="text-align:center">将文件压缩入现有的压缩文件中，不需要新建压缩文件</td>
+</tr>
+<tr>
+<td style="text-align:center">-h</td>
+<td style="text-align:center">帮助</td>
+</tr>
+<tr>
+<td style="text-align:center">-j</td>
+<td style="text-align:center">只保存文件的名，不保存目录</td>
+</tr>
+<tr>
+<td style="text-align:center">-m</td>
+<td style="text-align:center">压缩完成以后删除源文件</td>
+</tr>
+<tr>
+<td style="text-align:center">-n&lt;字尾符号&gt;</td>
+<td style="text-align:center">不压缩特定扩展名的文件</td>
+</tr>
+<tr>
+<td style="text-align:center">-q</td>
+<td style="text-align:center">不显示压缩命令执行过程</td>
+</tr>
+<tr>
+<td style="text-align:center">-r</td>
+<td style="text-align:center">递归压缩，将指定目录下的所有文件和子目录一起压缩</td>
+</tr>
+<tr>
+<td style="text-align:center">-v</td>
+<td style="text-align:center">显示指令执行过程</td>
+</tr>
+<tr>
+<td style="text-align:center">-num</td>
+<td style="text-align:center">压缩率，为 1~9 的数值</td>
+</tr>
+</tbody>
+</table>
+<h3 id="zip解压缩unzip">zip解压缩(unzip)</h3>
+<ul>
+<li>unzip 命令用于对.zip 格式的压缩包进行解压。命令格式如下：</li>
+</ul>
+<pre><code>unzip [选项参数]] [压缩文件名.zip]
+</code></pre>
+<ul>
+<li>命令的主要选项如下：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-l</td>
+<td style="text-align:center">显示压缩文件内所包含的文件</td>
+</tr>
+<tr>
+<td style="text-align:center">-t</td>
+<td style="text-align:center">检查压缩文件是否损坏，但不解压</td>
+</tr>
+<tr>
+<td style="text-align:center">-v</td>
+<td style="text-align:center">显示命令显示的执行过程</td>
+</tr>
+<tr>
+<td style="text-align:center">-Z</td>
+<td style="text-align:center">只显示压缩文件的注解</td>
+</tr>
+<tr>
+<td style="text-align:center">-C</td>
+<td style="text-align:center">压缩文件中的文件名称区分大小写</td>
+</tr>
+<tr>
+<td style="text-align:center">-j</td>
+<td style="text-align:center">不处理压缩文件中的原有目录路径</td>
+</tr>
+<tr>
+<td style="text-align:center">-L</td>
+<td style="text-align:center">将压缩文件中的全部文件名改为小写</td>
+</tr>
+<tr>
+<td style="text-align:center">-n</td>
+<td style="text-align:center">解压缩时不要覆盖原有文件</td>
+</tr>
+<tr>
+<td style="text-align:center">-P&lt;密码&gt;</td>
+<td style="text-align:center">解压密码</td>
+</tr>
+<tr>
+<td style="text-align:center">-q</td>
+<td style="text-align:center">静默执行，不显示任何信息</td>
+</tr>
+<tr>
+<td style="text-align:center">-x&lt;文件列表&gt;</td>
+<td style="text-align:center">指定不要处理.zip 中的哪些文件</td>
+</tr>
+<tr>
+<td style="text-align:center">-d &lt;目录&gt;</td>
+<td style="text-align:center">把压缩文件解到指定目录下</td>
+</tr>
+</tbody>
+</table>
+<h3 id="其他格式的压缩与解压缩tar">其他格式的压缩与解压缩(tar)</h3>
+<ul>
+<li>zip 和 unzip 这两个是命令只适用于.zip 格式的压缩和解压，其它格式的压缩和解压使用命令<br>
+tar， tar 将压缩和解压缩集合在一起，使用不同的选项参数即可。命令格式如下：</li>
+</ul>
+<pre><code>tar [选项参数] [压缩文件名] [被压缩文件名]
+</code></pre>
+<ul>
+<li>命令的主要选项如下：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-c</td>
+<td style="text-align:center">创建新的压缩文件</td>
+</tr>
+<tr>
+<td style="text-align:center">-C&lt;目的目录&gt;</td>
+<td style="text-align:center">切换到指定的目录</td>
+</tr>
+<tr>
+<td style="text-align:center">-f&lt;备份文件&gt;</td>
+<td style="text-align:center">指定压缩文件</td>
+</tr>
+<tr>
+<td style="text-align:center">-j</td>
+<td style="text-align:center">用 tar 生成压缩文件，然后用 bzip2 进行压缩</td>
+</tr>
+<tr>
+<td style="text-align:center">-k</td>
+<td style="text-align:center">解开备份文件时，不覆盖已有的文件</td>
+</tr>
+<tr>
+<td style="text-align:center">-m</td>
+<td style="text-align:center">还原文件时，不变更文件的更改时间</td>
+</tr>
+<tr>
+<td style="text-align:center">-r</td>
+<td style="text-align:center">新增文件到已存在的备份文件的结尾部分</td>
+</tr>
+<tr>
+<td style="text-align:center">-t</td>
+<td style="text-align:center">列出备份文件内容</td>
+</tr>
+<tr>
+<td style="text-align:center">-v</td>
+<td style="text-align:center">显示指令执行过程</td>
+</tr>
+<tr>
+<td style="text-align:center">-w</td>
+<td style="text-align:center">遭遇问题时先询问用户</td>
+</tr>
+<tr>
+<td style="text-align:center">-x</td>
+<td style="text-align:center">从备份文件中释放文件，也就是解压缩文件</td>
+</tr>
+<tr>
+<td style="text-align:center">-z</td>
+<td style="text-align:center">用 tar 生成压缩文件，用 gzip 压缩</td>
+</tr>
+<tr>
+<td style="text-align:center">-Z</td>
+<td style="text-align:center">用 tar 生成压缩文件，用 compress 压缩</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>例如，我们可使用如下两个命令分别将test文件夹压缩为<code>.bz2</code>和<code>.gz</code>格式：</li>
+</ul>
+<pre><code>tar  -vcjf   test.tar.bz2   test  #压缩为.bz2
+tar  -vczf   test.tar.gz   test   #压缩为.gz
+</code></pre>
+<h2 id="文件的查找">文件的查找</h2>
+<h3 id="文件查找find">文件查找(find)</h3>
+<ul>
+<li><code>find</code>命令用于在目录结构中查找与关键信息相匹配的文件。其命令格式如下：</li>
+</ul>
+<pre><code>find  [路径]  [选项参数]  [匹配信息]
+</code></pre>
+<ul>
+<li>命令的主要选项如下：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-name<filename></td>
+<td style="text-align:center">按照文件名称查找，查找与 filename 匹配的文件，可使用通配符</td>
+</tr>
+<tr>
+<td style="text-align:center">-depth</td>
+<td style="text-align:center">从指定目录下的最深层的子目录开始查找</td>
+</tr>
+<tr>
+<td style="text-align:center">-gid&lt;群组识别码&gt;</td>
+<td style="text-align:center">查找符合指定的群组识别码的文件或目录</td>
+</tr>
+<tr>
+<td style="text-align:center">-group&lt;群组名称&gt;</td>
+<td style="text-align:center">查找符合指定的群组名称的文件或目录</td>
+</tr>
+<tr>
+<td style="text-align:center">-size&lt;文件大小&gt;</td>
+<td style="text-align:center">查找符合指定文件大小的文件</td>
+</tr>
+<tr>
+<td style="text-align:center">-type&lt;文件类型&gt;</td>
+<td style="text-align:center">查找符合指定文件类型的文件</td>
+</tr>
+<tr>
+<td style="text-align:center">-user&lt;拥有者名称&gt;</td>
+<td style="text-align:center">查找符合指定的拥有者名称的文件或目录</td>
+</tr>
+</tbody>
+</table>
+<h3 id="文件内容查找grep">文件内容查找(grep)</h3>
+<ul>
+<li><code>find</code>命令用于在目录中搜索文件，我们有时候需要在文件中搜索一串关键字， <code>grep</code>就是完<br>
+成这个功能的。<code>grep</code>命令用于查找包含指定关键字的文件，如果发现某个文件的内容包含所指定的关键字，<code>grep</code>命令就会把包含指定关键字的这一行标记出来。<code>grep</code>命令格式如下：</li>
+</ul>
+<pre><code>grep [选项参数] [关键字] [文件列表]
+</code></pre>
+<ul>
+<li><code>grep</code> 命令一次只能查一个关键字，命令的主要选项如下：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-b</td>
+<td style="text-align:center">在显示符合关键字的那一列前，标记处该列第 1 个字符的位编号</td>
+</tr>
+<tr>
+<td style="text-align:center">-c</td>
+<td style="text-align:center">计算符合关键字的列数</td>
+</tr>
+<tr>
+<td style="text-align:center">-i</td>
+<td style="text-align:center">忽略字符大小写</td>
+</tr>
+<tr>
+<td style="text-align:center">-v</td>
+<td style="text-align:center">反转查找，只显示不匹配的行</td>
+</tr>
+<tr>
+<td style="text-align:center">-r</td>
+<td style="text-align:center">在指定目录中递归查找</td>
+</tr>
+</tbody>
+</table>
 <hr>
 <blockquote>
 <p>参考：<br>
-<a href="https://www.cnblogs.com/alex3714/articles/5740985.html">https://www.cnblogs.com/alex3714/articles/5740985.html</a><br>
-<a href="http://www.cnblogs.com/alex3714/articles/5161349.html">http://www.cnblogs.com/alex3714/articles/5161349.html</a></p>
+《正点原子-嵌入式Linux驱动开发指南》- 第二章 Ubuntu系统入门 - 2.6 Linux文件系统</p>
 </blockquote>
 
             </div>
@@ -666,7 +1191,7 @@ print(res)
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://zhenhuizhang.tk/post/python2wen-jian-cao-zuo-_-shu-ju-xu-lie-hua-_-han-shu-bian-cheng/" title="[Python2]文件操作_数据序列化_函数编程">https://zhenhuizhang.tk/post/python2wen-jian-cao-zuo-_-shu-ju-xu-lie-hua-_-han-shu-bian-cheng/</a>
+      <a href="https://zhenhuizhang.tk/post/linuxwen-jian-xi-tong-_-wen-jian-cao-zuo-ming-ling/" title="[Linux]文件系统_类型_操作命令">https://zhenhuizhang.tk/post/linuxwen-jian-xi-tong-_-wen-jian-cao-zuo-ming-ling/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -675,21 +1200,15 @@ print(res)
   </ul>
   <div class="tags">
     
-      <a href="https://zhenhuizhang.tk/tag/DlqLaABxL/"># Python</a>
-    
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="[Solidworks]内存耗尽解决办法" href="https://zhenhuizhang.tk/post/solidworksnei-cun-hao-jin-jie-jue-ban-fa/">[Solidworks]内存耗尽解决办法</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="[Solidworks]内存耗尽解决办法" href="https://zhenhuizhang.tk/post/solidworksnei-cun-hao-jin-jie-jue-ban-fa/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="[Python1]模块_数据类型_判断循环" href="https://zhenhuizhang.tk/post/python1mo-kuai-_-shu-ju-lei-xing-_-pan-duan-xun-huan/">[Python1]模块_数据类型_判断循环</a>
-        <a class="nav-mobile-next" title="[Python1]模块_数据类型_判断循环" href="https://zhenhuizhang.tk/post/python1mo-kuai-_-shu-ju-lei-xing-_-pan-duan-xun-huan/">下一篇</a>
+        <a class="nav-pc-next" title="[Linux]Vi/Vim编辑器" href="https://zhenhuizhang.tk/post/linuxvivim-bian-ji-qi/">[Linux]Vi/Vim编辑器</a>
+        <a class="nav-mobile-next" title="[Linux]Vi/Vim编辑器" href="https://zhenhuizhang.tk/post/linuxvivim-bian-ji-qi/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
