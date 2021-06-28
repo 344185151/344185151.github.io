@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhenhuizhang.tk</id>
     <title>渣渣晖の博客</title>
-    <updated>2021-06-27T08:44:46.828Z</updated>
+    <updated>2021-06-28T03:25:26.823Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhenhuizhang.tk"/>
     <link rel="self" href="https://zhenhuizhang.tk/atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://zhenhuizhang.tk/images/avatar.png</logo>
     <icon>https://zhenhuizhang.tk/favicon.ico</icon>
     <rights>All rights reserved 2021, 渣渣晖の博客</rights>
+    <entry>
+        <title type="html"><![CDATA[[Verilog12]HDLBits习题_Basics]]></title>
+        <id>https://zhenhuizhang.tk/post/verilog12hdlbits-xi-ti-_basics/</id>
+        <link href="https://zhenhuizhang.tk/post/verilog12hdlbits-xi-ti-_basics/">
+        </link>
+        <updated>2021-06-28T02:35:20.000Z</updated>
+        <summary type="html"><![CDATA[<p>HDLBits习题讲解_Basics</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>HDLBits习题讲解_Basics</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[Linux]文件系统_类型_操作命令]]></title>
         <id>https://zhenhuizhang.tk/post/linuxwen-jian-xi-tong-_-wen-jian-cao-zuo-ming-ling/</id>
@@ -327,17 +338,6 @@
         <summary type="html"><![CDATA[<p>差分信号，差分晶振，LVDS/LVPECL/HCSL/CML信号模式</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>差分信号，差分晶振，LVDS/LVPECL/HCSL/CML信号模式</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[Verilog8]仿真语法_时间_程序块_延时_时钟]]></title>
-        <id>https://zhenhuizhang.tk/post/verilog8fang-zhen-yu-fa-_-shi-jian-_-cheng-xu-kuai-_-yan-shi-_-shi-zhong/</id>
-        <link href="https://zhenhuizhang.tk/post/verilog8fang-zhen-yu-fa-_-shi-jian-_-cheng-xu-kuai-_-yan-shi-_-shi-zhong/">
-        </link>
-        <updated>2020-07-22T01:34:44.000Z</updated>
-        <summary type="html"><![CDATA[<p>Verilog仿真语法，仿真时间设定，程序块语句体，延时等待语法，时钟激励生成</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Verilog仿真语法，仿真时间设定，程序块语句体，延时等待语法，时钟激励生成</p>
 ]]></content>
     </entry>
 </feed>

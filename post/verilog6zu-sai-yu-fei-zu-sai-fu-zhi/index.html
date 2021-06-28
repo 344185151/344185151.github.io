@@ -9,7 +9,7 @@
 <meta name="description" content="热爱可抵岁月漫长">
 <meta name="theme-color" content="#000">
 <title>[Verilog6]阻塞与非阻塞赋值 | 渣渣晖の博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1624782980689">
+<link rel="shortcut icon" href="/favicon.ico?v=1624850611816">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1344,6 +1344,136 @@ Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea<
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://zhenhuizhang.tk/post/verilog12hdlbits-xi-ti-_basics/"" data-c="
+          &lt;p&gt;HDLBits习题讲解_Basics&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;h1 id=&#34;线wire&#34;&gt;线(wire)&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;在Verilog语法中，&lt;code&gt;wire&lt;/code&gt;从功能上就好像现实中的导线一样，可以将一个信号持续不断的赋值给另一个信号；但与现实中的导线又是不一样的，Verilog中的&lt;code&gt;wire&lt;/code&gt;是__具有方向性__的(即定向的)，这意味着信息仅从一个方向流定向赋值给另一个方向，即右侧的信号值被不断的驱动左侧的信号值。&lt;/li&gt;
+&lt;li&gt;模块上的端口也是具有方向性的，且默认端口信号类型为&lt;code&gt;wire&lt;/code&gt;型；输入端口由模块外部的东西驱动，而输出端口则由模块内的信号对外驱动。&lt;/li&gt;
+&lt;li&gt;wire型信号可以用作任何方程式的输入，也可以用作“assign”语句或实例元件的输出。&lt;/li&gt;
+&lt;li&gt;我们使用&lt;code&gt;assign&lt;/code&gt;赋值语句，来实现对&lt;code&gt;wire&lt;/code&gt;信号的定向驱动，例如我们使用信号&lt;code&gt;wire2&lt;/code&gt;持续的驱动信号&lt;code&gt;wire1&lt;/code&gt;。代码格式如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;assign wire1 = wire2;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;simple-wire&#34;&gt;Simple wire&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://zhenhuizhang.tk/post-images/1624848318308.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求使用输入的in信号持续驱动输出信号out。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( input in, output out );
+    assign out = in;
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;four-wires&#34;&gt;Four wires&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://zhenhuizhang.tk/post-images/1624848702057.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求创建一个具有3个输入和4个输出的模块，a -&amp;gt; w；b -&amp;gt; x；b -&amp;gt; y；c -&amp;gt; z。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( 
+    input a,b,c,
+    output w,x,y,z );
+	assign w = a;
+    assign y = b;
+    assign x = b;
+    assign z = c;
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;tips&lt;/strong&gt; : 在使用多个assign语句时，他们在代码书写时的__先后顺序并不重要__。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;位逻辑运算符&#34;&gt;位/逻辑运算符&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;位运算符：按位取反(&lt;sub&gt;)按位与(&amp;amp;)按位或(|)按位异或(^)按位同或(^&lt;/sub&gt;)&lt;/li&gt;
+&lt;li&gt;逻辑运算符：逻辑与(&amp;amp;&amp;amp;)逻辑或(||)逻辑非(!)。&lt;/li&gt;
+&lt;li&gt;需要注意。当两个不同长度的数据进行位运算时，会自动地将两个操作数按右端对齐，&lt;strong&gt;位数少的操作数会在高位用0补齐&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;notgate&#34;&gt;Notgate&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://zhenhuizhang.tk/post-images/1624849111301.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求创建一个__非门__。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( input in, output out );
+    assign out = ~in;
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;andgate&#34;&gt;Andgate&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://zhenhuizhang.tk/post-images/1624849678204.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求创建一个__与门__。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( 
+    input a, 
+    input b, 
+    output out );
+    assign out = a &amp;amp; b;
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;norgate&#34;&gt;Norgate&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://zhenhuizhang.tk/post-images/1624849865978.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求创建一个__或非门__。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( 
+    input a, 
+    input b, 
+    output out );
+    assign out = ~(a | b);
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;xnorgate&#34;&gt;Xnorgate&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求创建一个__异或非门__。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( 
+    input a, 
+    input b, 
+    output out );
+    assign out = ~(a ^ b);
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;wire-decl&#34;&gt;Wire decl&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://zhenhuizhang.tk/post-images/1624850043185.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求我们声明wire信号，用以表示中间变量，以实现更为复杂的组合逻辑描述。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module(
+    input a,
+    input b,
+    input c,
+    input d,
+    output out,
+    output out_n   ); 
+    wire and_ab,and_cd;
+    assign and_ab = a &amp;amp; b;
+    assign and_cd = c &amp;amp; d;
+    assign out = and_ab | and_cd;
+    assign out_n = ~out;
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;##7458&lt;br&gt;
+&lt;img src=&#34;https://zhenhuizhang.tk/post-images/1624850299776.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;题目以7458芯片为例，要求我们通过使用&lt;code&gt;wire&lt;/code&gt;与·位运算符，对芯片进行描述。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module ( 
+    input p1a, p1b, p1c, p1d, p1e, p1f,
+    output p1y,
+    input p2a, p2b, p2c, p2d,
+    output p2y );
+    assign p1y = (p1a &amp;amp; p1b &amp;amp; p1c) | (p1d &amp;amp; p1e &amp;amp; p1f);
+    assign p2y = (p2a &amp;amp; p2b) | (p2c &amp;amp; p2d); 
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;参考：&lt;br&gt;
+&lt;a href=&#34;https://hdlbits.01xz.net/wiki/Problem_sets&#34;&gt;HDLBits&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+">[Verilog12]HDLBits习题_Basics</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://zhenhuizhang.tk/post/linuxwen-jian-xi-tong-_-wen-jian-cao-zuo-ming-ling/"" data-c="
@@ -15413,7 +15543,11 @@ Memory[8] = 1; // Memory存储器中的第8个单元赋值为1
 &lt;li&gt;加(+)减(-)乘(*)除(/)取余(%)。当操作数中有一个不定值X时，整个结果也为不定值X&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;位运算符&#34;&gt;位运算符&lt;/h2&gt;
-&lt;p&gt;取反(~)按位与(&amp;amp;)按位或(|)按位异或(^)按位同或(^~)。如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;按位取反(~)按位与(&amp;amp;)按位或(|)按位异或(^)按位同或(^~)。&lt;/li&gt;
+&lt;li&gt;需要注意的一点是两个不同长度的数据进行位运算时，会自动地将两个操作数按右端对齐，位数少的操作数会在高位用0补齐。&lt;/li&gt;
+&lt;li&gt;举例如下：&lt;/li&gt;
+&lt;/ul&gt;
 &lt;pre&gt;&lt;code&gt;A = 5&#39;b11001;
 B = 5&#39;b10101;
 ~ A ;  //5&#39;b00110
@@ -15424,7 +15558,7 @@ A ^ B;  //5&#39;b01100
 &lt;h2 id=&#34;逻辑运算符&#34;&gt;逻辑运算符&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;逻辑与(&amp;amp;&amp;amp;)逻辑或(||)逻辑非(!)。&lt;/li&gt;
-&lt;li&gt;需要注意的一点是两个不同长度的数据进行位运算时，会自动地将两个操作数按右端对齐，位数少的操作数会在高位用0补齐。如：&lt;/li&gt;
+&lt;li&gt;举例如下：&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre&gt;&lt;code&gt;!A;  //A的非
 A&amp;amp;&amp;amp;B  //A和B的与

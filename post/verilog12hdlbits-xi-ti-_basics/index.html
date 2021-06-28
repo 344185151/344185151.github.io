@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="热爱可抵岁月漫长">
 <meta name="theme-color" content="#000">
-<title>[电路]锂离子电池特性与充电电路 | 渣渣晖の博客</title>
+<title>[Verilog12]HDLBits习题_Basics | 渣渣晖の博客</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1624850611816">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -48,8 +48,8 @@
 
 
 
-  <meta name="description" content="[电路]锂离子电池特性与充电电路" />
-  <meta name="keywords" content="电路" />
+  <meta name="description" content="[Verilog12]HDLBits习题_Basics" />
+  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -198,27 +198,19 @@
   <div class="toc-wrapper auto-number no_compress"
     id="toc_wrapper">
     <ul class="markdownIt-TOC">
-<li><a href="#%E9%94%82%E7%94%B5%E6%B1%A0%E6%A6%82%E5%86%B5">锂电池概况</a>
+<li><a href="#%E7%BA%BFwire">线(wire)</a>
 <ul>
-<li><a href="#%E9%94%82%E7%94%B5%E6%B1%A0%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86">锂电池的基本原理</a></li>
-<li><a href="#%E9%94%82%E7%94%B5%E6%B1%A0%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98">锂电池安全问题</a></li>
+<li><a href="#simple-wire">Simple wire</a></li>
+<li><a href="#four-wires">Four wires</a></li>
 </ul>
 </li>
-<li><a href="#%E9%94%82%E7%A6%BB%E5%AD%90%E7%94%B5%E6%B1%A0%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7">锂离子电池基本特性</a>
+<li><a href="#%E4%BD%8D%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6">位/逻辑运算符</a>
 <ul>
-<li><a href="#%E9%94%82%E7%94%B5%E6%B1%A0%E6%94%BE%E7%94%B5%E6%9B%B2%E7%BA%BF">锂电池放电曲线</a></li>
-<li><a href="#%E9%94%82%E7%94%B5%E6%B1%A0%E5%85%85%E7%94%B5%E6%9B%B2%E7%BA%BF">锂电池充电曲线</a></li>
-<li><a href="#%E5%BE%AA%E7%8E%AF%E5%AF%BF%E5%91%BD">循环寿命</a></li>
-<li><a href="#%E8%87%AA%E6%94%BE%E7%94%B5%E7%8E%87">自放电率</a></li>
-<li><a href="#%E5%85%85%E7%94%B5%E6%B8%A9%E5%BA%A6%E6%8E%A7%E5%88%B6">充电温度控制</a></li>
-<li><a href="#%E8%BF%87%E5%86%B2%E8%BF%87%E6%94%BE%E4%BF%9D%E6%8A%A4">过冲过放保护</a></li>
-</ul>
-</li>
-<li><a href="#%E9%94%82%E7%94%B5%E6%B1%A0%E5%85%85%E6%94%BE%E7%94%B5%E6%96%B9%E6%A1%88">锂电池充放电方案</a>
-<ul>
-<li><a href="#%E7%94%B5%E6%B1%A0%E4%BF%9D%E6%8A%A4%E8%8A%AF%E7%89%87">电池保护芯片</a></li>
-<li><a href="#%E7%BA%BF%E6%80%A7%E7%94%B5%E6%B1%A0%E5%85%85%E7%94%B5%E5%99%A8">线性电池充电器</a></li>
-<li><a href="#%E5%BC%80%E5%85%B3%E7%94%B5%E6%B1%A0%E5%85%85%E7%94%B5%E5%99%A8">开关电池充电器</a></li>
+<li><a href="#notgate">Notgate</a></li>
+<li><a href="#andgate">Andgate</a></li>
+<li><a href="#norgate">Norgate</a></li>
+<li><a href="#xnorgate">Xnorgate</a></li>
+<li><a href="#wire-decl">Wire decl</a></li>
 </ul>
 </li>
 </ul>
@@ -486,8 +478,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://zhenhuizhang.tk/post/dian-lu-li-chi-zi-dian-chi-te-xing-yu-chong-dian-dian-lu/">
-      [电路]锂离子电池特性与充电电路
+    <a class="post-title-link" href="https://zhenhuizhang.tk/post/verilog12hdlbits-xi-ti-_basics/">
+      [Verilog12]HDLBits习题_Basics
     </a>
   </h1>
   <div class="post-meta">
@@ -495,36 +487,23 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-03-11 09:49:00">2021-03-11</span>
+      <span class="publish-time" data-t="2021-06-28 10:35:20">2021-06-28</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show language" data-lan="category-in">分类于</span>
-      
-      
-      <a href="https://zhenhuizhang.tk/tag/xsdpfFeKB/">
-        <span>电路</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>9<span class="language" data-lan="minute">分钟</span></span>
+      <span>4<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>2557<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>742<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/dian-lu-li-chi-zi-dian-chi-te-xing-yu-chong-dian-dian-lu/" data-flag-title="[电路]锂离子电池特性与充电电路" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/verilog12hdlbits-xi-ti-_basics/" data-flag-title="[Verilog12]HDLBits习题_Basics" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -533,121 +512,130 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <p>锂离子电池特性，充电电路设计</p>
+              <p>HDLBits习题讲解_Basics</p>
 <!-- more -->
-<h1 id="锂电池概况">锂电池概况</h1>
-<h2 id="锂电池的基本原理">锂电池的基本原理</h2>
+<h1 id="线wire">线(wire)</h1>
 <ul>
-<li>锂离子/聚合物电池是以锂合金的金属氧化物为阳极材料、以石墨为阴极材料、使用非水电解质的可充电电池。</li>
-<li>与其它类型的二次电池相比，锂离子电池具有以下优点：重量轻，其能量密度是镍-镉电池的两倍；自放电比镍-镉电池少6〜8倍；没有记忆效应；单元电压大约3.7V，属于较高水平，通常能满足大多数应用的需要。<br>
-<img src="https://zhenhuizhang.tk/post-images/1615445618182.png" alt="" loading="lazy"></li>
+<li>在Verilog语法中，<code>wire</code>从功能上就好像现实中的导线一样，可以将一个信号持续不断的赋值给另一个信号；但与现实中的导线又是不一样的，Verilog中的<code>wire</code>是__具有方向性__的(即定向的)，这意味着信息仅从一个方向流定向赋值给另一个方向，即右侧的信号值被不断的驱动左侧的信号值。</li>
+<li>模块上的端口也是具有方向性的，且默认端口信号类型为<code>wire</code>型；输入端口由模块外部的东西驱动，而输出端口则由模块内的信号对外驱动。</li>
+<li>wire型信号可以用作任何方程式的输入，也可以用作“assign”语句或实例元件的输出。</li>
+<li>我们使用<code>assign</code>赋值语句，来实现对<code>wire</code>信号的定向驱动，例如我们使用信号<code>wire2</code>持续的驱动信号<code>wire1</code>。代码格式如下：</li>
 </ul>
-<h2 id="锂电池安全问题">锂电池安全问题</h2>
+<pre><code>assign wire1 = wire2;
+</code></pre>
+<h2 id="simple-wire">Simple wire</h2>
+<figure data-type="image" tabindex="1"><img src="https://zhenhuizhang.tk/post-images/1624848318308.png" alt="" loading="lazy"></figure>
 <ul>
-<li>锂的化学性质非常活跃，很容易燃烧，当电池放电、充电时，电池内部会持续升温，活化过程中所产生的气体膨胀，电池内压加大，压力达到一定程度，如外壳有伤痕，即会破裂，引起漏液、起火，甚至爆炸。</li>
-<li>为了缓解锂离子电池的危险，加入了能抑制锂元素活跃的成份（比如钴、锰、铁等等），但这些并不能从本质上改变锂离子电池的危险性。</li>
-<li>普通锂离子电池在过充、短路等情况时候发生时，电池内部可能出现升温、正极材料分解、负极和电解液材料被氧化等现象，进而导致气体膨胀和电池内压加大，当压力达到一定程度后就可能出现爆炸。而聚合物锂离子电池因为使用了胶态电解质，不会因为液体沸腾而产生大量气体，从而杜绝了剧烈爆炸的可能。</li>
+<li>题目要求使用输入的in信号持续驱动输出信号out。代码如下：</li>
 </ul>
-<h1 id="锂离子电池基本特性">锂离子电池基本特性</h1>
-<h2 id="锂电池放电曲线">锂电池放电曲线</h2>
+<pre><code>module top_module( input in, output out );
+    assign out = in;
+endmodule
+</code></pre>
+<h2 id="four-wires">Four wires</h2>
+<figure data-type="image" tabindex="2"><img src="https://zhenhuizhang.tk/post-images/1624848702057.png" alt="" loading="lazy"></figure>
 <ul>
-<li>锂电池的__放电率愈高,电池容量愈低,温度低时,电池容量也会降低__。不同的放电率表现出不同的电池容量，在较高的放电电流下，电池容量达不到额定值，电池电压因为电池的内阻而出现了较大的跌落(C为电池容量，单位Ah)。<br>
-<img src="https://zhenhuizhang.tk/post-images/1615446027682.png" alt="" loading="lazy"><br>
-<img src="https://zhenhuizhang.tk/post-images/1615446032606.png" alt="" loading="lazy"></li>
+<li>题目要求创建一个具有3个输入和4个输出的模块，a -&gt; w；b -&gt; x；b -&gt; y；c -&gt; z。代码如下：</li>
 </ul>
-<h2 id="锂电池充电曲线">锂电池充电曲线</h2>
+<pre><code>module top_module( 
+    input a,b,c,
+    output w,x,y,z );
+	assign w = a;
+    assign y = b;
+    assign x = b;
+    assign z = c;
+endmodule
+</code></pre>
+<blockquote>
+<p><strong>tips</strong> : 在使用多个assign语句时，他们在代码书写时的__先后顺序并不重要__。</p>
+</blockquote>
+<h1 id="位逻辑运算符">位/逻辑运算符</h1>
 <ul>
-<li>锂离子电池进行充电时的三个阶段：<strong>预充电、恒流充电和恒压充电</strong>。</li>
+<li>位运算符：按位取反(<sub>)按位与(&amp;)按位或(|)按位异或(^)按位同或(^</sub>)</li>
+<li>逻辑运算符：逻辑与(&amp;&amp;)逻辑或(||)逻辑非(!)。</li>
+<li>需要注意。当两个不同长度的数据进行位运算时，会自动地将两个操作数按右端对齐，<strong>位数少的操作数会在高位用0补齐</strong>。</li>
 </ul>
-<ol>
-<li>第一步，判断电压&lt;3V，要先进行预充电，0.05C电流；</li>
-<li>第二步，判断 3V&lt;电压&lt;4.2V，恒流充电0.2C~1C电流</li>
-<li>第三步，判断电压&gt;4.2V，恒压充电，电压为4.20V，电流随电压的增加而减少，直到充满。</li>
-</ol>
+<h2 id="notgate">Notgate</h2>
+<figure data-type="image" tabindex="3"><img src="https://zhenhuizhang.tk/post-images/1624849111301.png" alt="" loading="lazy"></figure>
 <ul>
-<li>预充电的意义是要对电池的状态进行调整，使之进入可以进行大电流快速充电的状态；恒流充电的作用是将电能快速地储存到电池中，恒压充电阶段则是最后的调整阶段，它使电池的容量最大化。</li>
-<li>控制锂电池充电停止通常有两种方式：</li>
+<li>题目要求创建一个__非门__。代码如下：</li>
 </ul>
-<ol>
-<li>计时器Timer，即涓流充电至预设的时间，便停止充电</li>
-<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mi>C</mi><mn>10</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{C}{10}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.217331em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.872331em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">0</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.07153em;">C</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span> 终止，即涓流充电的总电流量到达<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mi>C</mi><mn>10</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{C}{10}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.217331em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.872331em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">0</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.07153em;">C</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>，便停止充电</li>
-</ol>
+<pre><code>module top_module( input in, output out );
+    assign out = ~in;
+endmodule
+</code></pre>
+<h2 id="andgate">Andgate</h2>
+<figure data-type="image" tabindex="4"><img src="https://zhenhuizhang.tk/post-images/1624849678204.png" alt="" loading="lazy"></figure>
 <ul>
-<li>具体充电过程中锂电池两端电压与电流的关系如下图所示：<br>
-<img src="https://zhenhuizhang.tk/post-images/1615446435293.png" alt="" loading="lazy"></li>
+<li>题目要求创建一个__与门__。代码如下：</li>
 </ul>
-<h2 id="循环寿命">循环寿命</h2>
+<pre><code>module top_module( 
+    input a, 
+    input b, 
+    output out );
+    assign out = a &amp; b;
+endmodule
+</code></pre>
+<h2 id="norgate">Norgate</h2>
+<figure data-type="image" tabindex="5"><img src="https://zhenhuizhang.tk/post-images/1624849865978.png" alt="" loading="lazy"></figure>
 <ul>
-<li>循环次数是当一个电池所经历完整充放电的次数，是可由实际放电容量与设计容量来估计。每当累积的放电容量等于设计容量时，则循环次数一次。<strong>通常在500次充放电循环后，完全充电的电池容量约会下降 10%〜20%</strong>。<br>
-<img src="https://zhenhuizhang.tk/post-images/1615446781614.png" alt="" loading="lazy"></li>
-<li>需要注意的是，对于同一块锂电池，在10%DOD深度放电的工况下，可以达到大于1000次的循环寿命；但在100%DOD深度放电的工况下，只能达到大于200次的循环寿命。所以，锂电池推荐__即用即充，即充即用__。</li>
+<li>题目要求创建一个__或非门__。代码如下：</li>
 </ul>
-<h2 id="自放电率">自放电率</h2>
+<pre><code>module top_module( 
+    input a, 
+    input b, 
+    output out );
+    assign out = ~(a | b);
+endmodule
+</code></pre>
+<h2 id="xnorgate">Xnorgate</h2>
 <ul>
-<li>所有电池的自放电都会随着温度上升而增加。自放电基本上不是制造上的瑕疵，而是电池本身特性。然而制造过程中不当的处理也会造成自放电的增加。<strong>通常电池温度每增加10°C，自放电率即倍增。锂离子电池每个月自放电量约为1〜2%</strong>。<br>
-<img src="https://zhenhuizhang.tk/post-images/1615447066964.png" alt="" loading="lazy"></li>
+<li>题目要求创建一个__异或非门__。代码如下：</li>
 </ul>
-<h2 id="充电温度控制">充电温度控制</h2>
+<pre><code>module top_module( 
+    input a, 
+    input b, 
+    output out );
+    assign out = ~(a ^ b);
+endmodule
+</code></pre>
+<h2 id="wire-decl">Wire decl</h2>
+<figure data-type="image" tabindex="6"><img src="https://zhenhuizhang.tk/post-images/1624850043185.png" alt="" loading="lazy"></figure>
 <ul>
-<li>锂电池的工作温度范围是-20〜60℃，电池所处的温度对其充电会有重大影响。通常情况下，温度过低或过高时，应当禁止对电池进行充电操作。<strong>正常锂电池充电温度控制在10〜45℃。</strong> 有的国家和地区还对电池充电制定了不同温度下的不同策略，日本在此方面是一个典型，特别制订的JEITA规范就要求在温度过低和过高时降低恒流充电电流、恒压充电电压，这一规范恰好与电池的容量随着温度的变化而变化的特性紧密对应.</li>
-<li>下图显示了单节锂电池充电JEITA规范：<br>
-<img src="https://zhenhuizhang.tk/post-images/1615447231755.png" alt="" loading="lazy"></li>
+<li>题目要求我们声明wire信号，用以表示中间变量，以实现更为复杂的组合逻辑描述。代码如下：</li>
 </ul>
-<ol>
-<li>温度低于T1时，不适于锂电池进行充电，停止充电。</li>
-<li>在低温时（T1-T2）,锂离子反应缓慢，持续大电流充电时会产生大量热量加快电池老化，规划规定在此范围内充电电流降至0.5C。</li>
-<li>在T2-T3温度范围内，充电电流和充电电压上限都在正常范围。</li>
-<li>在高温时（T3-T5）, 如果充电期间电池表面温度升至 T3 以上，阴极材料开始变得更加活跃，会在电池电压升高时与电解质产生化学反应，温度过高会发生爆炸。因此在高温时需要降低截至电压，T3-T4阶段，最大截至电压为4.15V。T4-T5阶段，最大截至电压为4.1V，使用低充电压确保电池安全性。</li>
-<li>当温度大于T5时，不适于锂电池进行充电，停止充电。</li>
-</ol>
-<h2 id="过冲过放保护">过冲过放保护</h2>
+<pre><code>module top_module(
+    input a,
+    input b,
+    input c,
+    input d,
+    output out,
+    output out_n   ); 
+    wire and_ab,and_cd;
+    assign and_ab = a &amp; b;
+    assign and_cd = c &amp; d;
+    assign out = and_ab | and_cd;
+    assign out_n = ~out;
+endmodule
+</code></pre>
+<p>##7458<br>
+<img src="https://zhenhuizhang.tk/post-images/1624850299776.png" alt="" loading="lazy"></p>
 <ul>
-<li>锂离子电池在使用中最重要的是要确保它不会被过度充电和放电，这两种行为对它的伤害都是不可修复的，甚至可能还是危险的，因为它的内部材料结构被破坏了，什么问题都可能表现出来。</li>
-<li>对于锂电池而言，<strong>超常时间充电和完全用空电量会造成过度充电和过度放电，将对锂离子电池的正负极造成永久的损坏</strong>。从分子层面看，过度放电将导致负极碳过度释出锂离子而使得其片层结构出现塌陷，过度充电将把太多的锂离子硬塞进负极碳结构里去，而使得其中一些锂离子再也无法释放出来。</li>
+<li>题目以7458芯片为例，要求我们通过使用<code>wire</code>与·位运算符，对芯片进行描述。代码如下：</li>
 </ul>
-<h1 id="锂电池充放电方案">锂电池充放电方案</h1>
-<ul>
-<li>针对锂电池充放电过程中对电流、电压、温度的诸多限制，故需要使用相应的锂电池充放电芯片对充放电过程进行管理。下面具体介绍一种电池保护芯片和两种充电芯片。</li>
-</ul>
-<h2 id="电池保护芯片">电池保护芯片</h2>
-<ul>
-<li>TI公司的<code>bq2980xy</code>是一款适用于快充/闪充式单节锂离子电池和锂聚合物电池的具有集成式<br>
-高侧 NFET 驱动器的电压、电流、温度保护器。</li>
-<li>具体特征：</li>
-</ul>
-<ol>
-<li>电压保护： 过压 (OV)：±10mV；欠压 (UV)：±20mV</li>
-<li>电流保护：充电过流 (OCC)：±1mV；放电过流 (OCD)：±1mV；放电短路 (SCD)：±5mV</li>
-<li>温度保护：过热 (OT)；低温 (UT)<br>
-<img src="https://zhenhuizhang.tk/post-images/1615448605346.png" alt="" loading="lazy"></li>
-</ol>
-<h2 id="线性电池充电器">线性电池充电器</h2>
-<ul>
-<li>LINEAR的<code>LTC1733</code>是一款具有热调整功能的单片线性锂离子电池充电器。</li>
-<li>LTC@1733是一独立的恒流/恒压线性充电器，内含功率MOSFET，适用于锂离子电池。内部的热反馈可调整充电电流，以便在大功率工作或环境温度高的条件下限制硅片温度。该功能使用户可设定一个大充电电流，而不会有损害LTC1733或手持产品的危险。</li>
-<li>由于采用了内部MOSFET的结构，因此无需外部电流检测电阻和隔离二极管。充电电流和充电时间可在外部分别利用一个电阻和一个电容来设置。</li>
-<li>当输入电源（交流适配器）被拿掉时，LTC1733自动进入一低电流睡眠模式，将电池漏电流降至5uA以下。</li>
-<li>LTC1733还包括NTC温度检测、C/10检测电路、AC适配器接入的逻辑信号、41V/4.2V引脚选择功能以及电池低压充电条件（涓流充电）。</li>
-<li>LTC1733采用10引脚热增强型MSOP封装。<br>
-<img src="https://zhenhuizhang.tk/post-images/1615448975842.png" alt="" loading="lazy"></li>
-</ul>
-<h2 id="开关电池充电器">开关电池充电器</h2>
-<ul>
-<li>LINEAR的<code>LTC4001</code>是一款2A同步Buck锂离子电池开关充电器。</li>
-<li>LTC4001-1是一款2A锂电池充电器，旨在用于5V墙上适配器。它利用1.5MHz同步降压转换器拓扑来减少充电过程中的功耗。LTC4001-1包括完整的充电终止电路，自动充电过程控制，输入短路保护和±1％的4.1V浮动电压。</li>
-<li>LTC4001的4.1V模式适用于将在60℃以上的温度下的应用。在这种情况下，会降低充电电压以保证电池的使用寿命。降低的充电电压还可以将方形电池和聚合物电池的溶胀降至最低，并避免CID（压力保险丝）断开。</li>
-<li>电池充电电流，充电超时和充电结束指示参数由外部组件设置。其他功能包括电池短路检测，温度调节，<br>
-具有合格的充电和过压保护功能。 LTC4001-1采用扁平（0.75mm）16引脚的产品（4mm×4mm）QFN封装。<br>
-<img src="https://zhenhuizhang.tk/post-images/1615449456774.png" alt="" loading="lazy"></li>
-</ul>
+<pre><code>module top_module ( 
+    input p1a, p1b, p1c, p1d, p1e, p1f,
+    output p1y,
+    input p2a, p2b, p2c, p2d,
+    output p2y );
+    assign p1y = (p1a &amp; p1b &amp; p1c) | (p1d &amp; p1e &amp; p1f);
+    assign p2y = (p2a &amp; p2b) | (p2c &amp; p2d); 
+endmodule
+</code></pre>
 <hr>
 <blockquote>
 <p>参考：<br>
-<a href="https://adi2020.oss-cn-shanghai.aliyuncs.com/2020/2/24/2020032410350001.pdf">和电源大咖一起夯基础（第二部分）</a><br>
-<a href="https://blog.csdn.net/sternlycore/article/details/84196972">锂离子电池基本特性</a><br>
-<a href="https://www.ti.com.cn/cn/lit/ds/symlink/bq2980.pdf?ts=1615448329372&amp;ref_url=https%253A%252F%252Fwww.ti.com.cn%252Fzh-cn%252Fpower-management%252Fbattery-management%252Fprotectors%252Fproducts.html">bq2980xy 适用于快充/闪充式单节锂离子电池和锂聚合物电池的具有集成式高侧 NFET 驱动器的电压、电流、温度保护器</a><br>
-<a href="https://www.analog.com/media/cn/technical-documentation/data-sheets/1733fs%20chs.pdf">LTC1733是一款具有热调整功能的单片线性锂离子电池充电器</a><br>
-<a href="https://www.analog.com/media/en/technical-documentation/data-sheets/40011fa.pdf">LTC4001是一款2A同步Buck锂离子电池开关充电器</a></p>
+<a href="https://hdlbits.01xz.net/wiki/Problem_sets">HDLBits</a></p>
 </blockquote>
 
             </div>
@@ -661,7 +649,7 @@
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://zhenhuizhang.tk/post/dian-lu-li-chi-zi-dian-chi-te-xing-yu-chong-dian-dian-lu/" title="[电路]锂离子电池特性与充电电路">https://zhenhuizhang.tk/post/dian-lu-li-chi-zi-dian-chi-te-xing-yu-chong-dian-dian-lu/</a>
+      <a href="https://zhenhuizhang.tk/post/verilog12hdlbits-xi-ti-_basics/" title="[Verilog12]HDLBits习题_Basics">https://zhenhuizhang.tk/post/verilog12hdlbits-xi-ti-_basics/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -670,21 +658,15 @@
   </ul>
   <div class="tags">
     
-      <a href="https://zhenhuizhang.tk/tag/xsdpfFeKB/"># 电路</a>
-    
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="[FPGA]Vivado压缩bit文件" href="https://zhenhuizhang.tk/post/fpgavivado-ya-suo-bit-wen-jian/">[FPGA]Vivado压缩bit文件</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="[FPGA]Vivado压缩bit文件" href="https://zhenhuizhang.tk/post/fpgavivado-ya-suo-bit-wen-jian/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="[电路]AD快捷键" href="https://zhenhuizhang.tk/post/dian-lu-ad-kuai-jie-jian/">[电路]AD快捷键</a>
-        <a class="nav-mobile-next" title="[电路]AD快捷键" href="https://zhenhuizhang.tk/post/dian-lu-ad-kuai-jie-jian/">下一篇</a>
+        <a class="nav-pc-next" title="[Linux]文件系统_类型_操作命令" href="https://zhenhuizhang.tk/post/linuxwen-jian-xi-tong-_-wen-jian-cao-zuo-ming-ling/">[Linux]文件系统_类型_操作命令</a>
+        <a class="nav-mobile-next" title="[Linux]文件系统_类型_操作命令" href="https://zhenhuizhang.tk/post/linuxwen-jian-xi-tong-_-wen-jian-cao-zuo-ming-ling/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
