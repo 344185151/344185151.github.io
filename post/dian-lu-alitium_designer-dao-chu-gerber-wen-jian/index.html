@@ -9,7 +9,7 @@
 <meta name="description" content="热爱可抵岁月漫长">
 <meta name="theme-color" content="#000">
 <title>[电路]Alitium_Designer导出Gerber文件 | 渣渣晖の博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1624850611816">
+<link rel="shortcut icon" href="/favicon.ico?v=1624854324123">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1218,8 +1218,8 @@ Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea<
     <div class="result" id="result">
       
       <div class="item">
-        <a class="result-title" style="opacity: 0;" href="https://zhenhuizhang.tk/post/verilog12hdlbits-xi-ti-_basics/"" data-c="
-          &lt;p&gt;HDLBits习题讲解_Basics&lt;/p&gt;
+        <a class="result-title" style="opacity: 0;" href="https://zhenhuizhang.tk/post/verilog12hdlbits-xi-ti-_basics_vectors/"" data-c="
+          &lt;p&gt;HDLBits习题讲解_Basics_Vectors&lt;/p&gt;
 &lt;!-- more --&gt;
 &lt;h1 id=&#34;线wire&#34;&gt;线(wire)&lt;/h1&gt;
 &lt;ul&gt;
@@ -1254,7 +1254,7 @@ endmodule
 endmodule
 &lt;/code&gt;&lt;/pre&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;tips&lt;/strong&gt; : 在使用多个assign语句时，他们在代码书写时的__先后顺序并不重要__。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;tips:&lt;/strong&gt; 在使用多个assign语句时，他们在代码书写时的__先后顺序并不重要__。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h1 id=&#34;位逻辑运算符&#34;&gt;位/逻辑运算符&lt;/h1&gt;
 &lt;ul&gt;
@@ -1271,7 +1271,7 @@ endmodule
     assign out = ~in;
 endmodule
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;andgate&#34;&gt;Andgate&lt;/h2&gt;
+&lt;h2 id=&#34;inverter&#34;&gt;Inverter&lt;/h2&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://zhenhuizhang.tk/post-images/1624849678204.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;ul&gt;
 &lt;li&gt;题目要求创建一个__与门__。代码如下：&lt;/li&gt;
@@ -1339,12 +1339,187 @@ endmodule
     assign p2y = (p2a &amp;amp; p2b) | (p2c &amp;amp; p2d); 
 endmodule
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;矢量&#34;&gt;矢量&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;矢量用于使用一个名称对相关信号进行分组，以便于操作。例如，&lt;code&gt;wire[7:0] w&lt;/code&gt;，声明了一个具有8位的矢量，其功能相当于8个一位的&lt;code&gt;wire&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;声明矢量的具体格式如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;type [upper : lower] vector_name;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;举例如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;wire [7:0] w;         // 8-bit wire
+reg  [4:1] x;         // 4-bit reg
+output reg [0:0] y;   // 1-bit reg that is also an output port (this is still a vector)
+input wire [3:-2] z;  // 6-bit wire input (negative ranges are allowed)
+output [3:0] a;       // 4-bit output wire. Type is &#39;wire&#39; unless specified otherwise.
+wire [0:7] b;         // 8-bit wire where b[0] is the most-significant bit.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;vectors&#34;&gt;Vectors&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://zhenhuizhang.tk/post-images/1624851142781.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;构建一个具有一个 3 位输入的电路，然后输出相同的矢量，并将其拆分为三个单独的 1 位输出。将输出连接到输入矢量的o0,o1,o2。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module ( 
+    input wire [2:0] vec,
+    output wire [2:0] outv,
+    output wire o2,
+    output wire o1,
+    output wire o0  ); // Module body starts after module declaration
+    assign outv = vec;
+    assign o2 = vec[2];
+    assign o1 = vec[1];
+    assign o0 = vec[0];
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;vectors-in-more-detail&#34;&gt;Vectors in more detail&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;构建一个组合电路，将输入的半字（16 位、[15：0] ）分成较低的 [7：0] 和上 [15：8] 字节。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( 
+    input wire [15:0] in,
+    output wire [7:0] out_hi,
+    output wire [7:0] out_lo );
+    assign out_hi[7:0] = in[15:8];
+    assign out_lo[7:0] = in[7:0];
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;vector-part-select&#34;&gt;Vector part select&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;32 位矢量可被视为包含 4 字节（位 [31：24]、[23：16]等）。构建一个电路，进行大小端转换。例如AaaaaaaaBbbbbbbbCcccccccDddddddd =&amp;gt; DdddddddCcccccccBbbbbbbbAaaaaaaa。当需要交换一段数据的大小端时，通常使用此操作，例如在小端 x86 系统和许多 Internet 协议中使用的大端格式之间。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( 
+    input [31:0] in,
+    output [31:0] out );
+    assign out[31:24] = in[7:0];
+    assign out[23:16] = in[15:8];
+    assign out[15:8]= in[23:16] ;
+    assign out[7:0] = in[31:24];
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;bitwise-operators&#34;&gt;Bitwise operators&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://zhenhuizhang.tk/post-images/1624852039681.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;构建一个具有两个 3 位输入的电路，计算两个向量的按位或、两个向量的逻辑或 和两个向量的按位反向（非）。将&lt;code&gt;b&lt;/code&gt;的反向放在上半部分(即位 [5：3])，将&lt;code&gt;a&lt;/code&gt;反向放在下半部分(即位 [2：0])。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( 
+    input [2:0] a,
+    input [2:0] b,
+    output [2:0] out_or_bitwise,
+    output out_or_logical,
+    output [5:0] out_not
+);
+    assign out_or_bitwise = a|b;
+    assign out_or_logical = a||b;
+    assign out_not = ~{b,a};
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;four-input-gates&#34;&gt;Four-input gates&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;在[3：0]中用四个输入构建一个组合电路。有3个输出：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;out_and：输出4输入和门。&lt;/li&gt;
+&lt;li&gt;out_or：输出4输入或门。&lt;/li&gt;
+&lt;li&gt;out_xor：输出4输入XOR门。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( 
+    input [3:0] in,
+    output out_and,
+    output out_or,
+    output out_xor
+);
+	assign out_and = &amp;amp;in;
+    assign out_or = |in;
+    assign out_xor = ^in;
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;位拼接运算符&#34;&gt;位拼接运算符&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;位拼接运算符{}。用这个运算符可以把两个或多个信号的某些位拼接起来进行运算操作。&lt;/li&gt;
+&lt;li&gt;当在使用位拼接表达式时不允许存在没有指明位数的信号。这是因为在计算拼接信号的位宽的大小时必需知道其中每个信号的位宽。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;{信号1的某几位，信号2的某几位，..,..,信号n的某几位}&lt;/code&gt;。如：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;input [7:0] A, B;
+input Cin;
+output [7:0] Sum; // 和输出
+output Cout; // 进位输出
+assign {Cout, Sum} = A + B + Cin; // 进位与和拼接在一起
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;位拼接还可以用重复法来简化表达式 &lt;code&gt;{num{vector}}&lt;/code&gt;。举例如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;{4{w}} //这等同于{w,w,w,w}
+{b,{3{a,b}}} //这等同于{b,a,b,a,b,a,b}
+//需要注意，在重复表达式中的4和3，务必为常数表达式
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;vector-concatenation-operator&#34;&gt;Vector concatenation operator&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://zhenhuizhang.tk/post-images/1624852815420.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;给定多个输入向量，将它们聚集在一起，然后将其拆分为多个输出向量。有六个 5 位输入向量：a、b、c、d、e 和 f，总共 30 位输入。有四个 8 位输出矢量：w、x、y 和 z，用于 32 位输出。输出应是输入向量的对流，然后最低位是两个1位。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module (
+    input [4:0] a, b, c, d, e, f,
+    output [7:0] w, x, y, z );//
+    assign {w[7:0],x[7:0],y[7:0],z[7:0]} = { a[4:0],b[4:0],c[4:0],d[4:0],e[4:0],f[4:0],2&#39;b11};
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;vector-reversal-1&#34;&gt;Vector reversal 1&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;如果输入矢量为 8 位 [7：0]，则倒转其位并输出。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( 
+    input [7:0] in,
+    output [7:0] out
+);
+    assign out = {in[0],in[1],in[2],in[3],in[4],in[5],in[6],in[7]};
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;tips:&lt;/strong&gt; 如果写成&lt;code&gt;assign out[7:0] = in[0:7];&lt;/code&gt;；是无法正常运行的，这是因为在verilog语法中，是不允许直接这样将输入的向量进行翻转。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;replication-operator&#34;&gt;Replication operator&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;构建一个电路，将 8 位编号扩展到 32 位。这需要将符号位复制24 个符号位复制24次，（即复制位[7] 24 次），然后是 8 位数字本身。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module (
+    input [7:0] in,
+    output [31:0] out );//
+    assign out = {{24{in[7]}},in[7:0]};
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;more-replication&#34;&gt;More replication&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;10&#34;&gt;&lt;img src=&#34;https://zhenhuizhang.tk/post-images/1624853945428.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;给定五个 1 位信号（a、b、c、d 和 e），计算 25 位输出矢量中的所有 25 对式单位比较。如果比较的两个位相等，输出应为 1。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;out[24] = ~a ^ a;   // a == a, so out[24] is always 1.
+out[23] = ~a ^ b;
+out[22] = ~a ^ c;
+...
+out[ 1] = ~e ^ d;
+out[ 0] = ~e ^ e;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;使用位拼接运算符，可以更为简单的实现该代码。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module (
+    input a, b, c, d, e,
+    output [24:0] out );//
+    assign out = ~({{5{a}},{5{b}},{5{c}},{5{d}},{5{e}}}) ^ ({5{a,b,c,d,e}});
+endmodule
+
+&lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;blockquote&gt;
 &lt;p&gt;参考：&lt;br&gt;
 &lt;a href=&#34;https://hdlbits.01xz.net/wiki/Problem_sets&#34;&gt;HDLBits&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-">[Verilog12]HDLBits习题_Basics</a>
+">[Verilog12]HDLBits习题_Basics_Vectors</a>
       </div>
       
       <div class="item">

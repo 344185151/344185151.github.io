@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhenhuizhang.tk</id>
     <title>渣渣晖の博客</title>
-    <updated>2021-06-28T03:25:26.823Z</updated>
+    <updated>2021-06-28T04:25:48.888Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhenhuizhang.tk"/>
     <link rel="self" href="https://zhenhuizhang.tk/atom.xml"/>
@@ -11,14 +11,14 @@
     <icon>https://zhenhuizhang.tk/favicon.ico</icon>
     <rights>All rights reserved 2021, 渣渣晖の博客</rights>
     <entry>
-        <title type="html"><![CDATA[[Verilog12]HDLBits习题_Basics]]></title>
-        <id>https://zhenhuizhang.tk/post/verilog12hdlbits-xi-ti-_basics/</id>
-        <link href="https://zhenhuizhang.tk/post/verilog12hdlbits-xi-ti-_basics/">
+        <title type="html"><![CDATA[[Verilog12]HDLBits习题_Basics_Vectors]]></title>
+        <id>https://zhenhuizhang.tk/post/verilog12hdlbits-xi-ti-_basics_vectors/</id>
+        <link href="https://zhenhuizhang.tk/post/verilog12hdlbits-xi-ti-_basics_vectors/">
         </link>
         <updated>2021-06-28T02:35:20.000Z</updated>
-        <summary type="html"><![CDATA[<p>HDLBits习题讲解_Basics</p>
+        <summary type="html"><![CDATA[<p>HDLBits习题讲解_Basics_Vectors</p>
 ]]></summary>
-        <content type="html"><![CDATA[<p>HDLBits习题讲解_Basics</p>
+        <content type="html"><![CDATA[<p>HDLBits习题讲解_Basics_Vectors</p>
 ]]></content>
     </entry>
     <entry>
