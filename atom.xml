@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhenhuizhang.tk</id>
     <title>渣渣晖の博客</title>
-    <updated>2021-06-28T04:25:48.888Z</updated>
+    <updated>2021-06-28T11:54:37.588Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhenhuizhang.tk"/>
     <link rel="self" href="https://zhenhuizhang.tk/atom.xml"/>
@@ -11,14 +11,36 @@
     <icon>https://zhenhuizhang.tk/favicon.ico</icon>
     <rights>All rights reserved 2021, 渣渣晖の博客</rights>
     <entry>
-        <title type="html"><![CDATA[[Verilog12]HDLBits习题_Basics_Vectors]]></title>
-        <id>https://zhenhuizhang.tk/post/verilog12hdlbits-xi-ti-_basics_vectors/</id>
-        <link href="https://zhenhuizhang.tk/post/verilog12hdlbits-xi-ti-_basics_vectors/">
+        <title type="html"><![CDATA[[Verilog14]HDLBits习题_Vectors ]]></title>
+        <id>https://zhenhuizhang.tk/post/verilog14hdlbits-xi-ti-_vectors/</id>
+        <link href="https://zhenhuizhang.tk/post/verilog14hdlbits-xi-ti-_vectors/">
+        </link>
+        <updated>2021-06-28T07:49:51.000Z</updated>
+        <summary type="html"><![CDATA[<p>HDLBits习题讲解_Vectors</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>HDLBits习题讲解_Vectors</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[Verilog13]HDLBits习题_Basics]]></title>
+        <id>https://zhenhuizhang.tk/post/verilog13hdlbits-xi-ti-_basics/</id>
+        <link href="https://zhenhuizhang.tk/post/verilog13hdlbits-xi-ti-_basics/">
         </link>
         <updated>2021-06-28T02:35:20.000Z</updated>
-        <summary type="html"><![CDATA[<p>HDLBits习题讲解_Basics_Vectors</p>
+        <summary type="html"><![CDATA[<p>HDLBits习题讲解_Basics</p>
 ]]></summary>
-        <content type="html"><![CDATA[<p>HDLBits习题讲解_Basics_Vectors</p>
+        <content type="html"><![CDATA[<p>HDLBits习题讲解_Basics</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[Verilog12]HDLBits习题讲解汇总]]></title>
+        <id>https://zhenhuizhang.tk/post/verilog12hdlbits-xi-ti-jiang-jie-hui-zong/</id>
+        <link href="https://zhenhuizhang.tk/post/verilog12hdlbits-xi-ti-jiang-jie-hui-zong/">
+        </link>
+        <updated>2021-06-27T09:10:35.000Z</updated>
+        <summary type="html"><![CDATA[<p>HDLBits习题讲解汇总</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>HDLBits习题讲解汇总</p>
 ]]></content>
     </entry>
     <entry>
@@ -316,28 +338,6 @@
         <summary type="html"><![CDATA[<p>对于电路中各类&quot;GND&quot;的处理方式</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>对于电路中各类&quot;GND&quot;的处理方式</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[Verilog9]仿真语法_循环_存储载入_随机数]]></title>
-        <id>https://zhenhuizhang.tk/post/verilog9fang-zhen-yu-fa-_-xun-huan-_-cun-chu-zai-ru-_-sui-ji-shu/</id>
-        <link href="https://zhenhuizhang.tk/post/verilog9fang-zhen-yu-fa-_-xun-huan-_-cun-chu-zai-ru-_-sui-ji-shu/">
-        </link>
-        <updated>2020-07-25T17:46:10.000Z</updated>
-        <summary type="html"><![CDATA[<p>Verilog仿真语法，循环仿真语法，存储载入函数 ，随机数生成函数</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Verilog仿真语法，循环仿真语法，存储载入函数 ，随机数生成函数</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[电路]差分晶振_LVDS/LVPECL/HCSL/CML模式]]></title>
-        <id>https://zhenhuizhang.tk/post/chai-fen-jing-zhen-_lvdslvpeclhcslcml-xin-hao-mo-shi/</id>
-        <link href="https://zhenhuizhang.tk/post/chai-fen-jing-zhen-_lvdslvpeclhcslcml-xin-hao-mo-shi/">
-        </link>
-        <updated>2020-07-25T16:50:51.000Z</updated>
-        <summary type="html"><![CDATA[<p>差分信号，差分晶振，LVDS/LVPECL/HCSL/CML信号模式</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>差分信号，差分晶振，LVDS/LVPECL/HCSL/CML信号模式</p>
 ]]></content>
     </entry>
 </feed>
