@@ -9,7 +9,7 @@
 <meta name="description" content="热爱可抵岁月漫长">
 <meta name="theme-color" content="#000">
 <title>[Git]版本退回 | 渣渣晖の博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1624950690289">
+<link rel="shortcut icon" href="/favicon.ico?v=1624955859657">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -5932,6 +5932,387 @@ nothing to commit, working tree clean
       </div>
       
       <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://zhenhuizhang.tk/post/verilog18hdlbits-xi-ti-_basic-gates/"" data-c="
+          &lt;p&gt;HDLBits习题讲解_Basic Gates&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;本章节无新知识点，主要对之前所学知识进行加强巩固&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;wire&#34;&gt;Wire&lt;/h1&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://zhenhuizhang.tk/post-images/1624952406474.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，编写代码，将输入端口in和输出端口out连接。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module (
+    input in,
+    output out);
+	assign out = in;
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;gnd&#34;&gt;GND&lt;/h1&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://zhenhuizhang.tk/post-images/1624952576922.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，编写代码，将输出端口out接地。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module (
+    output out);
+	assign out = 1&#39;b0;
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;nor&#34;&gt;NOR&lt;/h1&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://zhenhuizhang.tk/post-images/1624952748488.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，编写代码，实现一个或非门。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module (
+    input in1,
+    input in2,
+    output out);
+    assign out =~(in1 | in2);
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;another-gate&#34;&gt;Another gate&lt;/h1&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://zhenhuizhang.tk/post-images/1624952835942.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，编写代码，实现上图所示的门电路。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module (
+    input in1,
+    input in2,
+    output out);
+    assign out = in1 &amp;amp; (~in2);
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;two-gates&#34;&gt;Two gates&lt;/h1&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://zhenhuizhang.tk/post-images/1624952923788.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，编写代码，实现上图所示的级联门电路。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module (
+    input in1,
+    input in2,
+    input in3,
+    output out);
+    assign out = (~(in1^in2)) ^ in3;
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;more-logic-gates&#34;&gt;More logic gates&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;尝试同时建立几个逻辑门，建立一个两输入的组合电路。共7个输出如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;out_and: a and b&lt;/li&gt;
+&lt;li&gt;out_or: a or b&lt;/li&gt;
+&lt;li&gt;out_xor: a xor b&lt;/li&gt;
+&lt;li&gt;out_nand: a nand b&lt;/li&gt;
+&lt;li&gt;out_nor: a nor b&lt;/li&gt;
+&lt;li&gt;out_xnor: a xnor b&lt;/li&gt;
+&lt;li&gt;out_anotb: a and-not b&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( 
+    input a, b,
+    output out_and,
+    output out_or,
+    output out_xor,
+    output out_nand,
+    output out_nor,
+    output out_xnor,
+    output out_anotb
+);
+	assign out_and = a&amp;amp;b;
+    assign out_or = a|b;
+    assign out_xor = a^b;
+    assign out_nand = ~(a&amp;amp;b);
+    assign out_nor = ~(a|b);
+    assign out_xnor = ~(a^b);
+    assign out_anotb = a&amp;amp;(~b);
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;7420-chip&#34;&gt;7420 chip&lt;/h1&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://zhenhuizhang.tk/post-images/1624953229836.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;7400系列集成电路是一个数字芯片系列，每个都由几个基本的逻辑门构成。7420是一个带有两个4输入与非门的芯片。&lt;/li&gt;
+&lt;li&gt;题目要求，实现一个具有与7420芯片相同功能的模块，共8个输入和2个输出。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module ( 
+    input p1a, p1b, p1c, p1d,
+    output p1y,
+    input p2a, p2b, p2c, p2d,
+    output p2y );
+    assign p1y=~(p1a&amp;amp;p1b&amp;amp;p1c&amp;amp;p1d);
+    assign p2y=~(p2a&amp;amp;p2b&amp;amp;p2c&amp;amp;p2d);
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;truth-tables&#34;&gt;Truth tables&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;在前面的练习中，我们使用简单的逻辑门和几个逻辑门的组合，这些电路是组合电路的例子。组合电路的意思是电路的输出仅取决于输入，这意味着对于任何给定的输入值，只有一个可能的输出值。因此，描述组合函数行为的一种方法是明确地列出所有可能的输入所对应的输出值，即真值表。对一个有N个输入的布尔函数而言，有2N种可能的输入组合。真值表的每一行都列出了一个输入组合，因此总有2N行。output列显示了每个输入值对应的输出。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://zhenhuizhang.tk/post-images/1624953659348.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;number&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;x3&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;x2&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;x1&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;f&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;6&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;7&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，构建一个模块，实现上述的真值表功能。&lt;/li&gt;
+&lt;li&gt;首先 ，先通过卡诺图化简真值表：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;x3\x2x1&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;00&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;01&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;11&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;10&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;化简可得，&lt;code&gt;f=(~x3&amp;amp;x2) | (x3&amp;amp;x1)&lt;/code&gt;，编写代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( 
+    input x3,
+    input x2,
+    input x1,  // three inputs
+    output f   // one output
+);
+    assign f = (~x3&amp;amp;x2) | (x3&amp;amp;x1);
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;two-bit-equality&#34;&gt;Two-bit equality&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，创建一个有两个2位输入A[1:0]和B[1:0]的电路，产生一个输出z。若A=B，则z=1，否则z=0。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module ( input [1:0] A, input [1:0] B, output z ); 
+    assign z=(A==B)?1&#39;b1:1&#39;b0;
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;simple-circuit-a&#34;&gt;Simple circuit A&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，创建电路，实现函数&lt;code&gt;z = (x^y) &amp;amp; x&lt;/code&gt;，代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module (input x, input y, output z);
+    assign z=(x^y)&amp;amp;x;
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;simple-circuit-b&#34;&gt;Simple circuit B&lt;/h1&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://zhenhuizhang.tk/post-images/1624954304515.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，创建电路，实现如上图所示的输入输出关系。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module ( input x, input y, output z );
+    assign z=~(x^y);
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;combine-circuits-a-and-b&#34;&gt;Combine circuits A and B&lt;/h1&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://zhenhuizhang.tk/post-images/1624954464831.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，A、B模块的功能如题&lt;code&gt;Simple circuit A&lt;/code&gt;和&lt;code&gt;Simple circuit B&lt;/code&gt;所示，。搭建模块实现上图所示功能。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module (input x, input y, output z);
+    wire za , zb;
+    assign za = (x ^ y) &amp;amp; x;
+    assign zb = ~(x ^ y);
+    assign z = (za | zb) ^ (za &amp;amp; zb);
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;ring-or-vibrate&#34;&gt;Ring or vibrate?&lt;/h1&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;10&#34;&gt;&lt;img src=&#34;https://zhenhuizhang.tk/post-images/1624954680374.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，设计一种电路来控制手机的铃声和振动马达。当有来电输入信号时(input ring)，电路必须打开铃声(output ringer= 1)或电机(output motor= 1)，但不能同时打开。如果手机处于振动模式(input vibrate_mode = 1)，打开电机。否则打开铃声。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module (
+    input ring,
+    input vibrate_mode,
+    output ringer,       // Make sound
+    output motor         // Vibrate
+);
+    assign ringer = ring &amp;amp; (~vibrate_mode);
+    assign motor = ring &amp;amp; vibrate_mode;
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;__tips:__当进行模块设计时，我们最好后向思考问题，如何从输出到输入。这与我们平时顺序式地思考编程问题不同，在编程时我们一般首先看输入如何决定输出，即输入为XX时输出为XX；对硬件工程师而言，通常的思路为输出为XX时输入是XX？在硬件设计中，在两种思路间思考与切换是很重要的技能。&lt;/p&gt;
+&lt;h1 id=&#34;thermostat&#34;&gt;Thermostat&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，加热/冷却恒温器同时控制加热器(冬季)和空调(夏季)。设计一个电路，根据需要打开或关闭加热器、空调和鼓风机。&lt;/li&gt;
+&lt;li&gt;恒温器有两种模式:加热模式(mode= 1)和冷却模式(mode= 0)。在加热模式下，当温度过低时打开加热器(too_cold = 1)但是不要使用空调。在冷却模式下，当温度太高(too_hot= 1)时打开空调，但不要打开加热器。当暖气或空调打开时。同时打开风扇让空气流通。此外。用户也可以仅要求风扇打开(fan_on = 1)，即使加热器和空调关闭。&lt;/li&gt;
+&lt;li&gt;代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module (
+    input too_cold,
+    input too_hot,
+    input mode,
+    input fan_on,
+    output heater,
+    output aircon,
+    output fan
+); 
+	assign heater = mode &amp;amp; too_cold;
+    assign aircon = (~mode) &amp;amp; too_hot;
+    assign fan = (mode &amp;amp; too_cold) | ((~mode) &amp;amp; too_hot) | fan_on;
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;3-bit-population-count&#34;&gt;3-bit population count&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，构造一个计数器，计算一个三位输入向量中1的个数。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( 
+    input [2:0] in,
+    output [1:0] out );
+    always@(*)begin
+        case(in)
+            3&#39;b000:out=2&#39;d0;
+            3&#39;b001:out=2&#39;d1;
+            3&#39;b010:out=2&#39;d1;
+            3&#39;b011:out=2&#39;d2;
+            3&#39;b100:out=2&#39;d1;
+            3&#39;b101:out=2&#39;d2;
+            3&#39;b110:out=2&#39;d2;
+            3&#39;b111:out=2&#39;d3;
+            default:out = 2&#39;d0;
+        endcase         
+    end
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;gates-and-vectors&#34;&gt;Gates and vectors&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，输入一个4位的输入向量in[3:0]，输出每个比特和它相邻比特之间的一些关系:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;out_both:这个输出向量的每一位应该表示对应的输入位和它左边的比特位(左边比特具有更高的索引)是否均为“1”。举例说明，out_both[2]应该指示出in[2]和in[3]是否均为1。&lt;/li&gt;
+&lt;li&gt;out_any:这个输出向量的每一位都应该表示相应的输入位和它右边的比特位是否存在“1”。&lt;/li&gt;
+&lt;li&gt;out_different:这个输出向量的每一位都应该表明相应的输入位是否与其左边的比特位不同。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( 
+    input [3:0] in,
+    output [2:0] out_both,
+    output [3:1] out_any,
+    output [3:0] out_different );
+
+    assign out_both = in[2:0] &amp;amp; in[3:1];
+    assign out_any = in[3:1] | in[2:0];
+    assign out_different = in[3:0] ^ {in[0],in[3:1]}; 
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;even-longer-vectors&#34;&gt;Even longer vectors&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，输入一个4位的输入向量in[99:0]，输出每个比特和它相邻比特之间的一些关系:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;out_both:这个输出向量的每一位应该表示对应的输入位和它左边的比特位(左边比特具有更高的索引)是否均为“1”。举例说明，out_both[98]应该指示出in[98]和in[99]是否均为1。&lt;/li&gt;
+&lt;li&gt;out_any:这个输出向量的每一位都应该表示相应的输入位和它右边的比特位是否存在“1”。&lt;/li&gt;
+&lt;li&gt;out_different:这个输出向量的每一位都应该表明相应的输入位是否与其左边的比特位不同。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( 
+    input [99:0] in,
+    output [98:0] out_both,
+    output [99:1] out_any,
+    output [99:0] out_different );
+
+    assign out_both = in[98:0] &amp;amp; in[99:1];
+    assign out_any = in[99:1] | in[98:0];
+    assign out_different = in[99:0] ^ {in[0],in[99:1]};
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;参考：&lt;br&gt;
+&lt;a href=&#34;https://hdlbits.01xz.net/wiki/Problem_sets&#34;&gt;HDLBits&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+">[Verilog18]HDLBits习题_Basic Gates</a>
+      </div>
+      
+      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://zhenhuizhang.tk/post/verilog17hdlbits-xi-ti-_more-verilog-features/"" data-c="
           &lt;p&gt;HDLBits习题讲解_More Verilog Features&lt;/p&gt;
 &lt;!-- more --&gt;
@@ -7189,7 +7570,13 @@ endmodule
 &lt;h2 id=&#34;vectors-习题解答&#34;&gt;&lt;a href=&#34;https://zhenhuizhang.tk/post/verilog14hdlbits-xi-ti-_vectors/&#34;&gt;Vectors-习题解答&lt;/a&gt;&lt;/h2&gt;
 &lt;h2 id=&#34;moduleshierarchy-习题解答&#34;&gt;&lt;a href=&#34;https://zhenhuizhang.tk/post/verilog15hdlbits-xi-ti-_modules-hierarchy/&#34;&gt;Modules:Hierarchy-习题解答&lt;/a&gt;&lt;/h2&gt;
 &lt;h2 id=&#34;procedures-习题解答&#34;&gt;&lt;a href=&#34;https://zhenhuizhang.tk/post/verilog16hdlbits-xi-ti-_procedures/&#34;&gt;Procedures-习题解答&lt;/a&gt;&lt;/h2&gt;
-&lt;h2 id=&#34;more-verilog-features-习题解答&#34;&gt;&lt;a href=&#34;&#34;&gt;More Verilog Features-习题解答&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;more-verilog-features-习题解答&#34;&gt;&lt;a href=&#34;https://zhenhuizhang.tk/post/verilog17hdlbits-xi-ti-_more-verilog-features/&#34;&gt;More Verilog Features-习题解答&lt;/a&gt;&lt;/h2&gt;
+&lt;h1 id=&#34;circuits&#34;&gt;Circuits&lt;/h1&gt;
+&lt;h2 id=&#34;combinational-logic&#34;&gt;Combinational Logic&lt;/h2&gt;
+&lt;h3 id=&#34;basic-gates&#34;&gt;&lt;a href=&#34;&#34;&gt;Basic Gates&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;multiplexers&#34;&gt;&lt;a href=&#34;&#34;&gt;Multiplexers&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;arithmetic-circuits&#34;&gt;&lt;a href=&#34;&#34;&gt;Arithmetic Circuits&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;karnaugh-map-to-circuit&#34;&gt;&lt;a href=&#34;&#34;&gt;Karnaugh Map to Circuit&lt;/a&gt;&lt;/h3&gt;
 ">[Verilog12]HDLBits习题讲解汇总</a>
       </div>
       
