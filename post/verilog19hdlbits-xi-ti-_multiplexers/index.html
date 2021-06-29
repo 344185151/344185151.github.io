@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="热爱可抵岁月漫长">
 <meta name="theme-color" content="#000">
-<title>[Solidworks]内存耗尽解决办法 | 渣渣晖の博客</title>
+<title>[Verilog19]HDLBits习题_Multiplexers | 渣渣晖の博客</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1624956845286">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -48,8 +48,8 @@
 
 
 
-  <meta name="description" content="[Solidworks]内存耗尽解决办法" />
-  <meta name="keywords" content="Solidworks" />
+  <meta name="description" content="[Verilog19]HDLBits习题_Multiplexers" />
+  <meta name="keywords" content="Verilog" />
 </head>
 
 <body>
@@ -198,10 +198,17 @@
   <div class="toc-wrapper auto-number no_compress"
     id="toc_wrapper">
     <ul class="markdownIt-TOC">
-<li>
+<li><a href="#%E5%A4%9A%E8%B7%AF%E9%80%89%E6%8B%A9%E5%99%A8">多路选择器</a>
 <ul>
-<li><a href="#%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98">遇到问题：</a></li>
-<li><a href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88">解决方案：</a></li>
+<li><a href="#2-to-1-multiplexer">2-to-1 multiplexer</a></li>
+<li><a href="#2-to-1-bus-multiplexer">2-to-1 bus multiplexer</a></li>
+<li><a href="#9-to-1-multiplexer">9-to-1 multiplexer</a></li>
+<li><a href="#256-to-1-multiplexer">256-to-1 multiplexer</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%8D%E7%A1%AE%E5%AE%9A%E4%BD%8D%E7%BD%AE%E7%9A%84%E4%BD%8D%E5%88%87%E7%89%87">不确定位置的位切片</a>
+<ul>
+<li><a href="#256-to-1-4-bit-multiplexer">256-to-1 4-bit multiplexer</a></li>
 </ul>
 </li>
 </ul>
@@ -469,8 +476,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://zhenhuizhang.tk/post/solidworksnei-cun-hao-jin-jie-jue-ban-fa/">
-      [Solidworks]内存耗尽解决办法
+    <a class="post-title-link" href="https://zhenhuizhang.tk/post/verilog19hdlbits-xi-ti-_multiplexers/">
+      [Verilog19]HDLBits习题_Multiplexers
     </a>
   </h1>
   <div class="post-meta">
@@ -478,7 +485,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-01-06 15:40:25">2020-01-06</span>
+      <span class="publish-time" data-t="2020-09-29 16:43:53">2020-09-29</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -487,8 +494,8 @@
       <span class="pc-show language" data-lan="category-in">分类于</span>
       
       
-      <a href="https://zhenhuizhang.tk/tag/RAQoQugYA/">
-        <span>Solidworks</span>
+      <a href="https://zhenhuizhang.tk/tag/w5e5JPE5B/">
+        <span>Verilog</span>
       </a>
       
       
@@ -497,17 +504,17 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>2<span class="language" data-lan="minute">分钟</span></span>
+      <span>4<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>415<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>695<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/solidworksnei-cun-hao-jin-jie-jue-ban-fa/" data-flag-title="[Solidworks]内存耗尽解决办法" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/verilog19hdlbits-xi-ti-_multiplexers/" data-flag-title="[Verilog19]HDLBits习题_Multiplexers" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -516,23 +523,96 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <h2 id="遇到问题">遇到问题：</h2>
-<p>在使用Solidworks软件的过程，当打开大型装配图或者进行仿真分析时，经常会提示内存即将耗尽，软件即将自动关闭。一开始，我以为是Solidworks需要使用较大的内存，原装的8G内存不足，故又添加了一条8G内存。<br>
-但发现仍为解决该问题，任务管理器显示内存使用只有60%左右时，软件又是同样报告内存不足。测试了网络上提供的各种解决方案，找到一个有效的解决方案。<br>
-内存不足的真正问题在于Solidworks所使用的“USER 对象”及“GDI 对象”比较多，而电脑默认允许使用的最大值均为10000，故会出现任务管理器看似还有很多空余内存，但软件缺报内存不足的问题。<br>
-理论上，每个会话最多只能处理65,536个GDI句柄，处理65,536个用户句柄。但是，每个会话可以打开的GDI句柄和用户句柄的最大数量通常较少，因为它受可用内存的影响。而在Solidworks使用过程中，出现句柄数量不足而导致无法尽可能使用内存资源的问题。<br>
-<img src="https://zhenhuizhang.tk/post-images/1578299914523.png" alt="" loading="lazy"></p>
+              <p>HDLBits习题讲解_Multiplexers</p>
+<!-- more -->
+<h1 id="多路选择器">多路选择器</h1>
+<ul>
+<li>多路选择器(Multiplexer)简称多路器，它是一个多输入、单输出的组合逻辑电路，在数字系统中有着广泛的应用。它可以根据地址码(选择码)的不同，从多个输入数据流中选取一个，让其输出到公共的输出端。</li>
+</ul>
+<h2 id="2-to-1-multiplexer">2-to-1 multiplexer</h2>
+<ul>
+<li>题目要求，实现一个位宽为1的2-1的多路选择器。当sel=0，选择a，当sel=1，选择b。代码如下：</li>
+</ul>
+<pre><code>module top_module( 
+    input a, b, sel,
+    output out ); 
+	assign out = sel?b:a;
+endmodule
+</code></pre>
+<h2 id="2-to-1-bus-multiplexer">2-to-1 bus multiplexer</h2>
+<ul>
+<li>题目要求，实现一个位宽为100的2-1的多路选择器。当sel=0，选择a，当sel=1，选择b。代码如下：</li>
+</ul>
+<pre><code>module top_module( 
+    input [99:0] a, b,
+    input sel,
+    output [99:0] out );
+	assign out = sel?b:a;
+endmodule
+</code></pre>
+<h2 id="9-to-1-multiplexer">9-to-1 multiplexer</h2>
+<ul>
+<li>题目要求，创建一个位宽为16的9-1的多路选择器。sel=0选择a, sel=1选择b，以此类推。对于未使用的sel值(sel=9~15)，将所有输出位设置为1。代码如下：</li>
+</ul>
+<pre><code>module top_module( 
+    input [15:0] a, b, c, d, e, f, g, h, i,
+    input [3:0] sel,
+    output [15:0] out );
+
+    always @(*) begin
+        case(sel)
+            4'd0: out = a;
+            4'd1: out = b;
+            4'd2: out = c;
+            4'd3: out = d;
+            4'd4: out = e;
+            4'd5: out = f;
+            4'd6: out = g;
+            4'd7: out = h;
+            4'd8: out = i;
+            default:out = 16'hffff;
+        endcase
+    end 
+endmodule
+</code></pre>
+<h2 id="256-to-1-multiplexer">256-to-1 multiplexer</h2>
+<ul>
+<li>题目要求，创建一个位宽为1的256-1的多路选择器。256个输入都被打包成一个256位的输入向量。sel=0表示选择in[0]，sel=1表示选择in[1]，以此类推。代码如下：</li>
+</ul>
+<pre><code>module top_module( 
+    input [255:0] in,
+    input [7:0] sel,
+    output out );
+    assign out = in[sel];
+endmodule
+</code></pre>
+<h1 id="不确定位置的位切片">不确定位置的位切片</h1>
+<ul>
+<li>有时候，我们需要切片的位置，并不是一个确定的位置，而是需要将某位输入经过一定运算后得到。但对于:运算符，要求:两边的数字均为一个确定值。故我们需要使用:+或:-运算符进行不确定位置的切片，具体语法如下:</li>
+</ul>
+<pre><code>reg [31:0] a =32'haabbccdd; 
+reg [3:0] b,c;
+reg [2:0] byte_addr;//外部输入的byte地址
+//从输入地址的byte的第4位开始，向上截取4位赋值给b
+assign b[3:0] = a[byte_addr+4 +: 4]
+//从输入地址的byte的第7开始，向下截取4位赋值给b
+assign b[3:0] = a[byte_addr+7 -: 4]
+</code></pre>
+<h2 id="256-to-1-4-bit-multiplexer">256-to-1 4-bit multiplexer</h2>
+<ul>
+<li>题目要求，创建一个位宽为4的256-1的多路选择器。256个4位输入都被打包成一个1024位的输入向量。sel=0选择in[3:0]，sel=1选择in[7:4]，sel=2选择in[11:8]，以此类推。代码如下：</li>
+</ul>
+<pre><code>module top_module( 
+    input [1023:0] in,
+    input [7:0] sel,
+    output [3:0] out );
+    assign out =in[sel*4 +: 4] ;//切片位置开始向上切片4位
+endmodule
+</code></pre>
 <hr>
-<h2 id="解决方案">解决方案：</h2>
-<ol>
-<li>win+r 输入regedit打开注册表管理器</li>
-<li>把[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsNT\CurrentVersion\Windows]位置处的&quot;GDIProcessHandleQuota&quot;和&quot;USERProcessHandleQuota&quot; 这两项的值，由默认的10000改大，我修改到了30000（十进制）</li>
-<li>关机重启电脑，再进入软件，即可解决该问题。</li>
-</ol>
 <blockquote>
 <p>参考：<br>
-<a href="https://zhidao.baidu.com/question/424594101970071212.html">https://zhidao.baidu.com/question/424594101970071212.html</a><br>
-<a href="https://docs.microsoft.com/zh-cn/windows/win32/sysinfo/object-categories">https://docs.microsoft.com/zh-cn/windows/win32/sysinfo/object-categories</a></p>
+<a href="https://hdlbits.01xz.net/wiki/Problem_sets">HDLBits</a></p>
 </blockquote>
 
             </div>
@@ -546,7 +626,7 @@
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://zhenhuizhang.tk/post/solidworksnei-cun-hao-jin-jie-jue-ban-fa/" title="[Solidworks]内存耗尽解决办法">https://zhenhuizhang.tk/post/solidworksnei-cun-hao-jin-jie-jue-ban-fa/</a>
+      <a href="https://zhenhuizhang.tk/post/verilog19hdlbits-xi-ti-_multiplexers/" title="[Verilog19]HDLBits习题_Multiplexers">https://zhenhuizhang.tk/post/verilog19hdlbits-xi-ti-_multiplexers/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -555,21 +635,21 @@
   </ul>
   <div class="tags">
     
-      <a href="https://zhenhuizhang.tk/tag/RAQoQugYA/"># Solidworks</a>
+      <a href="https://zhenhuizhang.tk/tag/w5e5JPE5B/"># Verilog</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
         <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="[Python3]装饰器_生成器_迭代器_内置函数_软件目录" href="https://zhenhuizhang.tk/post/python3zhuang-shi-qi-_-sheng-cheng-qi-_-die-dai-qi-_-nei-zhi-han-shu-_-ruan-jian-mu-lu/">[Python3]装饰器_生成器_迭代器_内置函数_软件目录</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="[Python3]装饰器_生成器_迭代器_内置函数_软件目录" href="https://zhenhuizhang.tk/post/python3zhuang-shi-qi-_-sheng-cheng-qi-_-die-dai-qi-_-nei-zhi-han-shu-_-ruan-jian-mu-lu/">上一篇</a>
+        <a class="nav-pc-next" title="[电路]电容的参数_种类_应用" href="https://zhenhuizhang.tk/post/dian-lu-dian-rong-de-can-shu-_-chong-lei-_-ying-yong/">[电路]电容的参数_种类_应用</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="[电路]电容的参数_种类_应用" href="https://zhenhuizhang.tk/post/dian-lu-dian-rong-de-can-shu-_-chong-lei-_-ying-yong/">上一篇</a>
       
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="[Python2]文件操作_数据序列化_函数编程" href="https://zhenhuizhang.tk/post/python2wen-jian-cao-zuo-_-shu-ju-xu-lie-hua-_-han-shu-bian-cheng/">[Python2]文件操作_数据序列化_函数编程</a>
-        <a class="nav-mobile-next" title="[Python2]文件操作_数据序列化_函数编程" href="https://zhenhuizhang.tk/post/python2wen-jian-cao-zuo-_-shu-ju-xu-lie-hua-_-han-shu-bian-cheng/">下一篇</a>
+        <a class="nav-pc-next" title="[Verilog18]HDLBits习题_Basic Gates" href="https://zhenhuizhang.tk/post/verilog18hdlbits-xi-ti-_basic-gates/">[Verilog18]HDLBits习题_Basic Gates</a>
+        <a class="nav-mobile-next" title="[Verilog18]HDLBits习题_Basic Gates" href="https://zhenhuizhang.tk/post/verilog18hdlbits-xi-ti-_basic-gates/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

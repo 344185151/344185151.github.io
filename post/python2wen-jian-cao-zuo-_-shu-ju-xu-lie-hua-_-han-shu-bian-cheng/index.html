@@ -9,7 +9,7 @@
 <meta name="description" content="热爱可抵岁月漫长">
 <meta name="theme-color" content="#000">
 <title>[Python2]文件操作_数据序列化_函数编程 | 渣渣晖の博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1624955859657">
+<link rel="shortcut icon" href="/favicon.ico?v=1624956845286">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -5966,6 +5966,102 @@ nothing to commit, working tree clean
       </div>
       
       <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://zhenhuizhang.tk/post/verilog19hdlbits-xi-ti-_multiplexers/"" data-c="
+          &lt;p&gt;HDLBits习题讲解_Multiplexers&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;h1 id=&#34;多路选择器&#34;&gt;多路选择器&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;多路选择器(Multiplexer)简称多路器，它是一个多输入、单输出的组合逻辑电路，在数字系统中有着广泛的应用。它可以根据地址码(选择码)的不同，从多个输入数据流中选取一个，让其输出到公共的输出端。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-to-1-multiplexer&#34;&gt;2-to-1 multiplexer&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，实现一个位宽为1的2-1的多路选择器。当sel=0，选择a，当sel=1，选择b。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( 
+    input a, b, sel,
+    output out ); 
+	assign out = sel?b:a;
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;2-to-1-bus-multiplexer&#34;&gt;2-to-1 bus multiplexer&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，实现一个位宽为100的2-1的多路选择器。当sel=0，选择a，当sel=1，选择b。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( 
+    input [99:0] a, b,
+    input sel,
+    output [99:0] out );
+	assign out = sel?b:a;
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;9-to-1-multiplexer&#34;&gt;9-to-1 multiplexer&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，创建一个位宽为16的9-1的多路选择器。sel=0选择a, sel=1选择b，以此类推。对于未使用的sel值(sel=9~15)，将所有输出位设置为1。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( 
+    input [15:0] a, b, c, d, e, f, g, h, i,
+    input [3:0] sel,
+    output [15:0] out );
+
+    always @(*) begin
+        case(sel)
+            4&#39;d0: out = a;
+            4&#39;d1: out = b;
+            4&#39;d2: out = c;
+            4&#39;d3: out = d;
+            4&#39;d4: out = e;
+            4&#39;d5: out = f;
+            4&#39;d6: out = g;
+            4&#39;d7: out = h;
+            4&#39;d8: out = i;
+            default:out = 16&#39;hffff;
+        endcase
+    end 
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;256-to-1-multiplexer&#34;&gt;256-to-1 multiplexer&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，创建一个位宽为1的256-1的多路选择器。256个输入都被打包成一个256位的输入向量。sel=0表示选择in[0]，sel=1表示选择in[1]，以此类推。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( 
+    input [255:0] in,
+    input [7:0] sel,
+    output out );
+    assign out = in[sel];
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;不确定位置的位切片&#34;&gt;不确定位置的位切片&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;有时候，我们需要切片的位置，并不是一个确定的位置，而是需要将某位输入经过一定运算后得到。但对于:运算符，要求:两边的数字均为一个确定值。故我们需要使用:+或:-运算符进行不确定位置的切片，具体语法如下:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;reg [31:0] a =32&#39;haabbccdd; 
+reg [3:0] b,c;
+reg [2:0] byte_addr;//外部输入的byte地址
+//从输入地址的byte的第4位开始，向上截取4位赋值给b
+assign b[3:0] = a[byte_addr+4 +: 4]
+//从输入地址的byte的第7开始，向下截取4位赋值给b
+assign b[3:0] = a[byte_addr+7 -: 4]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;256-to-1-4-bit-multiplexer&#34;&gt;256-to-1 4-bit multiplexer&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，创建一个位宽为4的256-1的多路选择器。256个4位输入都被打包成一个1024位的输入向量。sel=0选择in[3:0]，sel=1选择in[7:4]，sel=2选择in[11:8]，以此类推。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( 
+    input [1023:0] in,
+    input [7:0] sel,
+    output [3:0] out );
+    assign out =in[sel*4 +: 4] ;//切片位置开始向上切片4位
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;参考：&lt;br&gt;
+&lt;a href=&#34;https://hdlbits.01xz.net/wiki/Problem_sets&#34;&gt;HDLBits&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+">[Verilog19]HDLBits习题_Multiplexers</a>
+      </div>
+      
+      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://zhenhuizhang.tk/post/verilog18hdlbits-xi-ti-_basic-gates/"" data-c="
           &lt;p&gt;HDLBits习题讲解_Basic Gates&lt;/p&gt;
 &lt;!-- more --&gt;
@@ -7607,8 +7703,8 @@ endmodule
 &lt;h2 id=&#34;more-verilog-features-习题解答&#34;&gt;&lt;a href=&#34;https://zhenhuizhang.tk/post/verilog17hdlbits-xi-ti-_more-verilog-features/&#34;&gt;More Verilog Features-习题解答&lt;/a&gt;&lt;/h2&gt;
 &lt;h1 id=&#34;circuits&#34;&gt;Circuits&lt;/h1&gt;
 &lt;h2 id=&#34;combinational-logic&#34;&gt;Combinational Logic&lt;/h2&gt;
-&lt;h3 id=&#34;basic-gates&#34;&gt;&lt;a href=&#34;&#34;&gt;Basic Gates&lt;/a&gt;&lt;/h3&gt;
-&lt;h3 id=&#34;multiplexers&#34;&gt;&lt;a href=&#34;&#34;&gt;Multiplexers&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;basic-gates&#34;&gt;&lt;a href=&#34;https://zhenhuizhang.tk/post/verilog18hdlbits-xi-ti-_basic-gates/&#34;&gt;Basic Gates&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;multiplexers&#34;&gt;&lt;a href=&#34;https://zhenhuizhang.tk/post/verilog19hdlbits-xi-ti-_multiplexers&#34;&gt;Multiplexers&lt;/a&gt;&lt;/h3&gt;
 &lt;h3 id=&#34;arithmetic-circuits&#34;&gt;&lt;a href=&#34;&#34;&gt;Arithmetic Circuits&lt;/a&gt;&lt;/h3&gt;
 &lt;h3 id=&#34;karnaugh-map-to-circuit&#34;&gt;&lt;a href=&#34;&#34;&gt;Karnaugh Map to Circuit&lt;/a&gt;&lt;/h3&gt;
 ">[Verilog12]HDLBits习题讲解汇总</a>

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhenhuizhang.tk</id>
     <title>渣渣晖の博客</title>
-    <updated>2021-06-29T08:37:49.260Z</updated>
+    <updated>2021-06-29T08:54:14.026Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhenhuizhang.tk"/>
     <link rel="self" href="https://zhenhuizhang.tk/atom.xml"/>
@@ -242,6 +242,17 @@
 ]]></content>
     </entry>
     <entry>
+        <title type="html"><![CDATA[[Verilog19]HDLBits习题_Multiplexers]]></title>
+        <id>https://zhenhuizhang.tk/post/verilog19hdlbits-xi-ti-_multiplexers/</id>
+        <link href="https://zhenhuizhang.tk/post/verilog19hdlbits-xi-ti-_multiplexers/">
+        </link>
+        <updated>2020-09-29T08:43:53.000Z</updated>
+        <summary type="html"><![CDATA[<p>HDLBits习题讲解_Multiplexers</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>HDLBits习题讲解_Multiplexers</p>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[[Verilog18]HDLBits习题_Basic Gates]]></title>
         <id>https://zhenhuizhang.tk/post/verilog18hdlbits-xi-ti-_basic-gates/</id>
         <link href="https://zhenhuizhang.tk/post/verilog18hdlbits-xi-ti-_basic-gates/">
@@ -327,17 +338,6 @@
         <summary type="html"><![CDATA[<p>TimeGEN波形绘制软件的使用教程</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>TimeGEN波形绘制软件的使用教程</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[FPGA23]安装Petalinux]]></title>
-        <id>https://zhenhuizhang.tk/post/fpga23an-zhuang-petalinux/</id>
-        <link href="https://zhenhuizhang.tk/post/fpga23an-zhuang-petalinux/">
-        </link>
-        <updated>2020-08-18T16:54:39.000Z</updated>
-        <summary type="html"><![CDATA[<p>安装虚拟机，安装Vivado，安装Petalinux工具</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>安装虚拟机，安装Vivado，安装Petalinux工具</p>
 ]]></content>
     </entry>
 </feed>
