@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhenhuizhang.tk</id>
     <title>渣渣晖の博客</title>
-    <updated>2021-06-29T02:30:16.674Z</updated>
+    <updated>2021-06-29T03:05:20.614Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhenhuizhang.tk"/>
     <link rel="self" href="https://zhenhuizhang.tk/atom.xml"/>
@@ -10,61 +10,6 @@
     <logo>https://zhenhuizhang.tk/images/avatar.png</logo>
     <icon>https://zhenhuizhang.tk/favicon.ico</icon>
     <rights>All rights reserved 2021, 渣渣晖の博客</rights>
-    <entry>
-        <title type="html"><![CDATA[[Verilog16]HDLBits习题_Procedures]]></title>
-        <id>https://zhenhuizhang.tk/post/verilog16hdlbits-xi-ti-_procedures/</id>
-        <link href="https://zhenhuizhang.tk/post/verilog16hdlbits-xi-ti-_procedures/">
-        </link>
-        <updated>2021-06-29T09:21:29.000Z</updated>
-        <summary type="html"><![CDATA[<p>HDLBits习题_Procedures</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>HDLBits习题_Procedures</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[Verilog15]HDLBits习题_Modules: Hierarchy]]></title>
-        <id>https://zhenhuizhang.tk/post/verilog15hdlbits-xi-ti-_modules-hierarchy/</id>
-        <link href="https://zhenhuizhang.tk/post/verilog15hdlbits-xi-ti-_modules-hierarchy/">
-        </link>
-        <updated>2021-06-29T06:09:13.000Z</updated>
-        <summary type="html"><![CDATA[<p>HDLBits习题讲解_Modules: Hierarchy</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>HDLBits习题讲解_Modules: Hierarchy</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[Verilog14]HDLBits习题_Vectors ]]></title>
-        <id>https://zhenhuizhang.tk/post/verilog14hdlbits-xi-ti-_vectors/</id>
-        <link href="https://zhenhuizhang.tk/post/verilog14hdlbits-xi-ti-_vectors/">
-        </link>
-        <updated>2021-06-28T07:49:51.000Z</updated>
-        <summary type="html"><![CDATA[<p>HDLBits习题讲解_Vectors</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>HDLBits习题讲解_Vectors</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[Verilog13]HDLBits习题_Basics]]></title>
-        <id>https://zhenhuizhang.tk/post/verilog13hdlbits-xi-ti-_basics/</id>
-        <link href="https://zhenhuizhang.tk/post/verilog13hdlbits-xi-ti-_basics/">
-        </link>
-        <updated>2021-06-28T02:35:20.000Z</updated>
-        <summary type="html"><![CDATA[<p>HDLBits习题讲解_Basics</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>HDLBits习题讲解_Basics</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[Verilog12]HDLBits习题讲解汇总]]></title>
-        <id>https://zhenhuizhang.tk/post/verilog12hdlbits-xi-ti-jiang-jie-hui-zong/</id>
-        <link href="https://zhenhuizhang.tk/post/verilog12hdlbits-xi-ti-jiang-jie-hui-zong/">
-        </link>
-        <updated>2021-06-27T09:10:35.000Z</updated>
-        <summary type="html"><![CDATA[<p>HDLBits习题讲解汇总</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>HDLBits习题讲解汇总</p>
-]]></content>
-    </entry>
     <entry>
         <title type="html"><![CDATA[[Linux]文件系统_类型_操作命令]]></title>
         <id>https://zhenhuizhang.tk/post/linuxwen-jian-xi-tong-_-wen-jian-cao-zuo-ming-ling/</id>
@@ -294,6 +239,61 @@
         <summary type="html"><![CDATA[<p>浅谈电源设计中电容的电性能参数，常见电容器类型与实际应用</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>浅谈电源设计中电容的电性能参数，常见电容器类型与实际应用</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[Verilog16]HDLBits习题_Procedures]]></title>
+        <id>https://zhenhuizhang.tk/post/verilog16hdlbits-xi-ti-_procedures/</id>
+        <link href="https://zhenhuizhang.tk/post/verilog16hdlbits-xi-ti-_procedures/">
+        </link>
+        <updated>2020-09-29T05:21:29.000Z</updated>
+        <summary type="html"><![CDATA[<p>HDLBits习题讲解_Procedures</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>HDLBits习题讲解_Procedures</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[Verilog15]HDLBits习题_Modules: Hierarchy]]></title>
+        <id>https://zhenhuizhang.tk/post/verilog15hdlbits-xi-ti-_modules-hierarchy/</id>
+        <link href="https://zhenhuizhang.tk/post/verilog15hdlbits-xi-ti-_modules-hierarchy/">
+        </link>
+        <updated>2020-09-29T02:09:13.000Z</updated>
+        <summary type="html"><![CDATA[<p>HDLBits习题讲解_Modules: Hierarchy</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>HDLBits习题讲解_Modules: Hierarchy</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[Verilog14]HDLBits习题_Vectors ]]></title>
+        <id>https://zhenhuizhang.tk/post/verilog14hdlbits-xi-ti-_vectors/</id>
+        <link href="https://zhenhuizhang.tk/post/verilog14hdlbits-xi-ti-_vectors/">
+        </link>
+        <updated>2020-09-28T07:49:51.000Z</updated>
+        <summary type="html"><![CDATA[<p>HDLBits习题讲解_Vectors</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>HDLBits习题讲解_Vectors</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[Verilog13]HDLBits习题_Basics]]></title>
+        <id>https://zhenhuizhang.tk/post/verilog13hdlbits-xi-ti-_basics/</id>
+        <link href="https://zhenhuizhang.tk/post/verilog13hdlbits-xi-ti-_basics/">
+        </link>
+        <updated>2020-09-28T02:35:20.000Z</updated>
+        <summary type="html"><![CDATA[<p>HDLBits习题讲解_Basics</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>HDLBits习题讲解_Basics</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[Verilog12]HDLBits习题讲解汇总]]></title>
+        <id>https://zhenhuizhang.tk/post/verilog12hdlbits-xi-ti-jiang-jie-hui-zong/</id>
+        <link href="https://zhenhuizhang.tk/post/verilog12hdlbits-xi-ti-jiang-jie-hui-zong/">
+        </link>
+        <updated>2020-09-27T09:10:35.000Z</updated>
+        <summary type="html"><![CDATA[<p>HDLBits习题讲解汇总</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>HDLBits习题讲解汇总</p>
 ]]></content>
     </entry>
     <entry>
