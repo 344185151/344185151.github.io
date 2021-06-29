@@ -9,7 +9,7 @@
 <meta name="description" content="热爱可抵岁月漫长">
 <meta name="theme-color" content="#000">
 <title>[FPGA13][电路]接口电平标准 | 渣渣晖の博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1624935913557">
+<link rel="shortcut icon" href="/favicon.ico?v=1624950690289">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -6043,6 +6043,274 @@ nothing to commit, working tree clean
 &lt;a href=&#34;https://zhuanlan.zhihu.com/p/22142995&#34;&gt;谈谈电容&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 ">[电路]电容的参数_种类_应用</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://zhenhuizhang.tk/post/verilog17hdlbits-xi-ti-_more-verilog-features/"" data-c="
+          &lt;p&gt;HDLBits习题讲解_More Verilog Features&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;h1 id=&#34;条件运算符&#34;&gt;条件运算符&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;verilog中有跟c语言类似的三目运算符，这可以用于在一行中根据条件选择两个值中的一个，而不用在组合always块中使用if-then。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;信号 = 条件？表达式1：表达式2;  //即当条件成立时，信号取表达式1的值，反之取表达式2的值。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;conditional-ternary-operator&#34;&gt;Conditional ternary operator&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，给定4个无符号数，求最小值。无符号数可以用比较运算符(a &amp;lt; b)进行比较。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module (
+    input [7:0] a, b, c, d,
+    output [7:0] min);
+
+    wire [7:0] mintemp1,mintemp2;
+    assign mintemp1 = (a&amp;lt;b)? a:b;
+    assign mintemp2 = (c&amp;lt;mintemp1)?c:mintemp1;
+    assign min = (d&amp;lt;mintemp2)?d:mintemp2;
+    
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;缩减运算符&#34;&gt;缩减运算符&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;缩位运算符可以对向量的各个位进行和、或和异或操作，产生1位的输出。例如：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;b = &amp;amp;a; // 等效于b = ((a[0] &amp;amp; a[1]) &amp;amp; a[2]) &amp;amp; a[3];
+/////////////////////////////////////////////////////////
+A = 5&#39;b11001;
+&amp;amp;A;  //值等于0， 只有A的各位都为1时，其与缩减运算的值才为1
+|A; //值等于1， 只有A的各位都为0时，其或缩减运算的值才为0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;reduction-operators&#34;&gt;Reduction operators&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;奇偶校验经常被用作传输数据时检测错误的简单方法。题目要求，创建一个电路，为一个8位字节计算一个奇偶校验位(它将在1个字节的基础上增加1位)。我们将使用偶校验，其中偶校验位是8个数据位的异或(XOR)。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module (
+    input [7:0] in,
+    output parity); 
+	assign parity = ^ in;
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;reduction-even-wider-gates&#34;&gt;Reduction: Even wider gates&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，构建一个组合电路，包括一个100位输入，in[99:0]；三个输出：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;out_and：输出100个输入和门。&lt;/li&gt;
+&lt;li&gt;out_or：输出100个输入或门。&lt;/li&gt;
+&lt;li&gt;out_xor：输出100个输入XOR门。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( 
+    input [99:0] in,
+    output out_and,
+    output out_or,
+    output out_xor 
+);
+	assign out_and = &amp;amp;in;
+    assign out_or = |in;
+    assign out_xor = ^in;
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;循环语句&#34;&gt;循环语句&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;for语句&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;for(循环变量赋初值；循环结束条件; 循环变量增值) 执行语句;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;先给控制循环次数的变量赋初值。再判定控制循环的表达式的值， 如为假则跳出循环语句，如为真则执行指定的语句后，执行一条赋值语句来修正控制循环变量次数的变量的值，然后再次判断。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;repeat语句&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;repeat(循环次数表达式) 语句;
+// or
+repeat(循环次数表达式)begin……end;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;连续执行一条语句或者一个语句块 n 次。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;while语句&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;while(循环执行条件表达式) 语句;
+// or
+while(循环执行条件表达式) begin……end;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;执行一条语句直到某个条件不满足。如果一开始条件即不满足(为假)，则语句一次也不能被执行。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;forever语句&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;forever 语句;
+// or
+forever begin……end;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;forever循环语句连续不断地执行后面的语句或语句块，常用来产生周期性的波形，作为仿真激励信号。它与always语句的不同之处在于它一般用在initial语句块中。若要用它进行模块描述，可用disable语句进行中断。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;combinational-for-loop-vector-reversal-2&#34;&gt;Combinational for-loop: Vector reversal 2&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，给定一个100位的输入向量[99:0]，将其逐位倒置。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( 
+    input [99:0] in,
+    output [99:0] out
+);
+	integer i;
+    always @(*) begin
+        for(i=0;i&amp;lt;100;i++) begin
+            out[i]=in[99-i];
+        end
+    end
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;combinational-for-loop-255-bit-population-count&#34;&gt;Combinational for-loop: 255-bit population count&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，对一个255为的输入向量设计一个计数器电路，计数向量中&lt;code&gt;1&lt;/code&gt;的个数。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( 
+    input [254:0] in,
+    output [7:0] out );
+    integer i;
+    always @(*) begin
+        out = 8&#39;d0;
+        for(i=0;i&amp;lt;255;i++) begin
+            out = out + in[i];
+        end
+    end
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;__tips:__需要注意，在此处代码中，会产生锁存器电路，在实际应用中应酌情使用。如不希望产生锁存器则需要通过遍历所有种可能(2^255)，在代码书写上具有较大的代码量。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;生成语句&#34;&gt;生成语句&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;循环生成的主要目的是简化我们的代码书写，利用循环生成语句我们可以将之前需要写很多条比较相似的语句才能实现的功能用很简短的循环生成语句来代替。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;循环生成语句&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;基本语法如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;///////generate-for语句///////
+generate
+    genvar &amp;lt;var1&amp;gt;;
+    for (&amp;lt;var1&amp;gt; = 0 ; &amp;lt;var1&amp;gt; &amp;lt; num ; &amp;lt;var1&amp;gt;=&amp;lt;var1&amp;gt;+1)   
+    begin: &amp;lt;label_1&amp;gt;
+        &amp;lt;code&amp;gt;;
+    end
+endgenerate
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;条件生成语句&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;基本语法如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;///////generate-if语句///////
+generate
+	if (&amp;lt;condition&amp;gt;) begin: &amp;lt;label_1&amp;gt;
+		&amp;lt;code&amp;gt;;
+	end 
+    else if (&amp;lt;condition&amp;gt;) begin: &amp;lt;label_2&amp;gt;
+		&amp;lt;code&amp;gt;;
+	end 
+    else begin: &amp;lt;label_3&amp;gt;
+		&amp;lt;code&amp;gt;;
+	end
+endgenerate
+
+///////generate-case语句///////
+generate
+    case (&amp;lt;constant_expression&amp;gt;)
+        &amp;lt;value&amp;gt;: begin: &amp;lt;label_1&amp;gt;
+            &amp;lt;code&amp;gt;
+        end
+        &amp;lt;value&amp;gt;: begin: &amp;lt;label_2&amp;gt;
+            &amp;lt;code&amp;gt;
+        end
+		……
+        default: begin: &amp;lt;label_N&amp;gt;
+            &amp;lt;code&amp;gt;
+        end
+    endcase
+endgenerate
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;generate-for-loop-100-bit-binary-adder-2&#34;&gt;Generate for-loop: 100-bit binary adder 2&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，通过实例化100个全加器，创建一个100位的进位加法器。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( 
+    input [99:0] a, b,
+    input cin,
+    output [99:0] cout,
+    output [99:0] sum );
+    
+    assign{cout[0],sum[0]}=a[0]+b[0]+cin;//最低位需要进位，单独书写
+    generate
+        genvar i; //定义循环变量i
+        for(i=1;i&amp;lt;100;i++)
+        begin:adder //给循环生成模块命名
+            assign{cout[i],sum[i]}=a[i]+b[i]+cout[i-1];//高位均采用循环生成语句
+        end
+    endgenerate
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;generate-for-loop-100-digit-bcd-adder&#34;&gt;Generate for-loop: 100-digit BCD adder&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;题目提供了一个名为bcd_fadd的BCD一位加法器，它的输入为两个BCD数字和进位输入信号，并生成求和输出和进位输出信号。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module bcd_fadd {
+    input [3:0] a,
+    input [3:0] b,
+    input     cin,
+    output   cout,
+    output [3:0] sum );
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;要求实例化100个bcd_fadd模块，以创建一个100位的BCD进位加法器。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( 
+    input [399:0] a, b,
+    input cin,
+    output cout,
+    output [399:0] sum );
+    
+    wire cout_temp[99:0];
+    bcd_fadd u_bcd_fadd_0(
+        .a(a[3:0]),
+        .b(b[3:0]),
+        .cin(cin),
+        .cout(cout_temp[0]),
+        .sum(sum[3:0])
+    );
+    generate 
+        genvar i;
+        for(i=1;i&amp;lt;100;i=i+1)
+        begin:u_bcd_fadd
+            bcd_fadd u_bcd_fadd(
+                .a(a[4*i+3 : 4*i]),
+                .b(b[4*i+3 : 4*i]),
+                .cin(cout_temp[i-1]),
+                .cout(cout_temp[i]),
+                .sum(sum[4*i+3 : 4*i])
+            );
+        end
+    endgenerate
+    assign cout = cout_temp[99];
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;参考：&lt;br&gt;
+&lt;a href=&#34;https://hdlbits.01xz.net/wiki/Problem_sets&#34;&gt;HDLBits&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+">[Verilog17]HDLBits习题_More Verilog Features</a>
       </div>
       
       <div class="item">

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhenhuizhang.tk</id>
     <title>渣渣晖の博客</title>
-    <updated>2021-06-29T03:05:20.614Z</updated>
+    <updated>2021-06-29T07:11:39.374Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhenhuizhang.tk"/>
     <link rel="self" href="https://zhenhuizhang.tk/atom.xml"/>
@@ -242,6 +242,17 @@
 ]]></content>
     </entry>
     <entry>
+        <title type="html"><![CDATA[[Verilog17]HDLBits习题_More Verilog Features]]></title>
+        <id>https://zhenhuizhang.tk/post/verilog17hdlbits-xi-ti-_more-verilog-features/</id>
+        <link href="https://zhenhuizhang.tk/post/verilog17hdlbits-xi-ti-_more-verilog-features/">
+        </link>
+        <updated>2020-09-29T06:35:59.000Z</updated>
+        <summary type="html"><![CDATA[<p>HDLBits习题讲解_More Verilog Features</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>HDLBits习题讲解_More Verilog Features</p>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[[Verilog16]HDLBits习题_Procedures]]></title>
         <id>https://zhenhuizhang.tk/post/verilog16hdlbits-xi-ti-_procedures/</id>
         <link href="https://zhenhuizhang.tk/post/verilog16hdlbits-xi-ti-_procedures/">
@@ -327,17 +338,6 @@
         <summary type="html"><![CDATA[<p>I2C总线协议，物理层，协议层，M24C08读写实例</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>I2C总线协议，物理层，协议层，M24C08读写实例</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[电路]DDR3_引脚定义_容量_特殊功能]]></title>
-        <id>https://zhenhuizhang.tk/post/dian-lu-ddr3_-yin-jiao-ding-yi-_-rong-liang-_-te-shu-gong-neng/</id>
-        <link href="https://zhenhuizhang.tk/post/dian-lu-ddr3_-yin-jiao-ding-yi-_-rong-liang-_-te-shu-gong-neng/">
-        </link>
-        <updated>2020-08-06T18:57:23.000Z</updated>
-        <summary type="html"><![CDATA[<p>DDR3随机存储器，引脚介绍，寻址与容量计算，ODT片内终结_ZQ校准_WriteLeveling</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>DDR3随机存储器，引脚介绍，寻址与容量计算，ODT片内终结_ZQ校准_WriteLeveling</p>
 ]]></content>
     </entry>
 </feed>
