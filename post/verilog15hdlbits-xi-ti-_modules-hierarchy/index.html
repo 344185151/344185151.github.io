@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="热爱可抵岁月漫长">
 <meta name="theme-color" content="#000">
-<title>[Solidworks]内存耗尽解决办法 | 渣渣晖の博客</title>
+<title>[Verilog15]HDLBits习题_Modules: Hierarchy | 渣渣晖の博客</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1624933783713">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -48,8 +48,8 @@
 
 
 
-  <meta name="description" content="[Solidworks]内存耗尽解决办法" />
-  <meta name="keywords" content="Solidworks" />
+  <meta name="description" content="[Verilog15]HDLBits习题_Modules: Hierarchy" />
+  <meta name="keywords" content="Verilog" />
 </head>
 
 <body>
@@ -198,10 +198,16 @@
   <div class="toc-wrapper auto-number no_compress"
     id="toc_wrapper">
     <ul class="markdownIt-TOC">
-<li>
+<li><a href="#%E5%85%83%E4%BB%B6%E4%BE%8B%E5%8C%96">元件例化</a>
 <ul>
-<li><a href="#%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98">遇到问题：</a></li>
-<li><a href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88">解决方案：</a></li>
+<li><a href="#modules">Modules</a></li>
+<li><a href="#connecting-ports-by-position">Connecting ports by position</a></li>
+<li><a href="#three-modules">Three modules</a></li>
+<li><a href="#modules-and-vectors">Modules and vectors</a></li>
+<li><a href="#adder-1">Adder 1</a></li>
+<li><a href="#adder-2">Adder 2</a></li>
+<li><a href="#carry-select-adder">Carry-select adder</a></li>
+<li><a href="#adder-subtractor">Adder-subtractor</a></li>
 </ul>
 </li>
 </ul>
@@ -469,8 +475,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://zhenhuizhang.tk/post/solidworksnei-cun-hao-jin-jie-jue-ban-fa/">
-      [Solidworks]内存耗尽解决办法
+    <a class="post-title-link" href="https://zhenhuizhang.tk/post/verilog15hdlbits-xi-ti-_modules-hierarchy/">
+      [Verilog15]HDLBits习题_Modules: Hierarchy
     </a>
   </h1>
   <div class="post-meta">
@@ -478,7 +484,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-01-06 15:40:25">2020-01-06</span>
+      <span class="publish-time" data-t="2021-06-29 14:09:13">2021-06-29</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -487,8 +493,8 @@
       <span class="pc-show language" data-lan="category-in">分类于</span>
       
       
-      <a href="https://zhenhuizhang.tk/tag/RAQoQugYA/">
-        <span>Solidworks</span>
+      <a href="https://zhenhuizhang.tk/tag/w5e5JPE5B/">
+        <span>Verilog</span>
       </a>
       
       
@@ -497,17 +503,17 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>2<span class="language" data-lan="minute">分钟</span></span>
+      <span>8<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>415<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>1624<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/solidworksnei-cun-hao-jin-jie-jue-ban-fa/" data-flag-title="[Solidworks]内存耗尽解决办法" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/verilog15hdlbits-xi-ti-_modules-hierarchy/" data-flag-title="[Verilog15]HDLBits习题_Modules: Hierarchy" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -516,23 +522,304 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <h2 id="遇到问题">遇到问题：</h2>
-<p>在使用Solidworks软件的过程，当打开大型装配图或者进行仿真分析时，经常会提示内存即将耗尽，软件即将自动关闭。一开始，我以为是Solidworks需要使用较大的内存，原装的8G内存不足，故又添加了一条8G内存。<br>
-但发现仍为解决该问题，任务管理器显示内存使用只有60%左右时，软件又是同样报告内存不足。测试了网络上提供的各种解决方案，找到一个有效的解决方案。<br>
-内存不足的真正问题在于Solidworks所使用的“USER 对象”及“GDI 对象”比较多，而电脑默认允许使用的最大值均为10000，故会出现任务管理器看似还有很多空余内存，但软件缺报内存不足的问题。<br>
-理论上，每个会话最多只能处理65,536个GDI句柄，处理65,536个用户句柄。但是，每个会话可以打开的GDI句柄和用户句柄的最大数量通常较少，因为它受可用内存的影响。而在Solidworks使用过程中，出现句柄数量不足而导致无法尽可能使用内存资源的问题。<br>
-<img src="https://zhenhuizhang.tk/post-images/1578299914523.png" alt="" loading="lazy"></p>
-<hr>
-<h2 id="解决方案">解决方案：</h2>
+              <p>HDLBits习题讲解_Modules: Hierarchy</p>
+<!-- more -->
+<h1 id="元件例化">元件例化</h1>
+<ul>
+<li>当我们在调用别人已经写好的IP核，或者使用自己的IP核时，需要对IP核进行元件例化操作</li>
+<li>例化的目的是在上一级模块中调用例化的模块完成代码功能，在 Verilog 里例化信号的格式如下：模块名必须和要例化的模块名一致，包括模块信号名也必须一致。连接信号为 TOP 程序跟模块之间传递的信号，模块与模块之间的连接信号不能相互冲突，否则会产生编译错误。</li>
+<li>实际使用中，会有两种例化形式，具体格式如下：</li>
+</ul>
+<pre><code>//按信号位置例化（不推荐）
+mudule_name  new_module_name(new_signal_1,new_signal_2,new_signal_3);
+//按信号名称例化（推荐）
+mudule_name  new_module_name
+(
+    .signal_1   (new_signal_1),
+    .signal_2   (new_signal_2),
+    .signal_3   (new_signal_3)
+);
+</code></pre>
+<h2 id="modules">Modules</h2>
+<figure data-type="image" tabindex="1"><img src="https://zhenhuizhang.tk/post-images/1624861120606.png" alt="" loading="lazy"></figure>
+<ul>
+<li>题目要求使用原件例化，连接<code>mod_a</code>模块。mod_a的模块代码如下：</li>
+</ul>
+<pre><code>module mod_a ( input in1, input in2, output out );
+    // Module body
+endmodule
+</code></pre>
+<ul>
+<li>代码如下：</li>
+</ul>
+<pre><code>//按信号位置例化（不推荐）
+module top_module ( input a, input b, output out );
+    mod_a u_mod_a(a,b,out);
+endmodule
+//按信号名称例化（推荐）
+module top_module ( input a, input b, output out );
+    mod_a u_mod_a(
+        .in1(a),
+        .in2(b),
+        .out(out)
+    );
+endmodule
+</code></pre>
+<h2 id="connecting-ports-by-position">Connecting ports by position</h2>
+<figure data-type="image" tabindex="2"><img src="https://zhenhuizhang.tk/post-images/1624861335379.png" alt="" loading="lazy"></figure>
+<ul>
+<li>题目要求使用原件例化，连接<code>mod_a</code>模块。mod_a的模块代码如下：</li>
+</ul>
+<pre><code>module mod_a ( output, output, input, input, input, input );
+    //module body
+endmodule
+</code></pre>
+<ul>
+<li>要求按信号位置进行例化，连接顺序为<code>out1,out2,a,b,c,d</code>，代码如下：</li>
+</ul>
+<pre><code>module top_module ( 
+    input a, 
+    input b, 
+    input c,
+    input d,
+    output out1,
+    output out2
+);
+    mod_a u_mod_a(out1,out2,a,b,c,d);
+endmodule
+</code></pre>
+<h2 id="three-modules">Three modules</h2>
+<figure data-type="image" tabindex="3"><img src="https://zhenhuizhang.tk/post-images/1624865952604.png" alt="" loading="lazy"></figure>
+<ul>
+<li>已有一个模块my_dff，其中有两个输入和一个输出(D触发器)。实例化三个D触发器然后将它们连接在一起，实现一个长度为3的移位寄存器。clk端口需要连接到所有my_dff实例。my_dff的模块代码如下：</li>
+</ul>
+<pre><code>module my_dff ( input clk, input d, output q );
+</code></pre>
+<ul>
+<li>按如图所示的顺序例化并连接三个模块，代码如下：</li>
+</ul>
+<pre><code>module top_module ( input clk, input d, output q );
+    wire q0,q1;
+    my_dff u0_my_dff(
+        .clk(clk),
+        .d(d),
+        .q(q0)
+    );
+    my_dff u1_my_dff(
+        .clk(clk),
+        .d(q0),
+        .q(q1)
+    );
+    my_dff u3_my_dff(
+    	.clk(clk),
+        .d(q1),
+        .q(q)
+    );
+endmodule
+</code></pre>
+<blockquote>
+<p>__tips:__在命名<code>wire</code>和例化<code>module</code>时，名称必须是独一无二的</p>
+</blockquote>
+<h2 id="modules-and-vectors">Modules and vectors</h2>
+<figure data-type="image" tabindex="4"><img src="https://zhenhuizhang.tk/post-images/1624866234073.png" alt="" loading="lazy"></figure>
+<ul>
+<li>有一个模块my_dff8，它具有两个输入和一个输出(实现一组8位的D触发器)。实例化其中的三个，然后将它们连接在一起，实现一个长度为3的8位宽移位寄存器。另外，构造一个4-1多路选择器，根据sel[1:0]选择输出值。本质上，sel选择的是延迟输入的周期。</li>
+<li>已有模块代码如下：</li>
+</ul>
+<pre><code>module my_dff8 ( input clk, input [7:0] d, output [7:0] q );
+</code></pre>
+<ul>
+<li>按如图所示的顺序例化并连接，代码如下：</li>
+</ul>
+<pre><code>module top_module ( 
+    input clk, 
+    input [7:0] d, 
+    input [1:0] sel, 
+    output [7:0] q 
+);
+    wire [7:0] q0,q1,q2;
+    
+    my_dff8 u0_my_dff8(
+        .clk(clk),
+        .d(d),
+        .q(q0)
+    );
+    my_dff8 u1_my_dff8(
+        .clk(clk),
+        .d(q0),
+        .q(q1)
+    );
+    my_dff8 u3_my_dff8(
+    	.clk(clk),
+        .d(q1),
+        .q(q2)
+    );
+    assign q = sel[1]? (sel[0]?q2:q1):(sel[0]?q0:d);//多路选择器
+endmodule
+</code></pre>
+<h2 id="adder-1">Adder 1</h2>
+<figure data-type="image" tabindex="5"><img src="https://zhenhuizhang.tk/post-images/1624866766109.png" alt="" loading="lazy"></figure>
+<ul>
+<li>题目要求使用两个带进位的16bit加法器组成一个32bit加法器。一个加法器用于计算结果的低16位，而另一个加法器用于计算结果的高16位。所提供的模块声明如下：</li>
+</ul>
+<pre><code>module add16 ( input[15:0] a, input[15:0] b, input cin, output[15:0] sum, output cout );
+</code></pre>
+<ul>
+<li>代码编写如下：</li>
+</ul>
+<pre><code>module top_module(
+    input [31:0] a,
+    input [31:0] b,
+    output [31:0] sum
+);
+	wire cout_0;
+    add16 u0_add16(
+        .a(a[15:0]),
+        .b(b[15:0]),
+        .cin(1'b0),
+        .sum(sum[15:0]),
+        .cout(cout_0)
+    );
+    add16 u1_add16(
+        .a(a[31:16]),
+        .b(b[31:16]),
+        .cin(cout_0),
+        .sum(sum[31:16]),
+        .cout()
+    );
+endmodule
+</code></pre>
+<h2 id="adder-2">Adder 2</h2>
+<figure data-type="image" tabindex="6"><img src="https://zhenhuizhang.tk/post-images/1624867720955.png" alt="" loading="lazy"></figure>
+<ul>
+<li>如图中所示的模块结构，我们的top_module例化了2个16位的加法器予以实现，而每个16位的加法器又是例化了16个1位的全加器加以实现。题目要求，自定义一个1bit的全加器，构成一个16bit全加器，然后用两个16bit全加器完成32bit加法模块的搭建，忽略进位。具体任务如下</li>
+</ul>
 <ol>
-<li>win+r 输入regedit打开注册表管理器</li>
-<li>把[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsNT\CurrentVersion\Windows]位置处的&quot;GDIProcessHandleQuota&quot;和&quot;USERProcessHandleQuota&quot; 这两项的值，由默认的10000改大，我修改到了30000（十进制）</li>
-<li>关机重启电脑，再进入软件，即可解决该问题。</li>
+<li>定义一个1bit全加器。</li>
+<li>在顶层完成两个16bit全加器的调用。</li>
 </ol>
+<ul>
+<li>题目提供一个16位加法器模块，具体代码如下：</li>
+</ul>
+<pre><code>module add16 ( input[15:0] a, input[15:0] b, input cin, output[15:0] sum, output cout );
+</code></pre>
+<ul>
+<li>需要用户自行编写并声明的1位加法器，输入输出接口定义如下：</li>
+</ul>
+<pre><code>module add1 ( input a, input b, input cin, output sum, output cout );
+</code></pre>
+<ul>
+<li>代码编写如下：</li>
+</ul>
+<pre><code>module top_module (
+    input [31:0] a,
+    input [31:0] b,
+    output [31:0] sum
+);//
+    wire cout_0;
+	add16 u0_add16 (
+        .a(a[15:0]),
+        .b(b[15:0]),
+        .cin(0),
+        .sum(sum[15:0]),
+        .cout(cout_0)
+    );
+    add16 u1_add16(
+        .a(a[31:16]),
+        .b(b[31:16]),
+        .cin(cout_0),
+        .sum(sum[31:16]),
+        .cout()
+    );
+endmodule
+
+module add1 ( input a, input b, input cin,   output sum, output cout );
+// Full adder module here
+    assign {cout,sum} = a + b + cin;
+endmodule
+</code></pre>
+<h2 id="carry-select-adder">Carry-select adder</h2>
+<figure data-type="image" tabindex="7"><img src="https://zhenhuizhang.tk/post-images/1624869046294.png" alt="" loading="lazy"></figure>
+<ul>
+<li>传统的级联加法器，随着加法器的数量不断增加，加法器的速度会变得越来越慢，这是因为每一个后级均在等待前一级的计算结果。故若我们更加追求执行速度而不在意资源使用的话，可使用超前进位加法器以获得更小的时延。</li>
+<li>本题将两个带进位的16位数字相加，并生成一个输出进位和16位的和。并将输出进位用于控制一个16位2-1多路选择器，用于选择高位的计算结果。题目提供一个16位加法器模块，具体代码如下：</li>
+</ul>
+<pre><code>module add16 ( input[15:0] a, input[15:0] b, input cin, output[15:0] sum, output cout );
+</code></pre>
+<ul>
+<li>代码编写如下：</li>
+</ul>
+<pre><code>module top_module(
+    input [31:0] a,
+    input [31:0] b,
+    output [31:0] sum
+);
+    wire [15:0] highout0;
+    wire [15:0] highout1;
+    wire cout;
+    add16 u_add16_low(
+        .a(a[15:0]),
+        .b(b[15:0]),
+        .cin(0),
+        .sum(sum[15:0]),
+        .cout(cout)
+    );
+    add16 u_add16_high0(
+        .a(a[31:16]),
+        .b(b[31:16]),
+        .cin(0),
+        .sum(highout0),
+        .cout()
+    );
+    add16 u_add16_high1(
+        .a(a[31:16]),
+        .b(b[31:16]),
+        .cin(1),
+        .sum(highout1),
+        .cout()
+    );
+    assign sum[31:16] = (cout)? highout1:highout0;
+endmodule
+</code></pre>
+<h2 id="adder-subtractor">Adder-subtractor</h2>
+<figure data-type="image" tabindex="8"><img src="https://zhenhuizhang.tk/post-images/1624870962058.png" alt="" loading="lazy"></figure>
+<ul>
+<li>题目要求利用sub信号和两个16bit的全加器，实现32bit的加减法运算。对输入的sub信号进行判断，如果sub=0，则输出(a + b + 0)；如果sub=1，则输出(a + ~b + 1)。题目提供一个16位加法器模块，具体代码如下：</li>
+</ul>
+<pre><code>module add16 ( input[15:0] a, input[15:0] b, input cin, output[15:0]sum, output cout );
+</code></pre>
+<ul>
+<li>代码编写如下：</li>
+</ul>
+<pre><code>module top_module(
+    input [31:0] a,
+    input [31:0] b,
+    input sub,
+    output [31:0] sum
+);
+    wire [31:0] b_processed;
+    wire cout_temp;
+    assign b_processed = b ^ {32{sub}}; 
+    add16 u_add16_lower(
+        .a(a[15:0]),
+        .b(b_processed[15:0]),
+        .cin(sub),
+        .sum(sum[15:0]),
+        .cout(cout_temp)
+    );
+    add16 u_add16_higher(
+        .a(a[31:16]),
+        .b(b_processed[31:16]),
+        .cin(cout_temp),
+        .sum(sum[31:16]),
+        .cout()
+    );
+endmodule
+</code></pre>
+<hr>
 <blockquote>
 <p>参考：<br>
-<a href="https://zhidao.baidu.com/question/424594101970071212.html">https://zhidao.baidu.com/question/424594101970071212.html</a><br>
-<a href="https://docs.microsoft.com/zh-cn/windows/win32/sysinfo/object-categories">https://docs.microsoft.com/zh-cn/windows/win32/sysinfo/object-categories</a></p>
+<a href="https://hdlbits.01xz.net/wiki/Problem_sets">HDLBits</a></p>
 </blockquote>
 
             </div>
@@ -546,7 +833,7 @@
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://zhenhuizhang.tk/post/solidworksnei-cun-hao-jin-jie-jue-ban-fa/" title="[Solidworks]内存耗尽解决办法">https://zhenhuizhang.tk/post/solidworksnei-cun-hao-jin-jie-jue-ban-fa/</a>
+      <a href="https://zhenhuizhang.tk/post/verilog15hdlbits-xi-ti-_modules-hierarchy/" title="[Verilog15]HDLBits习题_Modules: Hierarchy">https://zhenhuizhang.tk/post/verilog15hdlbits-xi-ti-_modules-hierarchy/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -555,21 +842,21 @@
   </ul>
   <div class="tags">
     
-      <a href="https://zhenhuizhang.tk/tag/RAQoQugYA/"># Solidworks</a>
+      <a href="https://zhenhuizhang.tk/tag/w5e5JPE5B/"># Verilog</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
         <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="[Python3]装饰器_生成器_迭代器_内置函数_软件目录" href="https://zhenhuizhang.tk/post/python3zhuang-shi-qi-_-sheng-cheng-qi-_-die-dai-qi-_-nei-zhi-han-shu-_-ruan-jian-mu-lu/">[Python3]装饰器_生成器_迭代器_内置函数_软件目录</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="[Python3]装饰器_生成器_迭代器_内置函数_软件目录" href="https://zhenhuizhang.tk/post/python3zhuang-shi-qi-_-sheng-cheng-qi-_-die-dai-qi-_-nei-zhi-han-shu-_-ruan-jian-mu-lu/">上一篇</a>
+        <a class="nav-pc-next" title="[Verilog16]HDLBits习题_Procedures" href="https://zhenhuizhang.tk/post/verilog16hdlbits-xi-ti-_procedures/">[Verilog16]HDLBits习题_Procedures</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="[Verilog16]HDLBits习题_Procedures" href="https://zhenhuizhang.tk/post/verilog16hdlbits-xi-ti-_procedures/">上一篇</a>
       
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="[Python2]文件操作_数据序列化_函数编程" href="https://zhenhuizhang.tk/post/python2wen-jian-cao-zuo-_-shu-ju-xu-lie-hua-_-han-shu-bian-cheng/">[Python2]文件操作_数据序列化_函数编程</a>
-        <a class="nav-mobile-next" title="[Python2]文件操作_数据序列化_函数编程" href="https://zhenhuizhang.tk/post/python2wen-jian-cao-zuo-_-shu-ju-xu-lie-hua-_-han-shu-bian-cheng/">下一篇</a>
+        <a class="nav-pc-next" title="[Verilog14]HDLBits习题_Vectors " href="https://zhenhuizhang.tk/post/verilog14hdlbits-xi-ti-_vectors/">[Verilog14]HDLBits习题_Vectors </a>
+        <a class="nav-mobile-next" title="[Verilog14]HDLBits习题_Vectors " href="https://zhenhuizhang.tk/post/verilog14hdlbits-xi-ti-_vectors/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

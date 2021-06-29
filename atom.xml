@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhenhuizhang.tk</id>
     <title>渣渣晖の博客</title>
-    <updated>2021-06-28T13:01:27.959Z</updated>
+    <updated>2021-06-29T02:30:16.674Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhenhuizhang.tk"/>
     <link rel="self" href="https://zhenhuizhang.tk/atom.xml"/>
@@ -10,6 +10,28 @@
     <logo>https://zhenhuizhang.tk/images/avatar.png</logo>
     <icon>https://zhenhuizhang.tk/favicon.ico</icon>
     <rights>All rights reserved 2021, 渣渣晖の博客</rights>
+    <entry>
+        <title type="html"><![CDATA[[Verilog16]HDLBits习题_Procedures]]></title>
+        <id>https://zhenhuizhang.tk/post/verilog16hdlbits-xi-ti-_procedures/</id>
+        <link href="https://zhenhuizhang.tk/post/verilog16hdlbits-xi-ti-_procedures/">
+        </link>
+        <updated>2021-06-29T09:21:29.000Z</updated>
+        <summary type="html"><![CDATA[<p>HDLBits习题_Procedures</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>HDLBits习题_Procedures</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[Verilog15]HDLBits习题_Modules: Hierarchy]]></title>
+        <id>https://zhenhuizhang.tk/post/verilog15hdlbits-xi-ti-_modules-hierarchy/</id>
+        <link href="https://zhenhuizhang.tk/post/verilog15hdlbits-xi-ti-_modules-hierarchy/">
+        </link>
+        <updated>2021-06-29T06:09:13.000Z</updated>
+        <summary type="html"><![CDATA[<p>HDLBits习题讲解_Modules: Hierarchy</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>HDLBits习题讲解_Modules: Hierarchy</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[Verilog14]HDLBits习题_Vectors ]]></title>
         <id>https://zhenhuizhang.tk/post/verilog14hdlbits-xi-ti-_vectors/</id>
@@ -316,28 +338,6 @@
         <summary type="html"><![CDATA[<p>DDR3随机存储器，引脚介绍，寻址与容量计算，ODT片内终结_ZQ校准_WriteLeveling</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>DDR3随机存储器，引脚介绍，寻址与容量计算，ODT片内终结_ZQ校准_WriteLeveling</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[电路]AD汉化_加速_禁止联网_DSN/brd文件导入]]></title>
-        <id>https://zhenhuizhang.tk/post/dian-lu-ad-han-hua-_-qi-dong-jia-su-_-jin-zhi-lian-wang-_dsnbrd-wen-jian-dao-ru/</id>
-        <link href="https://zhenhuizhang.tk/post/dian-lu-ad-han-hua-_-qi-dong-jia-su-_-jin-zhi-lian-wang-_dsnbrd-wen-jian-dao-ru/">
-        </link>
-        <updated>2020-08-06T18:23:13.000Z</updated>
-        <summary type="html"><![CDATA[<p>AD汉化，启动加速，AD禁止连接互联网，将Cadence文件(.DSN)或Allegro文件(.brd)导入到Altium Designer中</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>AD汉化，启动加速，AD禁止连接互联网，将Cadence文件(.DSN)或Allegro文件(.brd)导入到Altium Designer中</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[电路]电路中各类“GND”的处理]]></title>
-        <id>https://zhenhuizhang.tk/post/dian-lu-dian-lu-zhong-ge-lei-gndde-chu-li/</id>
-        <link href="https://zhenhuizhang.tk/post/dian-lu-dian-lu-zhong-ge-lei-gndde-chu-li/">
-        </link>
-        <updated>2020-07-28T15:37:55.000Z</updated>
-        <summary type="html"><![CDATA[<p>对于电路中各类&quot;GND&quot;的处理方式</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>对于电路中各类&quot;GND&quot;的处理方式</p>
 ]]></content>
     </entry>
 </feed>

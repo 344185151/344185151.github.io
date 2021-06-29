@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="热爱可抵岁月漫长">
 <meta name="theme-color" content="#000">
-<title>[Solidworks]内存耗尽解决办法 | 渣渣晖の博客</title>
+<title>[Verilog16]HDLBits习题_Procedures | 渣渣晖の博客</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1624933783713">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -48,8 +48,8 @@
 
 
 
-  <meta name="description" content="[Solidworks]内存耗尽解决办法" />
-  <meta name="keywords" content="Solidworks" />
+  <meta name="description" content="[Verilog16]HDLBits习题_Procedures" />
+  <meta name="keywords" content="Verilog" />
 </head>
 
 <body>
@@ -198,10 +198,24 @@
   <div class="toc-wrapper auto-number no_compress"
     id="toc_wrapper">
     <ul class="markdownIt-TOC">
-<li>
+<li><a href="#always%E8%AF%AD%E5%8F%A5%E5%9D%97">always语句块</a>
 <ul>
-<li><a href="#%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98">遇到问题：</a></li>
-<li><a href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88">解决方案：</a></li>
+<li><a href="#always-blocks-combinational">Always blocks (combinational)</a></li>
+<li><a href="#always-blocks-clocked">Always blocks (clocked)</a></li>
+</ul>
+</li>
+<li><a href="#if-else%E8%AF%AD%E5%8F%A5">if-else语句</a>
+<ul>
+<li><a href="#if-statement">If statement</a></li>
+<li><a href="#if-statement-latches">If statement latches</a></li>
+</ul>
+</li>
+<li><a href="#case-%E8%AF%AD%E5%8F%A5">case 语句</a>
+<ul>
+<li><a href="#case-statement">Case statement</a></li>
+<li><a href="#priority-encoder">Priority encoder</a></li>
+<li><a href="#priority-encoder-with-casez">Priority encoder with casez</a></li>
+<li><a href="#avoiding-latches">Avoiding latches</a></li>
 </ul>
 </li>
 </ul>
@@ -469,8 +483,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://zhenhuizhang.tk/post/solidworksnei-cun-hao-jin-jie-jue-ban-fa/">
-      [Solidworks]内存耗尽解决办法
+    <a class="post-title-link" href="https://zhenhuizhang.tk/post/verilog16hdlbits-xi-ti-_procedures/">
+      [Verilog16]HDLBits习题_Procedures
     </a>
   </h1>
   <div class="post-meta">
@@ -478,7 +492,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-01-06 15:40:25">2020-01-06</span>
+      <span class="publish-time" data-t="2021-06-29 17:21:29">2021-06-29</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -487,8 +501,8 @@
       <span class="pc-show language" data-lan="category-in">分类于</span>
       
       
-      <a href="https://zhenhuizhang.tk/tag/RAQoQugYA/">
-        <span>Solidworks</span>
+      <a href="https://zhenhuizhang.tk/tag/w5e5JPE5B/">
+        <span>Verilog</span>
       </a>
       
       
@@ -497,17 +511,17 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>2<span class="language" data-lan="minute">分钟</span></span>
+      <span>11<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>415<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>2551<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/solidworksnei-cun-hao-jin-jie-jue-ban-fa/" data-flag-title="[Solidworks]内存耗尽解决办法" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/verilog16hdlbits-xi-ti-_procedures/" data-flag-title="[Verilog16]HDLBits习题_Procedures" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -516,23 +530,359 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <h2 id="遇到问题">遇到问题：</h2>
-<p>在使用Solidworks软件的过程，当打开大型装配图或者进行仿真分析时，经常会提示内存即将耗尽，软件即将自动关闭。一开始，我以为是Solidworks需要使用较大的内存，原装的8G内存不足，故又添加了一条8G内存。<br>
-但发现仍为解决该问题，任务管理器显示内存使用只有60%左右时，软件又是同样报告内存不足。测试了网络上提供的各种解决方案，找到一个有效的解决方案。<br>
-内存不足的真正问题在于Solidworks所使用的“USER 对象”及“GDI 对象”比较多，而电脑默认允许使用的最大值均为10000，故会出现任务管理器看似还有很多空余内存，但软件缺报内存不足的问题。<br>
-理论上，每个会话最多只能处理65,536个GDI句柄，处理65,536个用户句柄。但是，每个会话可以打开的GDI句柄和用户句柄的最大数量通常较少，因为它受可用内存的影响。而在Solidworks使用过程中，出现句柄数量不足而导致无法尽可能使用内存资源的问题。<br>
-<img src="https://zhenhuizhang.tk/post-images/1578299914523.png" alt="" loading="lazy"></p>
-<hr>
-<h2 id="解决方案">解决方案：</h2>
+              <p>HDLBits习题_Procedures</p>
+<!-- more -->
+<h1 id="always语句块">always语句块</h1>
+<ul>
+<li>由于数字电路的实际实现，均是由基础的逻辑门搭建而成，因此任何电路都可以表示为模块和分配语句的某种组合。然而，有时这不是描述电路的最方便的方式。<code>always</code>、<code>initial</code>、<code>task</code>、<code>function</code>为述电路提供了替代语法。</li>
+<li>对于always语句块而言，考虑到硬件的可综合性，有两种always块是有意义的：</li>
+</ul>
 <ol>
-<li>win+r 输入regedit打开注册表管理器</li>
-<li>把[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsNT\CurrentVersion\Windows]位置处的&quot;GDIProcessHandleQuota&quot;和&quot;USERProcessHandleQuota&quot; 这两项的值，由默认的10000改大，我修改到了30000（十进制）</li>
-<li>关机重启电脑，再进入软件，即可解决该问题。</li>
+<li>组合：<code>always @(*)</code></li>
+<li>时序：<code>always @(posedge clk)</code></li>
 </ol>
+<ul>
+<li>组合逻辑的always块和assign赋值是等价的，使用哪一种完全看哪一种更方便。always块内可有更丰富的状态，如if-then，case等，但不能有连续赋值语句assign。assign赋值语句的左边一般为wire类型，always块中左边的变量一般为reg类型。这些类型与硬件综合无关，仅是verilog语法的要求。</li>
+<li>时序逻辑的always块会生成一系列的触发器，即时序敏感型，只在时钟边沿到来时，才会对输出数据进行更新，否则则会对现有数据进行保持。在Verilog语法中，过程赋值语句用于对寄存器类型(reg)进行赋值，有着两种赋值方式：阻塞赋值与非阻塞赋值。</li>
+</ul>
+<ol>
+<li>阻塞赋值方式：赋值符号为“=”，如b = a; 。阻塞赋值在该语句结束时就完成赋值操作，即b的值在该赋值语句结束后立刻改变。 如果在一个块语句中，有多条阻塞赋值语句，那么在前面的赋值语句没有完成之前，后面的语句就不能执行，就像被阻塞（blocking）了一样，因此称为阻塞赋值方式。</li>
+<li>非阻塞赋值方式：赋值符号为“&lt;=”，如b &lt;= a;。非阻塞赋值在块结束时才完成赋值操作，即b的值并不是立即就改变的，而要等到该always代码块结束时才将值赋值给目标对象。所以，若是在一个always代码块中对一个变量进行多次非阻塞赋值，则只有最后一次赋值将生效。</li>
+</ol>
+<ul>
+<li>在描述组合逻辑的always块中用阻塞赋值，则综合成组合逻辑的电路结构；在描述时序逻辑的always块中用非阻塞赋值，则综合成时序逻辑的电路结构。</li>
+</ul>
+<h2 id="always-blocks-combinational">Always blocks (combinational)</h2>
+<figure data-type="image" tabindex="1"><img src="https://zhenhuizhang.tk/post-images/1624877101238.png" alt="" loading="lazy"></figure>
+<ul>
+<li>题目要求，使用赋值语句和组合always块两种方式构建与门。代码如下：</li>
+</ul>
+<pre><code>module top_module(
+    input a, 
+    input b,
+    output wire out_assign,
+    output reg out_alwaysblock
+);
+    assign out_assign = a &amp; b;
+    always @(*) begin
+        out_alwaysblock = a &amp; b; 
+    end
+endmodule
+</code></pre>
+<h2 id="always-blocks-clocked">Always blocks (clocked)</h2>
+<figure data-type="image" tabindex="2"><img src="https://zhenhuizhang.tk/post-images/1624878003107.png" alt="" loading="lazy"></figure>
+<ul>
+<li>题目要求，使用赋值语句、组合always块和时序always块三种方式构建一个异或门。</li>
+</ul>
+<pre><code>module top_module(
+    input clk,
+    input a,
+    input b,
+    output wire out_assign,
+    output reg out_always_comb,
+    output reg out_always_ff   );
+	assign out_assign = a ^ b;
+    always @(*) begin
+        out_always_comb = a ^ b;
+    end
+    always @(posedge clk) begin
+        out_always_ff &lt;= a ^ b;
+    end
+endmodule
+</code></pre>
+<figure data-type="image" tabindex="3"><img src="https://zhenhuizhang.tk/post-images/1624878069454.png" alt="" loading="lazy"></figure>
+<ul>
+<li>观察时序图，我们可以发现，<code>out_always_ff</code>的波形滞后于<code>out_assign</code>和<code>out_always_comb</code>一个时钟周期，这是由于在时序逻辑电路中，触发器是时钟边沿敏感型的，仅在时钟边沿到来时，才更新输出。</li>
+</ul>
+<h1 id="if-else语句">if-else语句</h1>
+<ul>
+<li>其格式与C语言中if-else语句类似，使用方法有以下3种。系统对表达式的值进行判断，若为0，x，z，按“假”处理；若为“1”，按“真”处理，执行指定语句。 语句可是单句，也可是多句，多句时用“begin-end”语句括起来</li>
+</ul>
+<pre><code>if（表达式） 语句1；
+//////////////////////////////////
+if（表达式） 语句1；
+else   语句2；
+/////////////////////////////////
+if（表达式1） 语句1；
+else if（表达式2） 语句2；
+……
+else if（表达式n） 语句n；
+else 语句n+1；
+</code></pre>
+<ul>
+<li>__使用条件语句注意事项：__在使用条件语句时，应注意列出所有条件分支，否则，编译器认为条件不满足时，会引进一个触发器保持原值。这可用于设计时序电路，例如在计数器的设计中，条件满足则加1，否则保持不变；而在组合电路设计中，应避免这种隐含触发器的存在。为避免偶然生成锁存器的错误。如果用到if语句，最好写上else项。如果用case语句，最好写上default项。遵循上面两条原则，就可以避免发生这种错误。</li>
+</ul>
+<h2 id="if-statement">If statement</h2>
+<ul>
+<li>题目要求，构件一个2-1选择器，该器件的真值表如下：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">sel_b1</th>
+<th style="text-align:center">sel_b2</th>
+<th style="text-align:center">out_assign</th>
+<th style="text-align:center">out_wire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">a</td>
+<td style="text-align:center">a</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">a</td>
+<td style="text-align:center">a</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">a</td>
+<td style="text-align:center">a</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">b</td>
+<td style="text-align:center">b</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>代码如下：</li>
+</ul>
+<pre><code>module top_module(
+    input a,
+    input b,
+    input sel_b1,
+    input sel_b2,
+    output wire out_assign,
+    output reg out_always   ); 
+    assign out_assign = (sel_b1 &amp; sel_b2)? b:a;
+    always @(*) begin
+        if(sel_b2&amp;sel_b1) begin
+            out_always = b;
+        end
+        else begin
+            out_always = a;
+        end
+    end
+endmodule
+</code></pre>
+<h2 id="if-statement-latches">If statement latches</h2>
+<ul>
+<li>题目要求，找出代码中的BUG，解决下面的代码中包含的创建锁存器的不正确行为。<br>
+<img src="https://zhenhuizhang.tk/post-images/1624880430520.png" alt="" loading="lazy"></li>
+</ul>
+<pre><code>always @(*) begin
+    if (cpu_overheated)
+       shut_off_computer = 1;
+end
+
+always @(*) begin
+    if (~arrived)
+       keep_driving = ~gas_tank_empty;
+end
+</code></pre>
+<ul>
+<li>代码修改如下：</li>
+</ul>
+<pre><code>module top_module (
+    input      cpu_overheated,
+    output reg shut_off_computer,
+    input      arrived,
+    input      gas_tank_empty,
+    output reg keep_driving  ); //
+
+    always @(*) begin
+        if (cpu_overheated)
+           shut_off_computer = 1;
+        else shut_off_computer = 0;
+    end
+
+    always @(*) begin
+        if (~arrived)
+           keep_driving = ~gas_tank_empty;
+        else keep_driving = 0;
+    end
+endmodule
+</code></pre>
+<h1 id="case-语句">case 语句</h1>
+<ul>
+<li>当敏感表达式的值为值1时，执行语句1；为值2时，执行语句2；依此类推，如果敏感表达式的值与上面列出的值都不相等的话，则执行default后面的语句。</li>
+<li>case语句中，敏感表达式与值1~值n间的比较是一种全等比较，必须保证两者的对应位全等。 在casez语句中，如果分支表达式某些位的值为高阻z，那么对这些位的比较就不予考虑，因此只须关注其他位的比较结果。而在casex语句中，则把这种处理方式进一步扩展到对x的处理，即如果比较的双方有一方的某些位是x或z，那么这些位的比较就都不予考虑。</li>
+<li>case中可以有重复的case item，首次匹配的将会被执行。</li>
+<li>case语句的使用格式如下：</li>
+</ul>
+<pre><code>case（敏感表达式）
+    值1：语句1； // case分支项
+    值2：语句2；
+    ……
+    值n：语句n；
+    default：语句n+1； // default语句可以省略
+endcase
+</code></pre>
+<ul>
+<li>__使用条件语句注意事项：__在使用条件语句时，应注意列出所有条件分支，否则，编译器认为条件不满足时，会引进一个触发器保持原值。这可用于设计时序电路，例如在计数器的设计中，条件满足则加1，否则保持不变；而在组合电路设计中，应避免这种隐含触发器的存在。为避免偶然生成锁存器的错误。如果用到if语句，最好写上else项。如果用case语句，最好写上default项。遵循上面两条原则，就可以避免发生这种错误。</li>
+</ul>
+<h2 id="case-statement">Case statement</h2>
+<ul>
+<li>题目要求，使用case语句创建一个6-1多路复用器。当sel在 0 到 5 之间时，请选择相应的数据输入。否则，输出 0。数据输入和输出均为 4 位宽。</li>
+<li>代码如下：</li>
+</ul>
+<pre><code>module top_module ( 
+    input [2:0] sel, 
+    input [3:0] data0,
+    input [3:0] data1,
+    input [3:0] data2,
+    input [3:0] data3,
+    input [3:0] data4,
+    input [3:0] data5,
+    output reg [3:0] out   );//
+    
+    always@(*) begin  // This is a combinational circuit
+        case(sel)
+            0:out = data0;
+            1:out = data1;
+            2:out = data2;
+            3:out = data3;
+            4:out = data4;
+            5:out = data5;
+            default: out = 4'b0;
+        endcase
+    end
+            
+endmodule
+</code></pre>
+<h2 id="priority-encoder">Priority encoder</h2>
+<ul>
+<li>优先编码器是一种组合电路，当给定输入位向量时，输出该向量中第一个1的位置。 例如，给定输入<code>8'b10010000</code>的8位优先级编码器将输出<code>3'd4</code>，因为<code>bit [4]</code>第一个高位。</li>
+<li>题目要求，构建一个4位优先级编码器。 对于此问题，如果所有输入位都不为高（即输入为零），则输出零。 请注意，一个4位数字具有16种可能的组合。</li>
+<li>代码如下：</li>
+</ul>
+<pre><code>module top_module (
+    input [3:0] in,
+    output reg [1:0] pos  );
+	always @(*) begin
+        case (in)
+            4'b0000:pos = 0;
+            4'b0001:pos = 0;
+            4'b0010:pos = 1;
+            4'b0011:pos = 0;
+            4'b0100:pos = 2;
+            4'b0101:pos = 0;
+            4'b0110:pos = 1;
+            4'b0111:pos = 0;
+            4'b1000:pos = 3;
+            4'b1001:pos = 0;
+            4'b1010:pos = 1;
+            4'b1011:pos = 0;
+            4'b1100:pos = 2;
+            4'b1101:pos = 0;
+            4'b1110:pos = 1;
+            4'b1111:pos = 0;
+            default:pos = 0;
+            
+        endcase
+    end
+endmodule
+</code></pre>
+<h2 id="priority-encoder-with-casez">Priority encoder with casez</h2>
+<ul>
+<li>为8位输入构建优先级编码器。当给定输入位向量时，输出该向量中第一个1的位置。如果输入向量没有高位，则报告为零。 例如，给定输入8’b10010000的8位优先级编码器将输出3’d4，因为bit [4]是高的第一位。由上一个练习我们知道，case语句中将有256种case item，使用casez以后，我们可以减少需比较的case item，这就是casez的目的，在比较中，将值z的位视作无关位。</li>
+<li>代码如下：</li>
+</ul>
+<pre><code>module top_module (
+    input [7:0] in,
+    output reg [2:0] pos  );
+    always @(*) begin
+        casez(in)
+            8'bzzzzzzz1:pos=0;
+            8'bzzzzzz1z:pos=1;
+            8'bzzzzz1zz:pos=2;
+            8'bzzzz1zzz:pos=3;
+            8'bzzz1zzzz:pos=4;
+            8'bzz1zzzzz:pos=5;
+            8'bz1zzzzzz:pos=6;
+            8'b1zzzzzzz:pos=7;
+            default:pos=0;
+        endcase
+    end
+endmodule
+</code></pre>
+<h2 id="avoiding-latches">Avoiding latches</h2>
+<ul>
+<li>假设构建一个电路来处理游戏的PS/2键盘上的扫描代码。对于收到的最后两个字节的扫描码，我们需要指示是否按下了键盘上的一个方向键。这涉及到一个相当简单的映射，它可以实现为一个case语句(或if-elseif)，包含四个case。</li>
+<li>电路有一个16位输入和四个输出。建立能识别这四种扫描码并正确输出的电路。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Scancode[15:0]</th>
+<th style="text-align:center">Arrow key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">16'he06b</td>
+<td style="text-align:center">left arrow</td>
+</tr>
+<tr>
+<td style="text-align:center">16'he072</td>
+<td style="text-align:center">down arrow</td>
+</tr>
+<tr>
+<td style="text-align:center">16'he074</td>
+<td style="text-align:center">right arrow</td>
+</tr>
+<tr>
+<td style="text-align:center">16'he075</td>
+<td style="text-align:center">up arrow</td>
+</tr>
+<tr>
+<td style="text-align:center">Anything else</td>
+<td style="text-align:center">none</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>一种简单的方式就是对输出先进行赋初值的操作，这种类型的代码确保在所有可能的情况下输出都被赋值，除非case语句覆盖了赋值。这也意味着不再需要缺省的default项。如下面示例代码：</li>
+</ul>
+<pre><code>always @(*) begin
+    up = 1'b0; down = 1'b0; left = 1'b0; right = 1'b0;
+    case (scancode)
+        ... // Set to 1 as necessary.
+    endcase
+end
+</code></pre>
+<ul>
+<li>代码如下：</li>
+</ul>
+<pre><code>module top_module (
+    input [15:0] scancode,
+    output reg left,
+    output reg down,
+    output reg right,
+    output reg up  ); 
+    always @(*) begin
+        left=0;down=0;right=0;up=0;
+        case(scancode)
+            16'he06b:left=1;
+            16'he072:down=1;
+            16'he074:right=1;
+            16'he075:up=1;
+        endcase
+    end
+endmodule
+</code></pre>
+<hr>
 <blockquote>
 <p>参考：<br>
-<a href="https://zhidao.baidu.com/question/424594101970071212.html">https://zhidao.baidu.com/question/424594101970071212.html</a><br>
-<a href="https://docs.microsoft.com/zh-cn/windows/win32/sysinfo/object-categories">https://docs.microsoft.com/zh-cn/windows/win32/sysinfo/object-categories</a></p>
+<a href="https://hdlbits.01xz.net/wiki/Problem_sets">HDLBits</a></p>
 </blockquote>
 
             </div>
@@ -546,7 +896,7 @@
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://zhenhuizhang.tk/post/solidworksnei-cun-hao-jin-jie-jue-ban-fa/" title="[Solidworks]内存耗尽解决办法">https://zhenhuizhang.tk/post/solidworksnei-cun-hao-jin-jie-jue-ban-fa/</a>
+      <a href="https://zhenhuizhang.tk/post/verilog16hdlbits-xi-ti-_procedures/" title="[Verilog16]HDLBits习题_Procedures">https://zhenhuizhang.tk/post/verilog16hdlbits-xi-ti-_procedures/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -555,21 +905,17 @@
   </ul>
   <div class="tags">
     
-      <a href="https://zhenhuizhang.tk/tag/RAQoQugYA/"># Solidworks</a>
+      <a href="https://zhenhuizhang.tk/tag/w5e5JPE5B/"># Verilog</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="[Python3]装饰器_生成器_迭代器_内置函数_软件目录" href="https://zhenhuizhang.tk/post/python3zhuang-shi-qi-_-sheng-cheng-qi-_-die-dai-qi-_-nei-zhi-han-shu-_-ruan-jian-mu-lu/">[Python3]装饰器_生成器_迭代器_内置函数_软件目录</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="[Python3]装饰器_生成器_迭代器_内置函数_软件目录" href="https://zhenhuizhang.tk/post/python3zhuang-shi-qi-_-sheng-cheng-qi-_-die-dai-qi-_-nei-zhi-han-shu-_-ruan-jian-mu-lu/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="[Python2]文件操作_数据序列化_函数编程" href="https://zhenhuizhang.tk/post/python2wen-jian-cao-zuo-_-shu-ju-xu-lie-hua-_-han-shu-bian-cheng/">[Python2]文件操作_数据序列化_函数编程</a>
-        <a class="nav-mobile-next" title="[Python2]文件操作_数据序列化_函数编程" href="https://zhenhuizhang.tk/post/python2wen-jian-cao-zuo-_-shu-ju-xu-lie-hua-_-han-shu-bian-cheng/">下一篇</a>
+        <a class="nav-pc-next" title="[Verilog15]HDLBits习题_Modules: Hierarchy" href="https://zhenhuizhang.tk/post/verilog15hdlbits-xi-ti-_modules-hierarchy/">[Verilog15]HDLBits习题_Modules: Hierarchy</a>
+        <a class="nav-mobile-next" title="[Verilog15]HDLBits习题_Modules: Hierarchy" href="https://zhenhuizhang.tk/post/verilog15hdlbits-xi-ti-_modules-hierarchy/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
