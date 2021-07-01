@@ -9,7 +9,7 @@
 <meta name="description" content="热爱可抵岁月漫长">
 <meta name="theme-color" content="#000">
 <title>[电路]UART异步串口协议 | 渣渣晖の博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1624956845286">
+<link rel="shortcut icon" href="/favicon.ico?v=1625123694839">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -6000,6 +6000,179 @@ nothing to commit, working tree clean
       </div>
       
       <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://zhenhuizhang.tk/post/verilog20hdlbits-xi-ti-_arithmetic-circuits/"" data-c="
+          &lt;p&gt;HDLBits习题讲解_Arithmetic Circuits&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;h1 id=&#34;half-adder&#34;&gt;Half adder&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;半加器用于计算2个单比特二进制数a与b的和，输出结果sum（s）和进位carry（c）。在多比特数的计算中，进位c将作为下一相邻比特的加法运算中。其真值表如下所示。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;a&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;b&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;sum&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;carry&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，实现一个半加器。半加器将两位比特相加(不带进位)并产生一个1bit结果和一个进位。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( 
+    input a, b,
+    output cout, sum );
+    assign {cout,sum} = a + b;
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;full-adder&#34;&gt;Full adder&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;全加器不同于半加器的地方是，全加器带有进位cin。输入为a,b,cin, 输出为sum（s）和carry*（cout），均是单比特信号。s为a,b,cin三个单比特数的和，cout为a,b,cin三个数超过2后的进位。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;| a | b | cin | sum | carry |&lt;br&gt;
+| :-: | :-: | :-: | :-: |&lt;br&gt;
+| 0 | 0 | 0 | 0 | 0 |&lt;br&gt;
+| 0 | 1 | 0 | 1 | 0 |&lt;br&gt;
+| 1 | 0 | 0 | 1 | 0 |&lt;br&gt;
+| 1 | 1 | 0 | 0 | 1 |&lt;br&gt;
+| 0 | 0 | 1 | 1 | 0 |&lt;br&gt;
+| 0 | 1 | 1 | 0 | 1 |&lt;br&gt;
+| 1 | 0 | 1 | 0 | 1 |&lt;br&gt;
+| 1 | 1 | 1 | 1 | 1 |&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，实现一个全加器。全加器将两位比特相加(带进位)并产生一个1bit结果和一个进位。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( 
+    input a, b, cin,
+    output cout, sum );
+    assign {cout,sum} = a + b + cin;
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;3-bit-binary-adder&#34;&gt;3-bit binary adder&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;N-bit加法器可以根据1-bit全加器组合而成。每个全加器的输出进位cout作为下一个全加器的输入进位cin，这种加法器称为行波进位加法器(Ripple-carry adder，简称RCA)。&lt;/li&gt;
+&lt;li&gt;题目要求，在我们已经知道如何实现一个全加器，我们将使用它的3个实例来创建一个3位二进制的行波进位加法器。行波进位加法器将两个3位数字和一个进位相加以产生一个3位结果和一个进位输出。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( 
+    input [2:0] a, b,
+    input cin,
+    output [2:0] cout,
+    output [2:0] sum );
+    assign {cout[0],sum[0]} = a[0] + b[0] +cin;
+    assign {cout[1],sum[1]} = a[1] + b[1] +cout[0];
+    assign {cout[2],sum[2]} = a[2] + b[2] +cout[1];
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;adder&#34;&gt;Adder&lt;/h1&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://zhenhuizhang.tk/post-images/1624959083523.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，编写代码实现上图所示电路，其中，FA是一个完整的加法器。代码如下&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module (
+    input [3:0] x,
+    input [3:0] y, 
+    output [4:0] sum);
+    
+    wire [2:0] cout;
+    assign {cout[0],sum[0]} = x[0] + y[0];
+    assign {cout[1],sum[1]} = x[1] + y[1] + cout[0];
+    assign {cout[2],sum[2]} = x[2] + y[2] + cout[1];
+    assign {sum[4],sum[3]} = x[3] + y[3] + cout[2];
+    
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;signed-addition-overflow&#34;&gt;Signed addition overflow&lt;/h1&gt;
+&lt;p&gt;-当两个正数相加产生一个负结果，或两个负数相加产生一个正结果时，会发生符号溢出现象。有几种检测溢出的方法:可以通过比较输入和输出数字的符号来计算溢出，或者从n位和n-1位的进位来判断是否溢出。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，假设有两个8位数字的补码，a[7:0]和b[7:0]。这俩数字相加产生s[7:0]。模块中需计算是否发生了(有符号的)溢出。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module (
+    input [7:0] a,
+    input [7:0] b,
+    output [7:0] s,
+    output overflow
+); 
+    assign s = a + b;
+    assign overflow = (a[7]&amp;amp;b[7]&amp;amp;~s[7]) | ((~a[7])&amp;amp;(~b[7])&amp;amp;s[7]);
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;100-bit-binary-adder&#34;&gt;100-bit binary adder&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，实现一个100位的全加器。加法器将两个100位的数和一个进位相加产生一个100位的结果和一个进位。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( 
+    input [99:0] a, b,
+    input cin,
+    output cout,
+    output [99:0] sum );
+    assign {cout,sum[99:0]} = a + b + cin;
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;4-digit-bcd-adder&#34;&gt;4-digit BCD adder&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;已有一个BCD(二进制编码的十进制)数加法器，名为bcd_fadd，它将两个BCD数字和进位信号相加，生成结果和进位信号。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module bcd_fadd {
+    input [3:0] a,
+    input [3:0] b,
+    input     cin,
+    output   cout,
+    output [3:0] sum );
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，实例化bcd_fadd的4个副本，以创建一个4位BCD行波进位加法器。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module( 
+    input [15:0] a, b,
+    input cin,
+    output cout,
+    output [15:0] sum );
+    
+    wire [2:0] cout_temp;
+    
+    bcd_fadd bcd_1(a[3:0],b[3:0],cin,cout_temp[0],sum[3:0]);
+    bcd_fadd bcd_2(a[7:4],b[7:4],cout_temp[0],cout_temp[1],sum[7:4]);
+    bcd_fadd bcd_3(a[11:8],b[11:8],cout_temp[1],cout_temp[2],sum[11:8]);
+    bcd_fadd bcd_4(a[15:12],b[15:12],cout_temp[2],cout,sum[15:12]);
+
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;参考：&lt;br&gt;
+&lt;a href=&#34;https://hdlbits.01xz.net/wiki/Problem_sets&#34;&gt;HDLBits&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+">[Verilog20]HDLBits习题_Arithmetic Circuits</a>
+      </div>
+      
+      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://zhenhuizhang.tk/post/verilog19hdlbits-xi-ti-_multiplexers/"" data-c="
           &lt;p&gt;HDLBits习题讲解_Multiplexers&lt;/p&gt;
 &lt;!-- more --&gt;
@@ -7739,7 +7912,7 @@ endmodule
 &lt;h2 id=&#34;combinational-logic&#34;&gt;Combinational Logic&lt;/h2&gt;
 &lt;h3 id=&#34;basic-gates&#34;&gt;&lt;a href=&#34;https://zhenhuizhang.tk/post/verilog18hdlbits-xi-ti-_basic-gates/&#34;&gt;Basic Gates&lt;/a&gt;&lt;/h3&gt;
 &lt;h3 id=&#34;multiplexers&#34;&gt;&lt;a href=&#34;https://zhenhuizhang.tk/post/verilog19hdlbits-xi-ti-_multiplexers&#34;&gt;Multiplexers&lt;/a&gt;&lt;/h3&gt;
-&lt;h3 id=&#34;arithmetic-circuits&#34;&gt;&lt;a href=&#34;&#34;&gt;Arithmetic Circuits&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;arithmetic-circuits&#34;&gt;&lt;a href=&#34;https://zhenhuizhang.tk/post/verilog20hdlbits-xi-ti-_arithmetic-circuits&#34;&gt;Arithmetic Circuits&lt;/a&gt;&lt;/h3&gt;
 &lt;h3 id=&#34;karnaugh-map-to-circuit&#34;&gt;&lt;a href=&#34;&#34;&gt;Karnaugh Map to Circuit&lt;/a&gt;&lt;/h3&gt;
 ">[Verilog12]HDLBits习题讲解汇总</a>
       </div>
@@ -9609,7 +9782,7 @@ endmodule
 &lt;li&gt;在&amp;quot;GT Refclk Selection&amp;quot;和&amp;quot;GT REFCLK(MHz)&amp;quot;选项中，可选择高速串行总线需要使用的时钟源以及时钟频率&lt;/li&gt;
 &lt;li&gt;在&amp;quot;INIT clk (MHz)&amp;quot;和&amp;quot;GT REFCLK&amp;quot;选项中，可设置初始化时钟频率。&lt;/li&gt;
 &lt;li&gt;在&amp;quot;Dataflow Mode&amp;quot;选项中，可配置该Aurora是使用单工发，单工收，还是全双工模式&lt;/li&gt;
-&lt;li&gt;在&amp;quot;Interface&amp;quot;选项中，可配置用户接口为Framing或Streaming模式，Framing接口采用AXI4协议，并包括发送接收用户帧所需要的信号，且__可进行流量控制__；Streaming模式允许在没有分隔符的情况下发送数据，操作更简单，且比Framing模式使用更少的资源，但__不可进行流量控制__。详细差异见后文。&lt;/li&gt;
+&lt;li&gt;在&amp;quot;Interface&amp;quot;选项中，可配置用户接口为Framing或Streaming模式，Framing接口采用AXI4协议，并包括发送接收用户帧所需要的信号，且 &lt;strong&gt;可进行流量控制&lt;/strong&gt; ；Streaming模式允许在没有分隔符的情况下发送数据，操作更简单，且比Framing模式使用更少的资源，但 &lt;em&gt;不可进行流量控制&lt;/em&gt;_ 。详细差异见后文。&lt;/li&gt;
 &lt;li&gt;在&amp;quot;Flow Control&amp;quot;选项中，可选择需要添加的流量控制接口类型。UFC(User flow control)用户流控制允许发送简短的高优先级消息；NFC(Native flow control)本地流量控制允许全双工收发器条件数据发送速率，立即模式(Immediate mode)允许将NFC控制代码插入到数据帧中，完成模式(completion mode)只允许在完整的数据帧之间插入NFC控制代码&lt;/li&gt;
 &lt;li&gt;在&amp;quot;Use Scrambler/Descrambler&amp;quot;选项可选择是否使用加/解扰器，加解扰公式为&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;G&lt;/mi&gt;&lt;mo&gt;(&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;)&lt;/mo&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;X&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/msub&gt;&lt;mn&gt;6&lt;/mn&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;X&lt;/mi&gt;&lt;mn&gt;5&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;X&lt;/mi&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;X&lt;/mi&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;G(x)=X_16+X_5+X_4+X_3+1&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;G&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2777777777777778em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mrel&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2777777777777778em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.83333em;vertical-align:-0.15em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.07847em;&#34;&gt;X&lt;/span&gt;&lt;span class=&#34;msupsub&#34;&gt;&lt;span class=&#34;vlist-t vlist-t2&#34;&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.30110799999999993em;&#34;&gt;&lt;span style=&#34;top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:2.7em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;sizing reset-size6 size3 mtight&#34;&gt;&lt;span class=&#34;mord mtight&#34;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-s&#34;&gt;​&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.15em;&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mbin&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.83333em;vertical-align:-0.15em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.07847em;&#34;&gt;X&lt;/span&gt;&lt;span class=&#34;msupsub&#34;&gt;&lt;span class=&#34;vlist-t vlist-t2&#34;&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.30110799999999993em;&#34;&gt;&lt;span style=&#34;top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:2.7em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;sizing reset-size6 size3 mtight&#34;&gt;&lt;span class=&#34;mord mtight&#34;&gt;5&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-s&#34;&gt;​&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.15em;&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mbin&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.83333em;vertical-align:-0.15em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.07847em;&#34;&gt;X&lt;/span&gt;&lt;span class=&#34;msupsub&#34;&gt;&lt;span class=&#34;vlist-t vlist-t2&#34;&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.30110799999999993em;&#34;&gt;&lt;span style=&#34;top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:2.7em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;sizing reset-size6 size3 mtight&#34;&gt;&lt;span class=&#34;mord mtight&#34;&gt;4&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-s&#34;&gt;​&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.15em;&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mbin&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.83333em;vertical-align:-0.15em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.07847em;&#34;&gt;X&lt;/span&gt;&lt;span class=&#34;msupsub&#34;&gt;&lt;span class=&#34;vlist-t vlist-t2&#34;&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.30110799999999993em;&#34;&gt;&lt;span style=&#34;top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:2.7em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;sizing reset-size6 size3 mtight&#34;&gt;&lt;span class=&#34;mord mtight&#34;&gt;3&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-s&#34;&gt;​&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.15em;&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mbin&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.64444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;
 &lt;li&gt;在&amp;quot;Little Endian Support&amp;quot;选项可进行大小端的选择。所谓的小端，就是我们最常见的多位数据定义方式：[n:0] 左边是高位，右边是低位，符合Verilog编写习惯；大端反之，[n:0] 左边是低位，右边是高位。&lt;/li&gt;

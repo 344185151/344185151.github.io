@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="热爱可抵岁月漫长">
 <meta name="theme-color" content="#000">
-<title>[FPGA13][电路]接口电平标准 | 渣渣晖の博客</title>
+<title>[Verilog20]HDLBits习题_Arithmetic Circuits | 渣渣晖の博客</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1625123694839">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -48,8 +48,8 @@
 
 
 
-  <meta name="description" content="[FPGA13][电路]接口电平标准" />
-  <meta name="keywords" content="电路,FPGA" />
+  <meta name="description" content="[Verilog20]HDLBits习题_Arithmetic Circuits" />
+  <meta name="keywords" content="Verilog" />
 </head>
 
 <body>
@@ -198,52 +198,13 @@
   <div class="toc-wrapper auto-number no_compress"
     id="toc_wrapper">
     <ul class="markdownIt-TOC">
-<li><a href="#%E5%8F%8C%E9%98%88%E5%80%BC%E6%A0%87%E5%87%86">双阈值标准</a></li>
-<li><a href="#ttl%E4%B8%8Elvttl">TTl与LVTTL</a>
-<ul>
-<li><a href="#ttl">TTL</a></li>
-<li><a href="#lvttl">LVTTL</a>
-<ul>
-<li><a href="#lvttl3v3">LVTTL3V3</a></li>
-<li><a href="#lvttl2v5">LVTTL2V5</a></li>
-</ul>
-</li>
-<li><a href="#ttl%E4%B8%8Elvttl%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">TTL与LVTTL注意事项</a></li>
-</ul>
-</li>
-<li><a href="#cmos%E4%B8%8Elvcmos">CMOS与LVCMOS</a>
-<ul>
-<li><a href="#cmos">CMOS</a></li>
-<li><a href="#lvcoms">LVCOMS</a>
-<ul>
-<li><a href="#lvcoms3v3">LVCOMS3V3</a></li>
-<li><a href="#lvcoms2v5">LVCOMS2V5</a></li>
-<li><a href="#lvcoms1v8">LVCOMS1V8</a></li>
-<li><a href="#lvcoms1v5">LVCOMS1V5</a></li>
-<li><a href="#lvcoms1v2">LVCOMS1V2</a></li>
-</ul>
-</li>
-<li><a href="#cmos%E4%B8%8Elvcmos%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">CMOS与LVCMOS注意事项</a></li>
-</ul>
-</li>
-<li><a href="#eclpecl%E4%B8%8Elvpecl">ECL，PECL与LVPECL</a>
-<ul>
-<li><a href="#ecl">ECL</a></li>
-<li><a href="#pecl">PECL</a></li>
-<li><a href="#lvpecl">LVPECL</a></li>
-<li><a href="#ecl-pecl-lvpecl%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">ECL、PECL、LVPECL注意事项</a></li>
-</ul>
-</li>
-<li><a href="#lvds">LVDS</a>
-<ul>
-<li><a href="#lvds%E7%94%B5%E5%B9%B3%E7%89%B9%E7%82%B9">LVDS电平特点</a></li>
-<li><a href="#lvds%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">LVDS注意事项</a></li>
-</ul>
-</li>
-<li><a href="#cml">CML</a></li>
-<li><a href="#gtlpgtl">GTL/PGTL</a></li>
-<li><a href="#hstl">HSTL</a></li>
-<li><a href="#sstl">SSTL</a></li>
+<li><a href="#half-adder">Half adder</a></li>
+<li><a href="#full-adder">Full adder</a></li>
+<li><a href="#3-bit-binary-adder">3-bit binary adder</a></li>
+<li><a href="#adder">Adder</a></li>
+<li><a href="#signed-addition-overflow">Signed addition overflow</a></li>
+<li><a href="#100-bit-binary-adder">100-bit binary adder</a></li>
+<li><a href="#4-digit-bcd-adder">4-digit BCD adder</a></li>
 </ul>
 
   </div>
@@ -509,8 +470,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://zhenhuizhang.tk/post/fpga13jie-kou-dian-ping-biao-zhun/">
-      [FPGA13][电路]接口电平标准
+    <a class="post-title-link" href="https://zhenhuizhang.tk/post/verilog20hdlbits-xi-ti-_arithmetic-circuits/">
+      [Verilog20]HDLBits习题_Arithmetic Circuits
     </a>
   </h1>
   <div class="post-meta">
@@ -518,7 +479,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-06-26 10:50:23">2020-06-26</span>
+      <span class="publish-time" data-t="2020-09-29 16:56:43">2020-09-29</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -527,14 +488,8 @@
       <span class="pc-show language" data-lan="category-in">分类于</span>
       
       
-      <a href="https://zhenhuizhang.tk/tag/xsdpfFeKB/">
-        <span>电路</span>
-      </a>、
-      
-      
-      
-      <a href="https://zhenhuizhang.tk/tag/0h16ahhFr/">
-        <span>FPGA</span>
+      <a href="https://zhenhuizhang.tk/tag/w5e5JPE5B/">
+        <span>Verilog</span>
       </a>
       
       
@@ -543,17 +498,17 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>14<span class="language" data-lan="minute">分钟</span></span>
+      <span>5<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>3827<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>1054<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/fpga13jie-kou-dian-ping-biao-zhun/" data-flag-title="[FPGA13][电路]接口电平标准" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/verilog20hdlbits-xi-ti-_arithmetic-circuits/" data-flag-title="[Verilog20]HDLBits习题_Arithmetic Circuits" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -562,175 +517,173 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <p>各类接口电平标准整理</p>
+              <p>HDLBits习题讲解_Arithmetic Circuits</p>
 <!-- more -->
-<h1 id="双阈值标准">双阈值标准</h1>
+<h1 id="half-adder">Half adder</h1>
 <ul>
-<li>所谓的双阈值标准，是针对数字电路而言，数字电路表示电平的只有1和0两个状态，在实际的电路中，需要约定什么样的电压为1，什么样的电压为0。也就是需要大于某一个阈值表示电平1，小于某一个阈值表示电平0。</li>
-<li>查看常见的各类数字接口电平标准，我们会发现，对输出端的电压输出要求往往要比输入端的双阀值判定标准更加严格，这样做主要是考虑到噪声的干扰以及电信号在输出与输入间的传递速度，从而让双阀值判定标准更加的可靠。</li>
-<li>下面详细介绍一些接口电平标准：</li>
+<li>半加器用于计算2个单比特二进制数a与b的和，输出结果sum（s）和进位carry（c）。在多比特数的计算中，进位c将作为下一相邻比特的加法运算中。其真值表如下所示。</li>
 </ul>
-<h1 id="ttl与lvttl">TTl与LVTTL</h1>
-<figure data-type="image" tabindex="1"><img src="https://zhenhuizhang.tk/post-images/1593504967788.png" alt="" loading="lazy"></figure>
-<h2 id="ttl">TTL</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">a</th>
+<th style="text-align:center">b</th>
+<th style="text-align:center">sum</th>
+<th style="text-align:center">carry</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li>TTL是Transistor-Transistor Logic的英文缩写，从其命名就可以看出，这种接口电平标准的初衷是用于基于三极管结构的数字系统之间的。</li>
-<li>工作于TTL接口标准下的数字电路，其内部有源器件的标准电源供给应为5V，输出、输入情况如下：<br>
-对于输出端，状态1的电压要求为大于等于2.4V，状态0的电压要求为小于等于0.5V；<br>
-对于输入端，状态1的判定要求为大于等于2.0V，状态0的判定要求为小于等于0.8V；</li>
+<li>题目要求，实现一个半加器。半加器将两位比特相加(不带进位)并产生一个1bit结果和一个进位。代码如下：</li>
 </ul>
-<h2 id="lvttl">LVTTL</h2>
+<pre><code>module top_module( 
+    input a, b,
+    output cout, sum );
+    assign {cout,sum} = a + b;
+endmodule
+</code></pre>
+<h1 id="full-adder">Full adder</h1>
 <ul>
-<li>由于2.4V与5V之间还有很大空间，这对改善噪声干扰并没有什么明显的好处，而且还会增加系统的功耗，并且由于数字状态1、0之间电平相差较大，还会影响到数字电路的响应速度。因此后来就把TTL的电压范围进行了一些压缩，从而形成了LVTTL——Low Voltage Transistor-Transistor Logic，也即低压TTL电平标准。</li>
-<li>LVTTL又分3.3V、2.5V以及更低电压的LVTTL(Low Voltage TTL)。以下介绍几种目前常用的LVTTL标准：</li>
+<li>全加器不同于半加器的地方是，全加器带有进位cin。输入为a,b,cin, 输出为sum（s）和carry*（cout），均是单比特信号。s为a,b,cin三个单比特数的和，cout为a,b,cin三个数超过2后的进位。</li>
 </ul>
-<h3 id="lvttl3v3">LVTTL3V3</h3>
+<p>| a | b | cin | sum | carry |<br>
+| :-: | :-: | :-: | :-: |<br>
+| 0 | 0 | 0 | 0 | 0 |<br>
+| 0 | 1 | 0 | 1 | 0 |<br>
+| 1 | 0 | 0 | 1 | 0 |<br>
+| 1 | 1 | 0 | 0 | 1 |<br>
+| 0 | 0 | 1 | 1 | 0 |<br>
+| 0 | 1 | 1 | 0 | 1 |<br>
+| 1 | 0 | 1 | 0 | 1 |<br>
+| 1 | 1 | 1 | 1 | 1 |</p>
 <ul>
-<li>LVTTL3V3的意思，即其内部有源器件的标准电源供给为3.3V，输出、输入情况如下：<br>
-对于输出端，状态1的电压要求为大于等于2.4V，状态0的电压要求为小于等于0.4V；<br>
-对于输入端，状态1的判定要求为大于等于2.0V，状态0的判定要求为小于等于0.8V；</li>
+<li>题目要求，实现一个全加器。全加器将两位比特相加(带进位)并产生一个1bit结果和一个进位。代码如下：</li>
 </ul>
-<h3 id="lvttl2v5">LVTTL2V5</h3>
+<pre><code>module top_module( 
+    input a, b, cin,
+    output cout, sum );
+    assign {cout,sum} = a + b + cin;
+endmodule
+</code></pre>
+<h1 id="3-bit-binary-adder">3-bit binary adder</h1>
 <ul>
-<li>LVTTL2V5的意思，即其内部有源器件的标准电源供给为2.5V，输出、输入情况如下：<br>
-对于输出端，状态1的电压要求为大于等于2.0V，状态0的电压要求为小于等于0.2V；<br>
-对于输入端，状态1的判定要求为大于等于1.7V，状态0的判定要求为小于等于0.7V。</li>
+<li>N-bit加法器可以根据1-bit全加器组合而成。每个全加器的输出进位cout作为下一个全加器的输入进位cin，这种加法器称为行波进位加法器(Ripple-carry adder，简称RCA)。</li>
+<li>题目要求，在我们已经知道如何实现一个全加器，我们将使用它的3个实例来创建一个3位二进制的行波进位加法器。行波进位加法器将两个3位数字和一个进位相加以产生一个3位结果和一个进位输出。代码如下：</li>
 </ul>
-<h2 id="ttl与lvttl注意事项">TTL与LVTTL注意事项</h2>
-<ol>
-<li>TTL电路通过电流控制器件，电路的速度快，传输延迟时间短(5-10ns)，但是功耗大。</li>
-<li>TTL电平一般过冲都会比较严重，可能在起始端串一个22欧或33欧电阻</li>
-<li>TTL电平输入脚悬空时是内部认为是高电平。要下拉的话应用1k以下的电阻进行下拉。</li>
-</ol>
-<h1 id="cmos与lvcmos">CMOS与LVCMOS</h1>
-<figure data-type="image" tabindex="2"><img src="https://zhenhuizhang.tk/post-images/1593505022850.png" alt="" loading="lazy"></figure>
-<h2 id="cmos">CMOS</h2>
+<pre><code>module top_module( 
+    input [2:0] a, b,
+    input cin,
+    output [2:0] cout,
+    output [2:0] sum );
+    assign {cout[0],sum[0]} = a[0] + b[0] +cin;
+    assign {cout[1],sum[1]} = a[1] + b[1] +cout[0];
+    assign {cout[2],sum[2]} = a[2] + b[2] +cout[1];
+endmodule
+</code></pre>
+<h1 id="adder">Adder</h1>
+<figure data-type="image" tabindex="1"><img src="https://zhenhuizhang.tk/post-images/1624959083523.png" alt="" loading="lazy"></figure>
 <ul>
-<li>CMOS是Complementary Metal Oxide Semiconductor的英文缩写，从其命名就可以看出，这种接口电平标准的初衷是用于基于NMOS、PMOS组成的MOS管结构的数字系统之间的。</li>
-<li>工作于CMOS接口标准下的数字电路，其内部有源器件的标准电源供给为5V，输出、输入情况如下：<br>
-对于输出端，状态1的电压要求为大于等于4.45V，状态0的电压要求为小于等于0.5V；<br>
-对于输入端，状态1的判定要求为大于等于3.5V，状态0的判定要求为小于等于1.5V。</li>
+<li>题目要求，编写代码实现上图所示电路，其中，FA是一个完整的加法器。代码如下</li>
 </ul>
-<h2 id="lvcoms">LVCOMS</h2>
+<pre><code>module top_module (
+    input [3:0] x,
+    input [3:0] y, 
+    output [4:0] sum);
+    
+    wire [2:0] cout;
+    assign {cout[0],sum[0]} = x[0] + y[0];
+    assign {cout[1],sum[1]} = x[1] + y[1] + cout[0];
+    assign {cout[2],sum[2]} = x[2] + y[2] + cout[1];
+    assign {sum[4],sum[3]} = x[3] + y[3] + cout[2];
+    
+endmodule
+</code></pre>
+<h1 id="signed-addition-overflow">Signed addition overflow</h1>
+<p>-当两个正数相加产生一个负结果，或两个负数相加产生一个正结果时，会发生符号溢出现象。有几种检测溢出的方法:可以通过比较输入和输出数字的符号来计算溢出，或者从n位和n-1位的进位来判断是否溢出。</p>
 <ul>
-<li>同TTL一样，鉴于功耗和响应速度的考虑，CMOS也同样衍生出了LVCMOS接口标准，并且由于MOS管相对于三极管的导通门限更加低，因此LVCMOS比LVTTL更容易使用较低的电压进行通信。以下介绍几种目前常用的LVCMOS标准：</li>
+<li>题目要求，假设有两个8位数字的补码，a[7:0]和b[7:0]。这俩数字相加产生s[7:0]。模块中需计算是否发生了(有符号的)溢出。代码如下：</li>
 </ul>
-<h3 id="lvcoms3v3">LVCOMS3V3</h3>
+<pre><code>module top_module (
+    input [7:0] a,
+    input [7:0] b,
+    output [7:0] s,
+    output overflow
+); 
+    assign s = a + b;
+    assign overflow = (a[7]&amp;b[7]&amp;~s[7]) | ((~a[7])&amp;(~b[7])&amp;s[7]);
+endmodule
+</code></pre>
+<h1 id="100-bit-binary-adder">100-bit binary adder</h1>
 <ul>
-<li>LVCMOS3V3的意思，即其内部有源器件的标准电源供给为3.3V，输出、输入情况如下：<br>
-对于输出端，状态1的电压要求为大于等于3.2V，状态0的电压要求为小于等于0.4V；<br>
-对于输入端，状态1的判定要求为大于等于2.0V，状态0的判定要求为小于等于0.7V。</li>
+<li>题目要求，实现一个100位的全加器。加法器将两个100位的数和一个进位相加产生一个100位的结果和一个进位。代码如下：</li>
 </ul>
-<h3 id="lvcoms2v5">LVCOMS2V5</h3>
+<pre><code>module top_module( 
+    input [99:0] a, b,
+    input cin,
+    output cout,
+    output [99:0] sum );
+    assign {cout,sum[99:0]} = a + b + cin;
+endmodule
+</code></pre>
+<h1 id="4-digit-bcd-adder">4-digit BCD adder</h1>
 <ul>
-<li>LVCMOS2V5的意思，即其内部有源器件的标准电源供给为2.5V，输出、输入情况如下：<br>
-对于输出端，状态1的电压要求为大于等于2.0V，状态0的电压要求为小于等于0.4V；<br>
-对于输入端，状态1的判定要求为大于等于1.7V，状态0的判定要求为小于等于0.7V。</li>
+<li>已有一个BCD(二进制编码的十进制)数加法器，名为bcd_fadd，它将两个BCD数字和进位信号相加，生成结果和进位信号。</li>
 </ul>
-<h3 id="lvcoms1v8">LVCOMS1V8</h3>
+<pre><code>module bcd_fadd {
+    input [3:0] a,
+    input [3:0] b,
+    input     cin,
+    output   cout,
+    output [3:0] sum );
+</code></pre>
 <ul>
-<li>LVCMOS1V8的意思，即其内部有源器件的标准电源供给为VCC=1.8V，当然这是有一定容忍度的，不过与之前介绍的电平标准不同，这个容忍度会影响它的输出、输入情况，介绍如下：<br>
-对于输出端，状态1的电压要求为大于等于VCC-0.45V（若VCC精确等于1.8V，则为1.35V），状态0的电压要求为小于等于0.45V；<br>
-对于输入端，状态1的判定要求为大于等于0.65倍的VCC（若VCC精确等于1.8V，则为1.17V），状态0的判定要求为小于等于0.35倍的VCC（若VCC精确等于1.8V，则为0.63V）。</li>
+<li>题目要求，实例化bcd_fadd的4个副本，以创建一个4位BCD行波进位加法器。代码如下：</li>
 </ul>
-<h3 id="lvcoms1v5">LVCOMS1V5</h3>
-<ul>
-<li>LVCMOS1V5的意思，即其内部有源器件的标准电源供给为VCC=1.5V，它的容忍度也会影响到其输出、输入情况，介绍如下：<br>
-对于输出端，LVCMOS1V5没有明确的要求，但是肯定是状态1越接近VCC越好，状态0越接近0V越好；<br>
-对于输入端，状态1的判定要求为大于等于0.65倍的VCC（若VCC精确等于1.5V，则为0.975V），状态0的判定要求为小于等于0.35倍的VCC（若VCC精确等于1.5V，则为0.525V）。</li>
-</ul>
-<h3 id="lvcoms1v2">LVCOMS1V2</h3>
-<ul>
-<li>LVCMOS1V2的意思，即其内部有源器件的标准电源供给为VCC=1.2V，它的容忍度也会影响到其输出、输入情况，介绍如下：<br>
-对于输出端，LVCMOS1V2也没有明确的要求，但是肯定是状态1越接近VCC越好，状态0越接近0V越好；<br>
-对于输入端，状态1的判定要求为大于等于0.65倍的VCC（若VCC精确等于1.2V，则为0.78V），状态0的判定要求为小于等于0.35倍的VCC（若VCC精确等于1.2V，则为0.42V）。</li>
-</ul>
-<h2 id="cmos与lvcmos注意事项">CMOS与LVCMOS注意事项</h2>
-<ol>
-<li>CMOS电路通过电压控制器件，电路的速度慢，传输延迟时间长(25-50ns),但功耗低。</li>
-<li>CMOS接口相对于TTL接口有了更大的噪声容限，输入阻抗远大于TTL输入阻抗。</li>
-<li>CMOS结构内部寄生有可控硅结构，当输入或输入管脚高于VCC一定值(比如一些芯片是0.7V)时，电流足够大的话，可能引起闩锁效应，导致芯片的烧毁。</li>
-</ol>
-<h1 id="eclpecl与lvpecl">ECL，PECL与LVPECL</h1>
-<h2 id="ecl">ECL</h2>
-<ul>
-<li>ECL(EmitterCoupled Logic)即射极耦合逻辑，是带有射随输出结构的典型输入输出接口电路,ECL电路的最大特点是其基本门电路工作在非饱和状态，因此ECL又称为非饱和性逻辑。也正因为如此，ECL电路的最大优点是具有相当高的速度。这种电路的平均延迟时间可达几个ns数量级甚至更少。</li>
-<li>ECL，其内部有源器件的标准电源供为Vcc=0V，Vee=-5.2，输出、输入情况如下：<br>
-对于输出端，状态1的电压要求为大于等于-0.88V，状态0的电压要求为小于等于-1.72V；<br>
-对于输入端，状态1的判定要求为大于等于-1.24V，状态0的判定要求为小于等于-1.36V。</li>
-</ul>
-<h2 id="pecl">PECL</h2>
-<figure data-type="image" tabindex="3"><img src="https://zhenhuizhang.tk/post-images/1593505163298.png" alt="" loading="lazy"></figure>
-<ul>
-<li>由于ECL电平需要提供负电源，为简化电源，出现了PECL(正射极耦合逻辑电平)和LVPECL，即采用ECL电路结构，采用正电压供电。</li>
-<li>PECL，其内部有源器件的标准电源供为Vcc=5V，输出、输入情况如下：<br>
-对于输出端，状态1的电压要求为大于等于4.12V，状态0的电压要求为小于等于3.28V；<br>
-对于输入端，状态1的判定要求为大于等于3.78V，状态0的判定要求为小于等于3.64V。</li>
-</ul>
-<h2 id="lvpecl">LVPECL</h2>
-<ul>
-<li>LVPECL，其内部有源器件的标准电源供为Vcc=3.3V，输出、输入情况如下：<br>
-对于输出端，状态1的电压要求为大于等于2.42V，状态0的电压要求为小于等于1.58V；<br>
-对于输入端，状态1的判定要求为大于等于2.06V，状态0的判定要求为小于等于1.94V。</li>
-</ul>
-<h2 id="ecl-pecl-lvpecl注意事项">ECL、PECL、LVPECL注意事项</h2>
-<ol>
-<li>不同电平不能直接驱动。中间可用交流耦合、电阻网络或专用芯片 进行转换。</li>
-<li>以上三种均为射随输出结构，必须有电阻拉到一个直流偏置电压。(如多用于时钟的LVPECL：<br>
-直流匹配时用130欧上拉，同时用82欧下拉；交流匹配时用82欧上拉，同时用130欧下拉。但两种<br>
-方式工作后直流电平都在1.95V左右。)</li>
-</ol>
-<h1 id="lvds">LVDS</h1>
-<figure data-type="image" tabindex="4"><img src="https://zhenhuizhang.tk/post-images/1593505198651.png" alt="" loading="lazy"></figure>
-<h2 id="lvds电平特点">LVDS电平特点</h2>
-<ul>
-<li>LVDS是Low Voltage Differential Signaling的缩写，即低压差分信号，其输入、输出与之前所介绍的接口电平都不同，它需要通过两根线来完成通信。其工作原理如下图所示：<br>
-<img src="https://zhenhuizhang.tk/post-images/1593500161901.png" alt="" loading="lazy"></li>
-<li>左侧为LVDS输出端，其内部有一个恒流源IS，大约恒定输出3.5-4mA的电流值。最右边的Vout接入LVDS的输入端，而在靠近输入端的地方并联接入一个阻值为100欧的匹配电阻R。通过改变上图双刀双掷开关的位置，而改变差分线上电流的方向，以此来表示数字状态0和1，因此，接收端的差分线上将会由于电流方向的不同而表现出来±350mV的差分电平，并依次作为数字状态的判定依据。右侧还有一个直流偏置电压源VS，这主要是用来说明Vout的两端其实一般都是正电压的，实际电路中并没有该项。</li>
-<li>LVDS电平具有如下优点：
-<ol>
-<li>低摆幅（约为350 mV）。低电流驱动模式意味着可实现高速传输。ANSI/TIA/EIA644建议了655 Mb/s的最大速率和1.923 Gb/s的无失真通道上的理论极限速率。</li>
-<li>压摆幅。恒流源电流驱动，把输出电流限制到约为3.5 mA左右，使跳变期间的尖峰干扰最小，因而产生的功耗非常小。这允许集成电路密度的进一步提高，即提高了PCB板的效能，减少了成本。</li>
-<li>具有相对较慢的边缘速率（dV/dt约为0.300 V/0.3 ns,即为1 V/ns）,同时采用差分传输形式，使其信号噪声和EMI都大为减少，同时也具有较强的抗干扰能力。</li>
-</ol>
-</li>
-</ul>
-<h2 id="lvds注意事项">LVDS注意事项</h2>
-<ol>
-<li>可以达到600M以上，PCB要求较高，差分线要求严格等长，差最好不超过10mil(0.25mm)</li>
-<li>100欧电阻离接收端距离不能超过500mil，最好控制在300mil以内。</li>
-</ol>
-<h1 id="cml">CML</h1>
-<ul>
-<li>CML是一种内部做好匹配的一种电路，不需再进行匹配。三极管结构，也是差分线，速度能达到3G以  上。只能点对点传输。</li>
-</ul>
-<h1 id="gtlpgtl">GTL/PGTL</h1>
-<ul>
-<li>GTL与PGTL是一种类似CMOS的一种结构，输入为比较器结构，比较器一端接参考电平，另一端接输入信号。</li>
-<li>GTL，其内部有源器件的标准电源供为 Vcc=1.2V；<br>
-对于输出端，状态1的电压要求为大于等于1.1V，状态0的电压要求为小于等于0.4V；<br>
-对于输入端，状态1的判定要求为大于等于0.85V，状态0的判定要求为小于等于0.75V。</li>
-<li>PGTL，其内部有源器件的标准电源供为 Vcc=1.5V；<br>
-对于输出端，状态1的电压要求为大于等于1.4V，状态0的电压要求为小于等于0.46V；<br>
-对于输入端，状态1的判定要求为大于等于1.2V，状态0的判定要求为小于等于0.8V。</li>
-</ul>
-<h1 id="hstl">HSTL</h1>
-<ul>
-<li>HSTL（High Speed Transceiver Logic）是一种技术独立的数字集成电路接口标准，为了实现电压扩展和技术独立I/O结构而开发的。此标准所要求的I/O结构是差分放大输入（一个输入内部关联成一个用户提供的输入参考电压，此电压用于单端输入）和使用Vcco的输出。所谓技术独立，实际上指用来做输入参考和输出Vcco的电压，与器件本身的供电电压不同。</li>
-<li>HSTL最主要的应用是可以用于高速存储器(SDRAM、DDR SDRAM)读写。传统的慢速存储器访问时间阻碍了高速处理器的运算操作。在中频区域（100MHz和180MHz之间），可供选择基于单端信号的I/O结构有：HSTL、GTL/GTL+、SSTL和低压TTL（LVTTL）。在180MHz以上的范围，HSTL标准是唯一可用的单端I/O接口。利用HSTL的速度，快速I/O接口明显地提高了整个系统的性能。HSTL是高速存储器应用的I/O接口选择，同时也很完美地提供了驱动多个内存模块地址总线的能力。</li>
-<li>HSTL电平标准：一般有VCCIO=1.8V和VCCIO=1.5V两种类型。和上面的GTL相似，输入为输入为比较器结构，比较器一端接参考电平(VCCIO/2)，另一端接输入信号。对参考电平要求比较高(1%精度)。 HSTL和SSTL大多用在300M以下的情况。</li>
-</ul>
-<h1 id="sstl">SSTL</h1>
-<ul>
-<li>SSTL(Stub Series Terminated Logic)接口标准也是JEDEC所认可的标准之一。该标准专门针对高速内存(特别是SDRAM)接口。SSTL规定了开关特点和特殊的端接方案，它是为了在高速存储总线上提高信号完整性的目的而创建的。</li>
-<li>它与LVTTL和LVCMOS的不同在于SSTL是传输线终端匹配的。因此SSTL具有输出阻抗和匹配方法的要求，这使其在高速信号传输时降低了EMI，改善建立时间。SSTL的输入是一个差分对比电路，一端为输入，另一端为参考电压VREF，和HSTL基本相同。</li>
-<li>DDR应用SSTL电平比较多，SSTL_3是3.3V标准；SSTL_2是2.5V标准，SSTL_18是1.8V标准。VCCIO=2.5V，输入为输入为比较器结构，比较器一端接参考电平1.25V，另一端接输入信号。对参考电平要求比较高(1%精度)。HSTL和SSTL大多用在300M以下的情况。</li>
-</ul>
+<pre><code>module top_module( 
+    input [15:0] a, b,
+    input cin,
+    output cout,
+    output [15:0] sum );
+    
+    wire [2:0] cout_temp;
+    
+    bcd_fadd bcd_1(a[3:0],b[3:0],cin,cout_temp[0],sum[3:0]);
+    bcd_fadd bcd_2(a[7:4],b[7:4],cout_temp[0],cout_temp[1],sum[7:4]);
+    bcd_fadd bcd_3(a[11:8],b[11:8],cout_temp[1],cout_temp[2],sum[11:8]);
+    bcd_fadd bcd_4(a[15:12],b[15:12],cout_temp[2],cout,sum[15:12]);
+
+endmodule
+</code></pre>
 <hr>
 <blockquote>
 <p>参考：<br>
-《FPGA之道》，狄超,刘萌著，西安交通大学出版社，2.2.4.5节<br>
-<a href="https://blog.csdn.net/woshifennu1234/article/details/77987691">FPGA在电平接口领域的应用</a></p>
+<a href="https://hdlbits.01xz.net/wiki/Problem_sets">HDLBits</a></p>
 </blockquote>
 
             </div>
@@ -744,7 +697,7 @@
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://zhenhuizhang.tk/post/fpga13jie-kou-dian-ping-biao-zhun/" title="[FPGA13][电路]接口电平标准">https://zhenhuizhang.tk/post/fpga13jie-kou-dian-ping-biao-zhun/</a>
+      <a href="https://zhenhuizhang.tk/post/verilog20hdlbits-xi-ti-_arithmetic-circuits/" title="[Verilog20]HDLBits习题_Arithmetic Circuits">https://zhenhuizhang.tk/post/verilog20hdlbits-xi-ti-_arithmetic-circuits/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -753,23 +706,21 @@
   </ul>
   <div class="tags">
     
-      <a href="https://zhenhuizhang.tk/tag/xsdpfFeKB/"># 电路</a>
-    
-      <a href="https://zhenhuizhang.tk/tag/0h16ahhFr/"># FPGA</a>
+      <a href="https://zhenhuizhang.tk/tag/w5e5JPE5B/"># Verilog</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
         <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="[FPGA14]梳理时钟树_基本时钟_衍生时钟" href="https://zhenhuizhang.tk/post/fpga14shu-li-shi-zhong-shu-_-ji-ben-shi-zhong-_-yan-sheng-shi-zhong/">[FPGA14]梳理时钟树_基本时钟_衍生时钟</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="[FPGA14]梳理时钟树_基本时钟_衍生时钟" href="https://zhenhuizhang.tk/post/fpga14shu-li-shi-zhong-shu-_-ji-ben-shi-zhong-_-yan-sheng-shi-zhong/">上一篇</a>
+        <a class="nav-pc-next" title="[电路]电容的参数_种类_应用" href="https://zhenhuizhang.tk/post/dian-lu-dian-rong-de-can-shu-_-chong-lei-_-ying-yong/">[电路]电容的参数_种类_应用</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="[电路]电容的参数_种类_应用" href="https://zhenhuizhang.tk/post/dian-lu-dian-rong-de-can-shu-_-chong-lei-_-ying-yong/">上一篇</a>
       
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="[FPGA12]管脚约束_延迟约束" href="https://zhenhuizhang.tk/post/fpga12guan-jiao-yue-shu-_-yan-chi-yue-shu/">[FPGA12]管脚约束_延迟约束</a>
-        <a class="nav-mobile-next" title="[FPGA12]管脚约束_延迟约束" href="https://zhenhuizhang.tk/post/fpga12guan-jiao-yue-shu-_-yan-chi-yue-shu/">下一篇</a>
+        <a class="nav-pc-next" title="[Verilog19]HDLBits习题_Multiplexers" href="https://zhenhuizhang.tk/post/verilog19hdlbits-xi-ti-_multiplexers/">[Verilog19]HDLBits习题_Multiplexers</a>
+        <a class="nav-mobile-next" title="[Verilog19]HDLBits习题_Multiplexers" href="https://zhenhuizhang.tk/post/verilog19hdlbits-xi-ti-_multiplexers/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
