@@ -9,7 +9,7 @@
 <meta name="description" content="热爱可抵岁月漫长">
 <meta name="theme-color" content="#000">
 <title>[FPGA10]CDC_单比特跨时钟域传输 | 渣渣晖の博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1625123694839">
+<link rel="shortcut icon" href="/favicon.ico?v=1625453490321">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -7943,8 +7943,449 @@ endmodule
 &lt;h3 id=&#34;basic-gates&#34;&gt;&lt;a href=&#34;https://zhenhuizhang.tk/post/verilog18hdlbits-xi-ti-_basic-gates/&#34;&gt;Basic Gates&lt;/a&gt;&lt;/h3&gt;
 &lt;h3 id=&#34;multiplexers&#34;&gt;&lt;a href=&#34;https://zhenhuizhang.tk/post/verilog19hdlbits-xi-ti-_multiplexers&#34;&gt;Multiplexers&lt;/a&gt;&lt;/h3&gt;
 &lt;h3 id=&#34;arithmetic-circuits&#34;&gt;&lt;a href=&#34;https://zhenhuizhang.tk/post/verilog20hdlbits-xi-ti-_arithmetic-circuits&#34;&gt;Arithmetic Circuits&lt;/a&gt;&lt;/h3&gt;
-&lt;h3 id=&#34;karnaugh-map-to-circuit&#34;&gt;&lt;a href=&#34;&#34;&gt;Karnaugh Map to Circuit&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;karnaugh-map-to-circuit&#34;&gt;&lt;a href=&#34;https://zhenhuizhang.tk/post/verilog21hdlbits-xi-ti-_karnaugh-map-to-circuit&#34;&gt;Karnaugh Map to Circuit&lt;/a&gt;&lt;/h3&gt;
 ">[Verilog12]HDLBits习题讲解汇总</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://zhenhuizhang.tk/post/verilog21hdlbits-xi-ti-_karnaugh-map-to-circuit/"" data-c="
+          &lt;p&gt;HDLBits习题讲解_Karnaugh Map to Circuit&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;h1 id=&#34;真值表转为标准式&#34;&gt;真值表转为标准式&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;真值表是表征逻辑事件输入和输出之间全部可能状态的表格。以1表示真，0表示假。&lt;/li&gt;
+&lt;li&gt;标准式分为SOP标准式与POS标准式，其中：SOP标准式为找出真值表中所有输出为1的表项，按照输入的情况，为1用变量表示，为0则用反变量表示，得出若干乘积项，然后求和。POS标准式为，找出真值表中所有输出为0的表项，按照输入的情况，为1用反变量表示，为0则用原变量表示，得出若干求和项，然后求积。&lt;/li&gt;
+&lt;li&gt;举例说明，如有以下真值表：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;A&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;B&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;C&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;out&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;若针对所有F=1的表项，可轻松写出SOP标准式如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;F=ABC+AB~C+A~(BC)+~ABC
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;若针对所有F=0的表项，可轻松写出POS标准式如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;F=(~A+B+~C)(A+~B+C)(A+B+~C)(A+B+C)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;3-variable&#34;&gt;3-variable&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;BC\A&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;0&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;1&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;00&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;01&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;11&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;10&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;实现上面卡诺图所描述的电路，代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module(
+    input a,
+    input b,
+    input c,
+    output out  ); 
+    assign out = ~((~a)&amp;amp;(~b)&amp;amp;(~c));
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;4-variable1&#34;&gt;4-variable(1)&lt;/h1&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;CD\AB&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;00&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;01&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;11&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;10&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;00&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;01&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;11&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;10&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;实现上面卡诺图所描述的电路，代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module(
+    input a,
+    input b,
+    input c,
+    input d,
+    output out  ); 
+    assign out = ~a &amp;amp; ~d | ~b &amp;amp; ~c | b &amp;amp; c &amp;amp; d | a &amp;amp; c &amp;amp; d;
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;4-variable2&#34;&gt;4-variable(2)&lt;/h1&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;CD\AB&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;00&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;01&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;11&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;10&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;00&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;d&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;01&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;d&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;d&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;11&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;10&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;实现上面卡诺图所描述的电路，其中，无关项d可以根据化简需求自己制定为0或是1，代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module(
+    input a,
+    input b,
+    input c,
+    input d,
+    output out  ); 
+    assign out =  a | (~a&amp;amp;~b&amp;amp;c);
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;4-variable3&#34;&gt;4-variable(3)&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;CD\AB&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;00&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;01&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;11&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;10&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;00&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;01&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;11&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;10&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;实现上面卡诺图所描述的电路，代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module(
+    input a,
+    input b,
+    input c,
+    input d,
+    output out  ); 
+    assign out = ~a &amp;amp; b &amp;amp; ~c &amp;amp; ~d | a &amp;amp; ~b &amp;amp; ~c &amp;amp; ~d | 
+        		 ~a &amp;amp; ~b &amp;amp; ~c &amp;amp; d | a &amp;amp; b &amp;amp; ~c &amp;amp; d | 
+        		 ~a &amp;amp; b &amp;amp; c &amp;amp; d | a &amp;amp; ~b &amp;amp; c &amp;amp; d | 
+        		 ~a &amp;amp; ~b &amp;amp; c &amp;amp; ~d | a &amp;amp; b &amp;amp; c &amp;amp; ~d;
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;minimum-sop-and-pos&#34;&gt;Minimum SOP and POS&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;题目要求，实现一个有四输入(a.b,c,d)的单输出数字系统，当2、7或15出现在输入端时，生成逻辑1，当0、1、4、5、6、9、10 13或14出现时，生成逻辑0。数字3、8、11和12的输入不会出现在这个系统中。例如，7对应的abcd分别被设为0,1,1,1。确定最小SOP格式的输出out_sop和最小POS格式的输出out_pos。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module (
+    input a,
+    input b,
+    input c,
+    input d,
+    output out_sop,
+    output out_pos
+); 
+    assign out_sop = c &amp;amp; d | ~a &amp;amp; ~b &amp;amp; c;
+    assign out_pos = ~((~c | ~d) &amp;amp; (a | b | ~c));
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;karnaugh-map1&#34;&gt;Karnaugh map(1)&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;CD\AB&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;00&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;01&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;11&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;10&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;00&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;d&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;d&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;d&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;01&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;d&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;11&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;d&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;d&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;10&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;d&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;实现上面卡诺图所描述的电路，代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module (
+    input [4:1] x, 
+    output f );
+    assign f = ~x[1]&amp;amp;x[3] | x[2]&amp;amp;x[4];
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;karnaugh-map2&#34;&gt;Karnaugh map(2)&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;CD\AB&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;00&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;01&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;11&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;10&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;00&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;01&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;11&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;10&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;实现上面卡诺图所描述的电路，代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module (
+    input [4:1] x,
+    output f
+); 
+    assign f = ~x[2]&amp;amp;~x[4] | ~x[1]&amp;amp;x[3] | x[2]&amp;amp;x[3]&amp;amp;x[4];
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;k-map-implemented-with-a-multiplexer&#34;&gt;K-map implemented with a multiplexer&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://zhenhuizhang.tk/post-images/1625453411228.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;对于上面的卡诺图，用一个4-1多路选择器和不限的2-1多路选择器，但2-1多路选择器的使用要尽可能少。你不允许使用任何其他逻辑门，你必须使用a和b作为多路复用器选择器的输入，如上图中的4- 1多路复用器所示。代码如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;module top_module (
+    input c,
+    input d,
+    output [3:0] mux_in
+);
+    
+    always @(*) begin
+        case({c,d})
+            2&#39;b0:
+                mux_in = 4&#39;b0100;
+            2&#39;b1:
+                mux_in = 4&#39;b0001;
+            2&#39;b11:
+                mux_in = 4&#39;b1001;
+            default:
+                mux_in = 4&#39;b0101;
+        endcase
+    end
+
+endmodule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;参考：&lt;br&gt;
+&lt;a href=&#34;https://hdlbits.01xz.net/wiki/Problem_sets&#34;&gt;HDLBits&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+">[Verilog21]HDLBits习题_Karnaugh Map to Circuit</a>
       </div>
       
       <div class="item">

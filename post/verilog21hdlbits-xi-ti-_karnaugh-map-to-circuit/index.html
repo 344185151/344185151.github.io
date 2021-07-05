@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="热爱可抵岁月漫长">
 <meta name="theme-color" content="#000">
-<title>渣渣晖の博客</title>
+<title>[Verilog21]HDLBits习题_Karnaugh Map to Circuit | 渣渣晖の博客</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1625453490321">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -48,6 +48,8 @@
 
 
 
+  <meta name="description" content="[Verilog21]HDLBits习题_Karnaugh Map to Circuit" />
+  <meta name="keywords" content="Verilog" />
 </head>
 
 <body>
@@ -180,644 +182,878 @@
   <div class="main-continer">
     
     <div
-      class="section-layout  gemini">
+      class="section-layout gemini ">
       <div class="section-layout-wrapper">
-        <div id="sidebarMeta" class="sidebar">
-    
-<div class="sidebar-wrapper box-shadow-wrapper bg-color">
-  <div class="sidebar-item">
-    <img class="site-author-image right-motion" src="/images/avatar.png"/>
-    <p class="site-author-name">渣渣晖のBlog</p>
-    
-  </div>
-  <div class="sidebar-item side-item-stat right-motion">
-    <div class="sidebar-item-box">
-      <a href="/archives/">
         
-        <span class="site-item-stat-count">83</span>
-        <span class="site-item-stat-name language" data-lan="article">文章</span>
-      </a>
-    </div>
-    <div class="sidebar-item-box">
-      <a href="">
-        <span class="site-item-stat-count">12</span>
-        <span class="site-item-stat-name language" data-lan="category">分类</span>
-      </a>
-    </div>
-    <div class="sidebar-item-box">
-      <a href="/tags/">
-        <span class="site-item-stat-count">12</span>
-        <span class="site-item-stat-name language" data-lan="tag">标签</span>
-      </a>
-    </div>
+
+<div class="sidebar">
+  
+    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
+      
+      <div class="sidebar-body gemini" id="sidebar_body">
+        
+          
+            <div style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number no_compress"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li><a href="#%E7%9C%9F%E5%80%BC%E8%A1%A8%E8%BD%AC%E4%B8%BA%E6%A0%87%E5%87%86%E5%BC%8F">真值表转为标准式</a>
+<ul>
+<li><a href="#3-variable">3-variable</a></li>
+</ul>
+</li>
+<li><a href="#4-variable1">4-variable(1)</a></li>
+<li><a href="#4-variable2">4-variable(2)</a>
+<ul>
+<li><a href="#4-variable3">4-variable(3)</a></li>
+<li><a href="#minimum-sop-and-pos">Minimum SOP and POS</a></li>
+<li><a href="#karnaugh-map1">Karnaugh map(1)</a></li>
+<li><a href="#karnaugh-map2">Karnaugh map(2)</a></li>
+<li><a href="#k-map-implemented-with-a-multiplexer">K-map implemented with a multiplexer</a></li>
+</ul>
+</li>
+</ul>
+
   </div>
-  
-    
-      <div class="sidebar-item">
-        <span class="site-item-rss">
-            <i class="fa fa-rss"></i>
-            <a href="https://zhenhuizhang.tk/atom.xml" target="_blank">RSS</a>
-        </span>
-      </div>
-    
-  
-  
-
-
-
-  <div style="width: 100%; position: relative;">
-    <canvas id="canvasDiyBlock" style="width:100%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
-    <script src="/media/js/magic/clock.js"></script>
-  </div>
-
 </div>
-</div>
+
 <script>
-  let sidebarMeta = document.querySelector('#sidebarMeta');
-  let scheme = 'gemini';
-  let sidebarWrapper = document.querySelector('.sidebar-wrapper');
-  if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
-    document.addEventListener('scroll', function(e) {
-      if (document.scrollingElement.scrollTop > parseInt(sidebarMeta.style.marginTop) + 10) {
-        sidebarWrapper.classList.add('home-sidebar-fixed')
-      } else {
-        sidebarWrapper.classList.remove('home-sidebar-fixed')
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
       }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
     });
   }
-  </script>
-        <div class="section-box tag-line box-shadow-wrapper">
-          <section class="section tags-section posts-expand bg-color">
-            <div class="padding-wrapper">
-  <div class="tag-timeline-box">
-    <div class="tag-timeline-wrapper">
-      <div class="tag-timeline-title">
-        <h2>
-          Verilog
-          <small class="language" data-lan="tag">标签</small>
-        </h2>
+
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
+    }
+  }
+
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
+    }
+  }
+
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
+  }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
+
+</script>
+            </div>
+          
+        
       </div>
+    </div>
+  
+</div>
+<script>
+  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
+  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
+  const SLIDE_UP_IN = 'slide-up-in';
+
+  let sidebar = document.querySelector('#sidebar'),
+  tocSideBar = document.querySelector('#tocSideBar'),
+  metaSideBar = document.querySelector('#metaSideBar'),
+  postToc = document.querySelector('#post_toc'),
+  postSiteMeta = document.querySelector('#post_side_meta'),
+  sidebarTitle = document.querySelector('.sidebar-title'),
+  sidebarBody = document.querySelector('#sidebar_body');
+
+  tocSideBar && tocSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  metaSideBar && metaSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  function toggleSidebar(e) {
+    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
+    if (currentTitle == e.srcElement) {
+      return ;
+    }
+    let current, showElement, hideElement;
+    if (e.srcElement == metaSideBar) {
+      showElement = postSiteMeta;
+      hideElement = postToc;
+    } else if (e.srcElement == tocSideBar){
+      showElement = postToc;
+      hideElement = postSiteMeta;
+    }
+    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
+    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
+
+    window.Velocity(hideElement, 'stop');
+    window.Velocity(hideElement, 'transition.slideUpOut', {
+      display: 'none',
+      duration: 200,
+      complete: function () {
+        window.Velocity(showElement, 'transition.slideDownIn', {
+          duration: 200
+        });
+      }
+    })
+    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
+    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
+  }
+
+  postToc && postToc.addEventListener('transitionend', function() {
+    this.classList.remove(SLIDE_UP_IN);
+  });
+
+  if (sidebarBody) {
+    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
+      let hasFix = false;
+      let scrollEl = document.querySelector('.main-continer');
+      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
+      window.addEventListener('scroll', function(e) {
+        if (document.scrollingElement.scrollTop >= limitTop) {
+          if (!hasFix) {
+            sidebar.classList.add('sidebar-fixed');
+            hasFix = true;
+          }
+        } else {
+          if (hasFix) {
+            sidebar.classList.remove('sidebar-fixed');
+            hasFix = false;
+          }
+        }
+      });
+    }
+  }
+  
+</script>
+        <div class="section-box box-shadow-wrapper">
+          <div class="section bg-color post post-page">
+            <section class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://zhenhuizhang.tk/post/verilog21hdlbits-xi-ti-_karnaugh-map-to-circuit/">
+      [Verilog21]HDLBits习题_Karnaugh Map to Circuit
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span class="publish-time" data-t="2020-09-05 09:18:29">2020-09-05</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">分类于</span>
+      
       
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      <a href="https://zhenhuizhang.tk/post/verilog20hdlbits-xi-ti-_arithmetic-circuits/">
-        <div class="motion-warpper">
-          <div class="tag-post-node">
-            <h1>
-              09-29
-              <small>[Verilog20]HDLBits习题_Arithmetic Circuits</small>
-            </h1>
-          </div>
-        </div>
+      <a href="https://zhenhuizhang.tk/tag/w5e5JPE5B/">
+        <span>Verilog</span>
       </a>
       
       
-      
-      
-      
-      <a href="https://zhenhuizhang.tk/post/verilog19hdlbits-xi-ti-_multiplexers/">
-        <div class="motion-warpper">
-          <div class="tag-post-node">
-            <h1>
-              09-29
-              <small>[Verilog19]HDLBits习题_Multiplexers</small>
-            </h1>
-          </div>
-        </div>
-      </a>
-      
-      
-      
-      
-      
-      <a href="https://zhenhuizhang.tk/post/verilog18hdlbits-xi-ti-_basic-gates/">
-        <div class="motion-warpper">
-          <div class="tag-post-node">
-            <h1>
-              09-29
-              <small>[Verilog18]HDLBits习题_Basic Gates</small>
-            </h1>
-          </div>
-        </div>
-      </a>
-      
-      
-      
-      
-      
-      <a href="https://zhenhuizhang.tk/post/verilog17hdlbits-xi-ti-_more-verilog-features/">
-        <div class="motion-warpper">
-          <div class="tag-post-node">
-            <h1>
-              09-29
-              <small>[Verilog17]HDLBits习题_More Verilog Features</small>
-            </h1>
-          </div>
-        </div>
-      </a>
-      
-      
-      
-      
-      
-      <a href="https://zhenhuizhang.tk/post/verilog16hdlbits-xi-ti-_procedures/">
-        <div class="motion-warpper">
-          <div class="tag-post-node">
-            <h1>
-              09-29
-              <small>[Verilog16]HDLBits习题_Procedures</small>
-            </h1>
-          </div>
-        </div>
-      </a>
-      
-      
-      
-      
-      
-      <a href="https://zhenhuizhang.tk/post/verilog15hdlbits-xi-ti-_modules-hierarchy/">
-        <div class="motion-warpper">
-          <div class="tag-post-node">
-            <h1>
-              09-29
-              <small>[Verilog15]HDLBits习题_Modules: Hierarchy</small>
-            </h1>
-          </div>
-        </div>
-      </a>
-      
-      
-      
-      
-      
-      <a href="https://zhenhuizhang.tk/post/verilog14hdlbits-xi-ti-_vectors/">
-        <div class="motion-warpper">
-          <div class="tag-post-node">
-            <h1>
-              09-28
-              <small>[Verilog14]HDLBits习题_Vectors </small>
-            </h1>
-          </div>
-        </div>
-      </a>
-      
-      
-      
-      
-      
-      <a href="https://zhenhuizhang.tk/post/verilog13hdlbits-xi-ti-_basics/">
-        <div class="motion-warpper">
-          <div class="tag-post-node">
-            <h1>
-              09-28
-              <small>[Verilog13]HDLBits习题_Basics</small>
-            </h1>
-          </div>
-        </div>
-      </a>
-      
-      
-      
-      
-      
-      <a href="https://zhenhuizhang.tk/post/verilog12hdlbits-xi-ti-jiang-jie-hui-zong/">
-        <div class="motion-warpper">
-          <div class="tag-post-node">
-            <h1>
-              09-27
-              <small>[Verilog12]HDLBits习题讲解汇总</small>
-            </h1>
-          </div>
-        </div>
-      </a>
-      
-      
-      
-      
-      
-      <a href="https://zhenhuizhang.tk/post/verilog21hdlbits-xi-ti-_karnaugh-map-to-circuit/">
-        <div class="motion-warpper">
-          <div class="tag-post-node">
-            <h1>
-              09-05
-              <small>[Verilog21]HDLBits习题_Karnaugh Map to Circuit</small>
-            </h1>
-          </div>
-        </div>
-      </a>
-      
-      
-      
-      
-      
-      
-      
-      <a href="https://zhenhuizhang.tk/post/verilog11timegen-bo-xing-hui-zhi-ruan-jian/">
-        <div class="motion-warpper">
-          <div class="tag-post-node">
-            <h1>
-              08-21
-              <small>[Verilog11]TimeGEN波形绘制软件</small>
-            </h1>
-          </div>
-        </div>
-      </a>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      <a href="https://zhenhuizhang.tk/post/verilog9fang-zhen-yu-fa-_-xun-huan-_-cun-chu-zai-ru-_-sui-ji-shu/">
-        <div class="motion-warpper">
-          <div class="tag-post-node">
-            <h1>
-              07-26
-              <small>[Verilog9]仿真语法_循环_存储载入_随机数</small>
-            </h1>
-          </div>
-        </div>
-      </a>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      <a href="https://zhenhuizhang.tk/post/verilog8fang-zhen-yu-fa-_-shi-jian-_-cheng-xu-kuai-_-yan-shi-_-shi-zhong/">
-        <div class="motion-warpper">
-          <div class="tag-post-node">
-            <h1>
-              07-22
-              <small>[Verilog8]仿真语法_时间_程序块_延时_时钟</small>
-            </h1>
-          </div>
-        </div>
-      </a>
-      
-      
-      
-      
-      
-      <a href="https://zhenhuizhang.tk/post/verilog7gong-neng-fang-zhen-yuan-li/">
-        <div class="motion-warpper">
-          <div class="tag-post-node">
-            <h1>
-              07-20
-              <small>[Verilog7]功能仿真原理</small>
-            </h1>
-          </div>
-        </div>
-      </a>
-      
-      
-      
-      
-      
-      <a href="https://zhenhuizhang.tk/post/verilog6zu-sai-yu-fei-zu-sai-fu-zhi/">
-        <div class="motion-warpper">
-          <div class="tag-post-node">
-            <h1>
-              07-19
-              <small>[Verilog6]阻塞与非阻塞赋值</small>
-            </h1>
-          </div>
-        </div>
-      </a>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      <a href="https://zhenhuizhang.tk/post/verilog5shi-xu-luo-ji-fu-wei-she-ji/">
-        <div class="motion-warpper">
-          <div class="tag-post-node">
-            <h1>
-              07-09
-              <small>[Verilog5]时序逻辑复位设计</small>
-            </h1>
-          </div>
-        </div>
-      </a>
-      
-      
-      
-      
-      
-      <a href="https://zhenhuizhang.tk/post/verilog4dai-ma-bian-xie-gui-fan/">
-        <div class="motion-warpper">
-          <div class="tag-post-node">
-            <h1>
-              07-09
-              <small>[Verilog4]代码编写规范</small>
-            </h1>
-          </div>
-        </div>
-      </a>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      <a href="https://zhenhuizhang.tk/post/verilog3miao-shu-ji-bie-_-zu-he-luo-ji-_-shi-xu-luo-ji-_-zhuang-tai-ji-_-she-ji-you-hua/">
-        <div class="motion-warpper">
-          <div class="tag-post-node">
-            <h1>
-              01-17
-              <small>[Verilog3]描述级别_组合逻辑_时序逻辑_状态机_设计优化</small>
-            </h1>
-          </div>
-        </div>
-      </a>
-      
-      
-      
-      
-      
-      <a href="https://zhenhuizhang.tk/post/verilog2tiao-jian-xun-huan-jie-gou-shuo-ming-yuan-jian-li-hua-sheng-cheng-yu-chu-li-yu-ju/">
-        <div class="motion-warpper">
-          <div class="tag-post-node">
-            <h1>
-              01-15
-              <small>[Verilog2]条件/循环/结构说明/元件例化/生成/预处理语句</small>
-            </h1>
-          </div>
-        </div>
-      </a>
-      
-      
-      
-      
-      
-      <a href="https://zhenhuizhang.tk/post/verilog1yu-yan-jie-gou-_-shu-ju-lei-xing-_-yun-suan-fu-yu-biao-da-shi-_-fu-zhi-yu-ju/">
-        <div class="motion-warpper">
-          <div class="tag-post-node">
-            <h1>
-              01-14
-              <small>[Verilog1]语言结构_数据类型_运算符与表达式_赋值语句</small>
-            </h1>
-          </div>
-        </div>
-      </a>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>6<span class="language" data-lan="minute">分钟</span></span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>1051<span class="pc-show language" data-lan="words">字数</span></span>
+    </span>
+    
+    
+    
+    <span id="/post/verilog21hdlbits-xi-ti-_karnaugh-map-to-circuit/" data-flag-title="[Verilog21]HDLBits习题_Karnaugh Map to Circuit" class="meta-item pc-show leancloud_visitors">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-eye"></i>
+      <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
+    </span>
+    
+  </div>
+</section>
+            <div class="post-body next-md-body" id="post_body">
+              <p>HDLBits习题讲解_Karnaugh Map to Circuit</p>
+<!-- more -->
+<h1 id="真值表转为标准式">真值表转为标准式</h1>
+<ul>
+<li>真值表是表征逻辑事件输入和输出之间全部可能状态的表格。以1表示真，0表示假。</li>
+<li>标准式分为SOP标准式与POS标准式，其中：SOP标准式为找出真值表中所有输出为1的表项，按照输入的情况，为1用变量表示，为0则用反变量表示，得出若干乘积项，然后求和。POS标准式为，找出真值表中所有输出为0的表项，按照输入的情况，为1用反变量表示，为0则用原变量表示，得出若干求和项，然后求积。</li>
+<li>举例说明，如有以下真值表：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">A</th>
+<th style="text-align:center">B</th>
+<th style="text-align:center">C</th>
+<th style="text-align:center">out</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>若针对所有F=1的表项，可轻松写出SOP标准式如下：</li>
+</ul>
+<pre><code>F=ABC+AB~C+A~(BC)+~ABC
+</code></pre>
+<ul>
+<li>若针对所有F=0的表项，可轻松写出POS标准式如下：</li>
+</ul>
+<pre><code>F=(~A+B+~C)(A+~B+C)(A+B+~C)(A+B+C)
+</code></pre>
+<h2 id="3-variable">3-variable</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">BC\A</th>
+<th style="text-align:center">0</th>
+<th style="text-align:center">1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">00</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">01</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">11</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>实现上面卡诺图所描述的电路，代码如下：</li>
+</ul>
+<pre><code>module top_module(
+    input a,
+    input b,
+    input c,
+    output out  ); 
+    assign out = ~((~a)&amp;(~b)&amp;(~c));
+endmodule
+</code></pre>
+<h1 id="4-variable1">4-variable(1)</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">CD\AB</th>
+<th style="text-align:center">00</th>
+<th style="text-align:center">01</th>
+<th style="text-align:center">11</th>
+<th style="text-align:center">10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">00</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">01</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">11</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>实现上面卡诺图所描述的电路，代码如下：</li>
+</ul>
+<pre><code>module top_module(
+    input a,
+    input b,
+    input c,
+    input d,
+    output out  ); 
+    assign out = ~a &amp; ~d | ~b &amp; ~c | b &amp; c &amp; d | a &amp; c &amp; d;
+endmodule
+</code></pre>
+<h1 id="4-variable2">4-variable(2)</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">CD\AB</th>
+<th style="text-align:center">00</th>
+<th style="text-align:center">01</th>
+<th style="text-align:center">11</th>
+<th style="text-align:center">10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">00</td>
+<td style="text-align:center">d</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">01</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">d</td>
+<td style="text-align:center">d</td>
+</tr>
+<tr>
+<td style="text-align:center">11</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>实现上面卡诺图所描述的电路，其中，无关项d可以根据化简需求自己制定为0或是1，代码如下：</li>
+</ul>
+<pre><code>module top_module(
+    input a,
+    input b,
+    input c,
+    input d,
+    output out  ); 
+    assign out =  a | (~a&amp;~b&amp;c);
+endmodule
+</code></pre>
+<h2 id="4-variable3">4-variable(3)</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">CD\AB</th>
+<th style="text-align:center">00</th>
+<th style="text-align:center">01</th>
+<th style="text-align:center">11</th>
+<th style="text-align:center">10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">00</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">01</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">11</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>实现上面卡诺图所描述的电路，代码如下：</li>
+</ul>
+<pre><code>module top_module(
+    input a,
+    input b,
+    input c,
+    input d,
+    output out  ); 
+    assign out = ~a &amp; b &amp; ~c &amp; ~d | a &amp; ~b &amp; ~c &amp; ~d | 
+        		 ~a &amp; ~b &amp; ~c &amp; d | a &amp; b &amp; ~c &amp; d | 
+        		 ~a &amp; b &amp; c &amp; d | a &amp; ~b &amp; c &amp; d | 
+        		 ~a &amp; ~b &amp; c &amp; ~d | a &amp; b &amp; c &amp; ~d;
+endmodule
+</code></pre>
+<h2 id="minimum-sop-and-pos">Minimum SOP and POS</h2>
+<ul>
+<li>题目要求，实现一个有四输入(a.b,c,d)的单输出数字系统，当2、7或15出现在输入端时，生成逻辑1，当0、1、4、5、6、9、10 13或14出现时，生成逻辑0。数字3、8、11和12的输入不会出现在这个系统中。例如，7对应的abcd分别被设为0,1,1,1。确定最小SOP格式的输出out_sop和最小POS格式的输出out_pos。代码如下：</li>
+</ul>
+<pre><code>module top_module (
+    input a,
+    input b,
+    input c,
+    input d,
+    output out_sop,
+    output out_pos
+); 
+    assign out_sop = c &amp; d | ~a &amp; ~b &amp; c;
+    assign out_pos = ~((~c | ~d) &amp; (a | b | ~c));
+endmodule
+</code></pre>
+<h2 id="karnaugh-map1">Karnaugh map(1)</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">CD\AB</th>
+<th style="text-align:center">00</th>
+<th style="text-align:center">01</th>
+<th style="text-align:center">11</th>
+<th style="text-align:center">10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">00</td>
+<td style="text-align:center">d</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">d</td>
+<td style="text-align:center">d</td>
+</tr>
+<tr>
+<td style="text-align:center">01</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">d</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">11</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">d</td>
+<td style="text-align:center">d</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">d</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>实现上面卡诺图所描述的电路，代码如下：</li>
+</ul>
+<pre><code>module top_module (
+    input [4:1] x, 
+    output f );
+    assign f = ~x[1]&amp;x[3] | x[2]&amp;x[4];
+endmodule
+</code></pre>
+<h2 id="karnaugh-map2">Karnaugh map(2)</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">CD\AB</th>
+<th style="text-align:center">00</th>
+<th style="text-align:center">01</th>
+<th style="text-align:center">11</th>
+<th style="text-align:center">10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">00</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">01</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">11</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>实现上面卡诺图所描述的电路，代码如下：</li>
+</ul>
+<pre><code>module top_module (
+    input [4:1] x,
+    output f
+); 
+    assign f = ~x[2]&amp;~x[4] | ~x[1]&amp;x[3] | x[2]&amp;x[3]&amp;x[4];
+endmodule
+</code></pre>
+<h2 id="k-map-implemented-with-a-multiplexer">K-map implemented with a multiplexer</h2>
+<figure data-type="image" tabindex="1"><img src="https://zhenhuizhang.tk/post-images/1625453411228.png" alt="" loading="lazy"></figure>
+<ul>
+<li>对于上面的卡诺图，用一个4-1多路选择器和不限的2-1多路选择器，但2-1多路选择器的使用要尽可能少。你不允许使用任何其他逻辑门，你必须使用a和b作为多路复用器选择器的输入，如上图中的4- 1多路复用器所示。代码如下：</li>
+</ul>
+<pre><code>module top_module (
+    input c,
+    input d,
+    output [3:0] mux_in
+);
+    
+    always @(*) begin
+        case({c,d})
+            2'b0:
+                mux_in = 4'b0100;
+            2'b1:
+                mux_in = 4'b0001;
+            2'b11:
+                mux_in = 4'b1001;
+            default:
+                mux_in = 4'b0101;
+        endcase
+    end
+
+endmodule
+</code></pre>
+<hr>
+<blockquote>
+<p>参考：<br>
+<a href="https://hdlbits.01xz.net/wiki/Problem_sets">HDLBits</a></p>
+</blockquote>
+
+            </div>
+            
+            
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong class="language" data-lan="author">本文作者：</strong>
+      渣渣晖のBlog
+    </li>
+    <li class="post-copyright-link">
+      <strong class="language" data-lan="link">本文链接：</strong>
+      <a href="https://zhenhuizhang.tk/post/verilog21hdlbits-xi-ti-_karnaugh-map-to-circuit/" title="[Verilog21]HDLBits习题_Karnaugh Map to Circuit">https://zhenhuizhang.tk/post/verilog21hdlbits-xi-ti-_karnaugh-map-to-circuit/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong class="language" data-lan="copyright">版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+      <a href="https://zhenhuizhang.tk/tag/w5e5JPE5B/"># Verilog</a>
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="[Verilog12]HDLBits习题讲解汇总" href="https://zhenhuizhang.tk/post/verilog12hdlbits-xi-ti-jiang-jie-hui-zong/">[Verilog12]HDLBits习题讲解汇总</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="[Verilog12]HDLBits习题讲解汇总" href="https://zhenhuizhang.tk/post/verilog12hdlbits-xi-ti-jiang-jie-hui-zong/">上一篇</a>
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="[Verilog11]TimeGEN波形绘制软件" href="https://zhenhuizhang.tk/post/verilog11timegen-bo-xing-hui-zhi-ruan-jian/">[Verilog11]TimeGEN波形绘制软件</a>
+        <a class="nav-mobile-next" title="[Verilog11]TimeGEN波形绘制软件" href="https://zhenhuizhang.tk/post/verilog11timegen-bo-xing-hui-zhi-ruan-jian/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
       
     </div>
   </div>
 </div>
-          </section>
+            
+            
+  <script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<div id="vcomments" style="padding: 10px 0px 0px 0px"></div>
+
+<style>
+  .v .veditor {
+    min-height: 10rem;
+    background-image: url('');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-color: rgba(255, 255, 255, 0);
+    resize: none;
+  }
+
+  .v .vwrap {
+    border: 1px solid #000 !important;
+  }
+
+  .v .vbtn {
+    padding: .4rem 1.2rem !important;
+    border-color: #fff !important;
+    background-color: #49b1f5 !important;
+    color: #fff !important;
+    font-size: .7rem !important;
+  }
+
+  .v .vcards .vcard .vh .vmeta .vat {
+    padding: 0 .8rem !important;
+    border: 1px solid #00c4b6 !important;
+    border-radius: 5px !important;
+    color: #00c4b6 !important;
+  }
+</style>
+<script>
+  new Valine({
+    el: '#vcomments',
+    appId: 'J9lURBr1r5n4v7qbEQULKHBt-MdYXbMMI',
+    appKey: '82KCwgokW5vjeyc6qsfQq48D',
+    avatar: 'wavatar',
+    placeholder: '建议在上方留下昵称和邮箱等信息，以便收到回复通知，网址为选填信息（以下三选一）\n 1、仅在昵称中留下QQ号和网址信息（系统自动获取QQ昵称、QQ邮箱、QQ头像）\n 2、自定义填写昵称、邮箱、网址信息（系统自动匹配头像）\n 3、匿名留言（不会收到留言回复通知，不推荐）',
+    pageSize: '',
+    lang: 'zh-cn',
+    enableQQ: 'true' === 'true',
+    visitor: 'true' === 'true',
+    highlight: 'true' === 'true',
+    avatarForce: 'true' === 'false',
+  });
+</script>
+
+          </div>
         </div>
       </div>
     </div>
@@ -1025,6 +1261,223 @@ Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea<
     parent.insertBefore(aelem, next);
   })
 </script>
+    <div class="reward-mask" style="display: none;">
+  <div class="reward-relative">
+    <span class="close" aria-hidden="true">x</span>
+    <div class="reward-body">
+      <h2>感谢您的支持，我会继续努力的!</h2>
+      <div class="reward-img-box">
+        <div style="position: relative; width: 140px; height: 140px;">
+          
+          
+          
+        </div>
+      </div>
+      <p class="reward-word">扫码打赏，你说多少就多少</p>
+      <p class="reward-tip">打开微信扫一扫，即可进行扫码打赏哦</p>
+    </div>
+    <div class="bottom">
+      
+      
+    </div>
+  </div>
+</div>
+<style>
+  .reward-mask {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00000054;
+  }
+
+  .reward-relative {
+    position: relative;
+    width: 480px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #fff;
+    top: 50%;
+    margin-top: -205px;
+  }
+
+  .reward-relative .close {
+    position: absolute;
+    right: 10px;
+    font-weight: normal;
+    font-size: 16px;
+    color: #929292;
+  }
+
+  .reward-body {
+    padding: 40px 20px 20px;
+  }
+
+  .bottom {
+    display: flex;
+  }
+
+  .reward-btn {
+    text-align: center;
+  }
+
+  .reward-btn-text {
+    display: inline-block;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    background-color: #ff9734;
+    color: #FFF;
+    margin-top: 20px;
+  }
+
+  .pay-text {
+    margin-top: 10px;
+    padding: 10px;
+    flex: 1;
+    transition: all .2s linear;
+  }
+
+  .pay-text:hover {
+    background-color: #a5a5a536;
+  }
+
+  .reward-body h2 {
+    padding-top: 10px;
+    text-align: center;
+    color: #a3a3a3;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 0 20px;
+  }
+
+  .reward-body h2:after,
+  .reward-body h2:before {
+    font-family: Arial, Helvetica, sans-serif;
+    background: 0 0;
+    width: 0;
+    height: 0;
+    font-style: normal;
+    color: #eee;
+    font-size: 80px;
+    position: absolute;
+    top: 20px;
+  }
+
+  .reward-body h2:before {
+    content: '\201c';
+    left: 50px;
+  }
+
+  .reward-body h2:after {
+    content: '\201d';
+    right: 80px;
+  }
+
+  .reward-img-box {
+    display: inline-block;
+    padding: 10px;
+    border: 6px solid #ea5f00;
+    margin: 0 auto;
+    border-radius: 3px;
+    position: relative;
+  }
+
+  .reward-img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 767px) {
+    .reward-relative {
+      height: 100%;
+      top: 0px;
+      margin-top: 0;
+      width: auto;
+    }
+
+    .reward-relative .bottom {
+      flex-direction: column;
+    }
+
+    .reward-relative .pay-text {
+      width: 80%;
+      margin: 5px auto;
+      border: 1px solid silver;
+      padding: 6px;
+      border-radius: 4px;
+    }
+
+    .reward-body h2:after {
+      right: 40px;
+    }
+
+    .reward-body h2:after,
+    .reward-body h2:before {
+      font-size: 60px;
+    }
+
+    .reward-body h2:before {
+      left: 20px;
+    }
+  }
+</style>
+<script>
+  !function () {
+    var mask = document.querySelector('.reward-mask');
+    let close = document.querySelector('.reward-relative .close');
+    let rewardBtn = document.querySelector('.reward-btn');
+
+    let zfb = document.querySelector('#zfb'),
+      wx = document.querySelector('#wx'),
+      zfbBtn = document.querySelector('#zfbBtn'),
+      wxBtn = document.querySelector('#wxBtn');
+
+    if (zfbBtn && wxBtn) {
+      zfbBtn.addEventListener('click', () => {
+        window.Velocity(zfb, 'transition.slideLeftIn', {
+          duration: 400
+        });
+        window.Velocity(wx, 'transition.slideRightOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+
+      wxBtn.addEventListener('click', () => {
+        window.Velocity(wx, 'transition.slideRightIn', {
+          duration: 400
+        });
+        window.Velocity(zfb, 'transition.slideLeftOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+    }
+
+    rewardBtn.addEventListener('click', (e) => {
+      window.Velocity(mask, 'transition.slideDownIn', {
+        duration: 400
+      })
+    });
+
+    close.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.Velocity(mask, 'transition.slideUpOut', {
+        duration: 400
+      })
+    })
+  }()
+</script>
+
   </div>
 </body>
 
@@ -18824,7 +19277,6 @@ sudo dpkg -i libcudnn6-doc_6.0.21-1+cuda8.0_amd64.deb
 
 
 <script src="/media/js/mouse/love.js"></script>
-
 
 
 
