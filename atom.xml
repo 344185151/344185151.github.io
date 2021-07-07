@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhenhuizhang.tk</id>
     <title>渣渣晖の博客</title>
-    <updated>2021-07-05T02:51:37.685Z</updated>
+    <updated>2021-07-07T01:59:50.177Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhenhuizhang.tk"/>
     <link rel="self" href="https://zhenhuizhang.tk/atom.xml"/>
@@ -242,6 +242,28 @@
 ]]></content>
     </entry>
     <entry>
+        <title type="html"><![CDATA[[Verilog22]HDLBits习题_Latches and Flip-Flops]]></title>
+        <id>https://zhenhuizhang.tk/post/verilog22hdlbits-xi-ti-_latches-and-flip-flops/</id>
+        <link href="https://zhenhuizhang.tk/post/verilog22hdlbits-xi-ti-_latches-and-flip-flops/">
+        </link>
+        <updated>2020-10-05T03:11:25.000Z</updated>
+        <summary type="html"><![CDATA[<p>HDLBits习题讲解_Latches and Flip-Flops</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>HDLBits习题讲解_Latches and Flip-Flops</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[Verilog21]HDLBits习题_Karnaugh Map to Circuit]]></title>
+        <id>https://zhenhuizhang.tk/post/verilog21hdlbits-xi-ti-_karnaugh-map-to-circuit/</id>
+        <link href="https://zhenhuizhang.tk/post/verilog21hdlbits-xi-ti-_karnaugh-map-to-circuit/">
+        </link>
+        <updated>2020-10-05T01:18:29.000Z</updated>
+        <summary type="html"><![CDATA[<p>HDLBits习题讲解_Karnaugh Map to Circuit</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>HDLBits习题讲解_Karnaugh Map to Circuit</p>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[[Verilog20]HDLBits习题_Arithmetic Circuits]]></title>
         <id>https://zhenhuizhang.tk/post/verilog20hdlbits-xi-ti-_arithmetic-circuits/</id>
         <link href="https://zhenhuizhang.tk/post/verilog20hdlbits-xi-ti-_arithmetic-circuits/">
@@ -316,28 +338,6 @@
         <summary type="html"><![CDATA[<p>HDLBits习题讲解_Vectors</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>HDLBits习题讲解_Vectors</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[Verilog13]HDLBits习题_Basics]]></title>
-        <id>https://zhenhuizhang.tk/post/verilog13hdlbits-xi-ti-_basics/</id>
-        <link href="https://zhenhuizhang.tk/post/verilog13hdlbits-xi-ti-_basics/">
-        </link>
-        <updated>2020-09-28T02:35:20.000Z</updated>
-        <summary type="html"><![CDATA[<p>HDLBits习题讲解_Basics</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>HDLBits习题讲解_Basics</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[Verilog12]HDLBits习题讲解汇总]]></title>
-        <id>https://zhenhuizhang.tk/post/verilog12hdlbits-xi-ti-jiang-jie-hui-zong/</id>
-        <link href="https://zhenhuizhang.tk/post/verilog12hdlbits-xi-ti-jiang-jie-hui-zong/">
-        </link>
-        <updated>2020-09-27T09:10:35.000Z</updated>
-        <summary type="html"><![CDATA[<p>HDLBits习题讲解汇总</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>HDLBits习题讲解汇总</p>
 ]]></content>
     </entry>
 </feed>
